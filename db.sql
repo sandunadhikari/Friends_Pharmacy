@@ -66,10 +66,10 @@ INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `email`, `pass
 --
 
 CREATE TABLE `drug` (
-  `medicine_group` varchar(20) NOT NULL,
   `medicine_id` varchar(10) NOT NULL,
   `brand_name` varchar(30) NOT NULL,
   `generic_name` varchar(30) NOT NULL,
+  `medicine_group` varchar(20) NOT NULL,
   `type` varchar(20) NOT NULL,
   `category` varchar(20) NOT NULL,
   `shelf_no` varchar(5) NOT NULL,
