@@ -1,54 +1,49 @@
+<?php
+    session_start();
+?>
 <html>
     <head>
         <title>Add supplier</title>
-        <link rel="stylesheet" type="text/css" href="styles/addsupplier.css">
+        <link rel="stylesheet" type="text/css" href="addsupplier.css">
         <script type="text/javascript">
             function validateForm(){
                 
                 var sid=document.getElementById("sid").value;
                 var cname=document.getElementById("cname").value;
                 var add=document.getElementById("add").value;
-                var mno=document.getElementById("lno").value;
+                var mno=document.getElementById("mno").value;
+                var lno=document.getElementById("lno").value;
                 var mail=document.getElementById("mail").value;
                 var fax=document.getElementById("fax").value;
                
-                
-                
-                if(sid==null || cname==null || add==null || mno==null || mail==null || fax==null){
+                if(sid=="" || cname=="" || add=="" || mno=="" || mail==""){
                     alert("Please Enter empty fields");
-                    
+                    return false;    
+                }else{
+                    if(isNaN(mno) || isNaN(lno) || isNaN(fax)){
+                        alert("Please Enter numbers correctly");
+                        return false;
+                    }
+                    if((mno.toString()).length!=10)  {
+                        alert("Mobile number is not correct");
+                        return false;
+                    }
+                    if((lno.toString()).length!=10) {
+                        alert("Land number is not correct ");
+                        return false;
+                    }
                 }
-                
             }
-            
-            
         </script>
     </head>
     
         <body>
-            <div id="d1"><img src="../images/logo.png"</div>
+            <div id="d1"><img src="../images/logo.png"></div>
             <span>
-            <div id="d2">
-                <div id="d3">
-                <ul class="l1">
-                <li><a href=#.php>Customer Details</a></li>
-                <br><li><a href=#.php>Supplier Details</a></li>
-                    <ul class="l1">
-                          <li><a href=#.php>Add supplier</a></li>
-                          <li><a href=#.php>Delete supplier</a></li>
-                          <li><a href=#.php>Update suplier details</a></li>
-                          <li><a href=#.php>Place oredr</a></li>
-                
-                    </ul>
-                    
-                
-                
-                </ul>
-                </div>
-            </div>
+            
             
             <div id="d4">
-                 <form id="f1" method="post">
+                <form id="f1" method="post" action="addsupplier.php" onsubmit="return validateForm();">
                 <table>   
                     <tr height=40>
                 <td> Supplier ID</td>
@@ -84,8 +79,8 @@
                  
                 </div>
                 </table><br><br>
-   <input id="i2" type="submit" name="go" value="Add supplier" onsumbit="validateForm();">
-                 </form>
+                <input id="i2" type="submit" name="go" >
+                </form>
             </span>
 <?php
 
@@ -96,22 +91,22 @@
         if(isset($_POST['cname'])){
                 $cname=$_POST['cname'];
             }
-         if(isset($_POST['sid'])){
+        if(isset($_POST['sid'])){
                 $sid=$_POST['sid'];
             }
-         if(isset($_POST['add'])){
+        if(isset($_POST['add'])){
                 $add=$_POST['add'];
             }
-         if(isset($_POST['mno'])){
+        if(isset($_POST['mno'])){
                 $mno=$_POST['mno'];
             }
         if(isset($_POST['lno'])){
                 $lno=$_POST['lno'];
             }
-         if(isset($_POST['mail'])){
+        if(isset($_POST['mail'])){
                 $mail=$_POST['mail'];
             }
-         if(isset($_POST['fax'])){
+        if(isset($_POST['fax'])){
                 $fax=$_POST['fax'];
             }
         
@@ -119,10 +114,13 @@
                 $con=mysqli_connect("localhost","root","") or die("Can't connect to mysql");
                 mysqli_select_db($con,"pharmacy") or die("Can't connect to Database");
                 
-                mysqli_query($con,"INSERT INTO supplier (supplier_id,company_name,address,telephone,mobile,email,fax)
-                                    VALUES ('$cname','$add','$mail','$mno','$lno','$mail','$fax');");
-                
+                mysqli_query($con,"INSERT INTO supplier (company_name,address,telephone,mobile,email,fax) VALUES ('$cname','$add','$mno','$lno','$mail','$fax');") or die(mysqli_error());
+                $_SESSION['sid']=$cname;
+                header("location:drugs.php");
+
+                 
             } 
+            
 
 
 ?>
