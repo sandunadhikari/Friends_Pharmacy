@@ -1,3 +1,41 @@
+<?php
+if(isset($_POST['fname'])) {
+    $conn = mysqli_connect("localhost", "root", "", "friends_pharmacy");
+    if (!$conn) {
+        echo ("Connection failed");
+        die();
+    }
+    
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $blood = $_POST['blood'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $password = $_POST['password'];
+    $repassword = $_POST['repassword'];
+    
+    $sql = "INSERT INTO customer (customer_name, birthday, gender, contact_number, 
+            email, blood_group, password) VALUES ('"
+            + $fname + " " + $lname + "','"
+            + $dob + "','"
+            + $gender + "','"
+            + $mobile + "','"
+            + $email + "','"
+            + $blood + "','"
+            + $password + "')";
+    
+    if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+        
+}
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -19,14 +57,7 @@
         <div class="container" style='text-align:center;'>
             <h2 style="margin-bottom:20px;">Online Registration Form</h2>
 			
-			<form class="form-horizontal"  method="post" action="signup.php">
-				
-				<div class="form-group">
-					<label for="id" class="col-sm-4 control-label">Customer ID</label>
-					<div class="col-sm-3">
-						<input required class="form-control" type="text" name="id">
-					</div>
-				</div>
+			<form class="form-horizontal"  method="post" action="#">
 				
 				<div class="form-group">
 					<label for="fname" class="col-sm-4 control-label">First Name</label>
@@ -111,9 +142,9 @@
 				</div>
 			   
 				<div class="form-group">
-					<label for="password" class="col-sm-4 control-label">Re-confirm Password</label>
+					<label for="repassword" class="col-sm-4 control-label">Re-confirm Password</label>
 					<div class="col-sm-3">
-						<input required type="password" class="form-control" id="repassword">
+						<input required type="password" class="form-control" id="repassword" name="repassword">
 					</div>
 				</div>
 				
