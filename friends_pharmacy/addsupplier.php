@@ -4,7 +4,7 @@
 <html>
     <head>
         <title>Add supplier</title>
-        <link rel="stylesheet" type="text/css" href="addsupplier.css">
+        <link rel="stylesheet" type="text/css" href="../styles/addsupplier.css">
         <script type="text/javascript">
             function validateForm(){
                 

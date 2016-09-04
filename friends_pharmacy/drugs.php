@@ -3,7 +3,7 @@
 ?>
 <html>
 <head>
-    <link href="drugs.css" rel="stylesheet" type="text/css">
+    <link href="../styles/drugs.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
             function validateForm(){
                 

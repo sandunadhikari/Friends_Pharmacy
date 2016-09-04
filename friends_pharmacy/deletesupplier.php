@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Delete supplier</title>
-        <link rel="stylesheet" type="text/css" href="deletesupplier.css">
+        <link rel="stylesheet" type="text/css" href="../styles/deletesupplier.css">
         <script type="text/javascript">
         function validateForm(){
                 
