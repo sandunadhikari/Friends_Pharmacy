@@ -1,0 +1,30 @@
+body{
+    background-color:  #38FFB9;
+}
+#d4{
+    position: relative;
+    left:400px;
+    top:10px;
+}
+#i1{
+    width: 150px;
+    box-sizing: content-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#i1:focus{
+    width: 25%;
+}
+#i2{
+    position:relative;
+    left:300px;
+    height:30px;
+    border-radius:3px;
+    background-color: #7F8C8D;  
+    
+}

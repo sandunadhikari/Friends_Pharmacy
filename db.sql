@@ -109,10 +109,12 @@ CREATE TABLE `prescription` (
 -- Table structure for table `price`
 --
 
-CREATE TABLE `price` (
+CREATE TABLE `prices` (
   `supplier_id` varchar(10) NOT NULL,
   `medicine_id` varchar(10) NOT NULL,
-  `price` decimal(15,0) NOT NULL
+  `price` decimal(15,0) NOT NULL,
+  `medicine` varchar(100) NOT NULL,
+  `dosage` varchar(6) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -179,8 +181,8 @@ CREATE TABLE `supplier` (
   `telephone` varchar(10) NOT NULL,
   `mobile` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `fax` varchar(10) NOT NULL,
-  `medicine_id` varchar(10) NOT NULL
+  `fax` varchar(10) NOT NULL
+  
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

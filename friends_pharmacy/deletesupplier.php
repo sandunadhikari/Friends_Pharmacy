@@ -19,7 +19,7 @@
 <?php
     $sid="";
     $con=mysqli_connect("localhost","root","") or die("Can't connect to mysql");
-    mysqli_select_db($con,"pharmacy") or die("Can't connect to Database");
+    mysqli_select_db($con,"friends_pharmacy") or die("Can't connect to Database");
 
     $output ='';
     $output2='';

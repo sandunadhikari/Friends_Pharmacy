@@ -11,7 +11,7 @@
 	<tr>
 		<td><a href="members.php"> <img src="images/user.png" width="100" height="100" border="0"> </a></td>
 		<td><a href="members.php"> <img src="images/stock.png" width="100" height="100" border="0"> </td>
-		<td><a href="members.php"> <img src="images/supplier.png" width="100" height="100" border="0"> </td>
+		<td><a href="homesup.php"> <img src="images/supplier.png" width="100" height="100" border="0"> </td>
 		<td><a href="members.php"> <img src="images/customer.png" width="100" height="100" border="0"> </td>
 	</tr>
 </table>

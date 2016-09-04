@@ -112,7 +112,7 @@
         
         if(isset($_POST['go'])){
                 $con=mysqli_connect("localhost","root","") or die("Can't connect to mysql");
-                mysqli_select_db($con,"pharmacy") or die("Can't connect to Database");
+                mysqli_select_db($con,"friends_pharmacy") or die("Can't connect to Database");
                 
                 mysqli_query($con,"INSERT INTO supplier (company_name,address,telephone,mobile,email,fax) VALUES ('$cname','$add','$mno','$lno','$mail','$fax');") or die(mysqli_error());
                 $_SESSION['sid']=$cname;
