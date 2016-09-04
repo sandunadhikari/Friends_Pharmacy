@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="js/jquery-2.0.0.js"></script>
+        <script>
+            
+        $(function() {
+            loadStock(); 
+        });
+        function loadStock() {
+            $.ajax({
+                url: "rest.php",
+                async:true,
+                type:"GET",
+                data : {
+                    medtype : $('#medtype').val(),
+                    search : $('#search').val()
+                },
+            })
+            .done(function(data){
+                var records = JSON.parse(data);
+                var tbl_body = document.getElementById("table-body");
+                tbl_body.innerHTML = '';
+                for (var i=0; i < records.length; i++) {
+                    var row = "<tr>";
+                    row += "<td>" + records[i].medicine_id + "</td>";
+                    row += "<td>" + records[i].medicine_name + "</td>";
+                    row += "<td>" + records[i].batch_no + "</td>";
+                    row += "<td>" + records[i].category + "</td>";
+                    row += "<td>" + records[i].quantity + "</td>";
+                    row += "<td>" + records[i].supplier + "</td>";
+                    row += "<td>" + records[i].entry_date + "</td>";
+                    row += "<td>" + records[i].production_date + "</td>";
+                    row += "<td>" + records[i].expire_date + "</td>";
+                    row += "<td>" + records[i].buying_price + "</td>";
+                    row += "<td>" + records[i].selling_price + "</td>";
+                    row += "</tr>";
+                    tbl_body.innerHTML += row;
+                }
+            });
+        }
+        </script>
+    </head>
+    <body>
+        <b>View Stock</b>
+
+        <div class="top-bar">
+            <div class="left-float" style="padding-top:5px;">
+                Medicine Type
+                <select name="medtype" id="medtype">
+                    <option value="1">Medicine ID</option>
+                    <option value="2">Medicine Name</option>
+                    <option value="3">Batch Number</option>
+                </select>
+                <input type="text" name="search" id="search" placeholder="Search" oninput='loadStock()'/>
+            </div>
+            <div class="left-float">
+                <span class="icon" onclick="loadStock()"><img src="Zoom-icon.png" height="40" width="40" /></span>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th>Medicine ID</th>
+                        <th>Name</th>                        
+                        <th>Batch Number</th>
+                        <th>Category</th>
+                        <th>Supplier</th>
+                        <th>Quantity</th>
+                        <th>Entry Date</th>
+                        <th>Production Date</th>
+                        <th>Expire Date</th>
+                        <th>Buy Price</th>
+                        <th>Sell Price</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
