@@ -3,14 +3,14 @@
 $med_type = $_GET['medtype'];
 $search = $_GET['search'];
 
-$conn = mysqli_connect("localhost", "root", "", "friends_pharmacy");
+$conn = mysqli_connect("localhost", "root", "123", "friends_pharmacy");
 if (!$conn) {
     echo "Error";
 }
 
 switch($med_type) {
     case '1': {
-        $sql = "SELECT * FROM stock WHERE medicine_id LIKE '$search%'";
+        $sql = "SELECT * FROM stock s, drug d WHERE s.medicine_id=d.medicine_id AND  s.medicine_id LIKE '$search%'";
         $result = mysqli_query($conn, $sql);
         $res_data = array();
         while($row = mysqli_fetch_assoc($result)) {
@@ -21,7 +21,7 @@ switch($med_type) {
     }
     break;
     case '2': {
-        $sql = "SELECT * FROM stock WHERE medicine_name LIKE '$search%'";
+        $sql = "SELECT * FROM stock s, drug d WHERE s.medicine_id=d.medicine_id AND  d.medicine_name LIKE '$search%'";
         $result = mysqli_query($conn, $sql);
         $res_data = array();
         while($row = mysqli_fetch_assoc($result)) {
@@ -32,7 +32,7 @@ switch($med_type) {
     }
     break;
     case '3': {
-        $sql = "SELECT * FROM stock WHERE batch_no LIKE '$search%'";
+        $sql = "SELECT * FROM stock s, drug d WHERE s.medicine_id=d.medicine_id AND  d.batch_no LIKE '$search%'";
         $result = mysqli_query($conn, $sql);
         $res_data = array();
         while($row = mysqli_fetch_assoc($result)) {

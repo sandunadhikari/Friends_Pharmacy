@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customer` (
-  `customer_id` varchar(10) NOT NULL,
+  `nic` varchar(10) NOT NULL,
   `customer_name` varchar(50) NOT NULL,
   `birthday` date NOT NULL,
   `gender` varchar(10) NOT NULL,
   `contact_number` varchar(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `blood_group` varchar(5) NOT NULL,
-  `prescription _id` varchar(10) NOT NULL,
-  `otc_id` varchar(10) NOT NULL,
+  `prescription _id` varchar(10) DEFAULT NULL,
+  `otc_id` varchar(10) DEFAULT NULL,
   `password` varchar(18) NOT NULL,
-  PRIMARY KEY (`customer_id`)
+  PRIMARY KEY (`nic`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,6 +43,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES ('fdg','safd asd','0000-00-00','nbf','huhi','gyf','gyedg',NULL,NULL,'ggu8i'),('52v','a b','1990-05-23','male','119','a@a','a+',NULL,NULL,'a'),('90234','a b','1990-05-23','male','119','a@a','a+',NULL,NULL,'b'),('niv','fn ln','0000-00-00','female','119','email@host.com','a-',NULL,NULL,'123');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,4 +308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-04 23:02:48
+-- Dump completed on 2016-09-05 21:46:06

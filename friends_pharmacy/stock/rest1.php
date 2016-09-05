@@ -19,8 +19,7 @@ switch($period) {
     }
     break;
 }
-
-$conn = mysqli_connect("localhost", "root", "", "friends_pharmacy");
+$conn = mysqli_connect("localhost", "root", "123", "friends_pharmacy");
 if (!$conn) {
     echo "Error";
 }
@@ -28,25 +27,39 @@ $sql = '';
 switch($med_type) {
     case '1': {
         if($action == '1') {
-            $sql = "SELECT * FROM purchasing p, drug d, stock s WHERE p.medicine_id = d.medicine_id AND p.medicine_id = s.medicine_id AND p.medicine_id LIKE '$search%' AND p.date >" .  date_format($date,"Y-m-d");
+            $sql = "SELECT p.`date`, d.`medicine_id`, d.`medicine_name`, d.`category`, st.`batch_no`, st.`supplier`, st.`quantity`, st.`buying_price`, st.`selling_price`
+             FROM purchasing p, drug d, stock st 
+             WHERE p.medicine_id = d.medicine_id AND p.medicine_id = st.medicine_id AND p.medicine_id LIKE '$search%' AND p.`date` > '" .  date_format($date,"Y-m-d") . "'";
         } else if($action == '2') {
-            $sql = "SELECT * FROM selling s, drug d, stock st WHERE s.medicine_id = d.medicine_id AND s.medicine_id = st.medicine_id AND s.medicine_id LIKE '$search%'";
+            $sql = "SELECT s.`date`, s.`medicine_id`, d.`medicine_name`, d.`category`, st.`batch_no`, st.`supplier`, st.`quantity`, st.`buying_price`, st.`selling_price`
+            FROM selling s, drug d, stock st 
+            WHERE s.medicine_id = d.medicine_id AND s.medicine_id = st.medicine_id AND d.medicine_id LIKE '$search%' AND s.`date` > '" .  date_format($date,"Y-m-d") . "'";
         }        
     }
     break;
     case '2': {
         if($action == '1') {
-             $sql = "SELECT * FROM purchasing p, drug d, stock s WHERE p.medicine_id = d.medicine_id AND s.medicine_id = d.medicine_id AND d.medicine_name LIKE '$search%' AND p.date > " . date_format($date,"Y-m-d");
+            //  $sql = "SELECT * FROM purchasing p, drug d, stock s WHERE p.medicine_id = d.medicine_id AND s.medicine_id = d.medicine_id AND d.medicine_name LIKE '$search%' AND p.`date` > '" . date_format($date,"Y-m-d") . "'";
+            $sql = "SELECT p.`date`, d.`medicine_id`, d.`medicine_name`, d.`category`, st.`batch_no`, st.`supplier`, st.`quantity`, st.`buying_price`, st.`selling_price`
+             FROM purchasing p, drug d, stock st 
+             WHERE p.medicine_id = d.medicine_id AND p.medicine_id = st.medicine_id AND d.medicine_name LIKE '$search%' AND p.`date` > '" .  date_format($date,"Y-m-d") . "'";
         } else if($action == '2') {
-            $sql = "SELECT * FROM selling s, drug d, stock st WHERE s.medicine_id = d.medicine_id AND st.medicine_id = d.medicine_id AND d.medicine_name LIKE '$search%'"  ;
+            $sql = "SELECT s.`date`, s.`medicine_id`, d.`medicine_name`, d.`category`, st.`batch_no`, st.`supplier`, st.`quantity`, st.`buying_price`, st.`selling_price`
+            FROM selling s, drug d, stock st 
+            WHERE s.medicine_id = d.medicine_id AND s.medicine_id = st.medicine_id AND d.medicine_name LIKE '$search%' AND s.`date` > '" .  date_format($date,"Y-m-d") . "'";
         }        
     }
     break;
     case '3': {
         if($action == '1') {
-             $sql = "SELECT * FROM purchasing p, drug d, stock s WHERE p.medicine_id = d.medicine_id AND s.medicine_id = d.medicine_id AND d.batch_no LIKE '$search%' AND p.date > " . date_format($date,"Y-m-d");
+             $sql = "SELECT p.`date`, d.`medicine_id`, d.`medicine_name`, d.`category`, st.`batch_no`, st.`supplier`, st.`quantity`, st.`buying_price`, st.`selling_price`
+             FROM purchasing p, drug d, stock st 
+             WHERE p.medicine_id = d.medicine_id AND p.medicine_id = st.medicine_id AND st.`batch_no` LIKE '$search%' AND p.`date` > '" .  date_format($date,"Y-m-d") . "'";
         } else if($action == '2') {
-            $sql = "SELECT * FROM selling s, drug d, stock st WHERE d.medicine_id = s.medicine_id AND st.medicine_id = d.medicine_id AND d.batch_no LIKE '$search%'" ;
+            // $sql = "SELECT * FROM selling s, drug d, stock st WHERE d.medicine_id = s.medicine_id AND st.medicine_id = d.medicine_id AND s.batch_no LIKE '$search%'" ;
+            $sql = "SELECT s.`date`, s.`medicine_id`, d.`medicine_name`, d.`category`, st.`batch_no`, st.`supplier`, st.`quantity`, st.`buying_price`, st.`selling_price`
+            FROM selling s, drug d, stock st 
+            WHERE s.medicine_id = d.medicine_id AND s.medicine_id = st.medicine_id AND st.`batch_no` LIKE '$search%' AND s.`date` > '" .  date_format($date,"Y-m-d") . "'";
         }    
     }
     break;
@@ -54,7 +67,8 @@ switch($med_type) {
         
     }
 }
-
+// echo $sql;
+// echo "<br>";
 $result = mysqli_query($conn, $sql);
 $res_data = array();
 while($row = mysqli_fetch_assoc($result)) {
