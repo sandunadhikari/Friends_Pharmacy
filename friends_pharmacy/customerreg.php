@@ -8,6 +8,7 @@ if(isset($_POST['fname'])) {
     
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
+    $nic = $_POST['nic'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $blood = $_POST['blood'];
@@ -16,20 +17,25 @@ if(isset($_POST['fname'])) {
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
     
-    $sql = "INSERT INTO customer (customer_name, birthday, gender, contact_number, 
-            email, blood_group, password) VALUES ('"
-            + $fname + " " + $lname + "','"
-            + $dob + "','"
-            + $gender + "','"
-            + $mobile + "','"
-            + $email + "','"
-            + $blood + "','"
-            + $password + "')";
+//    $fname = "safd";
+//    $lname = "asd";
+//    $nic = "fdg";
+//    $dob = "bhv";
+//    $gender = "nbf";
+//    $blood = "gyedg";
+//    $email = "gyf";
+//    $mobile = "huhi";
+//    $password = "ggu8i";
+//    $repassword = "hyyik";
+    
+    $sql = "INSERT INTO customer (customer_name, nic, birthday, gender, contact_number, email, blood_group, password) VALUES ('$fname $lname','$nic','$dob','$gender','$mobile','$email','$blood','$password')";
+//    $sql = "Select * from customer";
+//    echo $sql;
     
     if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
+   // echo "New record created successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  //  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
 mysqli_close($conn);
@@ -70,6 +76,14 @@ mysqli_close($conn);
 					 <label for="lname" class="col-sm-4 control-label">Last Name</label>
 					 <div class="col-sm-3">
 						<input required class="form-control" type="text" name="lname">
+					 </div>
+				</div>
+                
+                
+				<div class="form-group">
+					 <label for="nic" class="col-sm-4 control-label">NIC</label>
+					 <div class="col-sm-3">
+						<input required class="form-control" type="text" name="nic">
 					 </div>
 				</div>
 				
