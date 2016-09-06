@@ -19,7 +19,7 @@ switch($period) {
     }
     break;
 }
-$conn = mysqli_connect("localhost", "root", "123", "friends_pharmacy");
+$conn = mysqli_connect("localhost", "root", "", "friends_pharmacy");
 if (!$conn) {
     echo "Error";
 }
