@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
+-- MySQL dump 10.15  Distrib 10.0.25-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: friends_pharmacy
 -- ------------------------------------------------------
--- Server version	5.6.17
+-- Server version	10.0.25-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -77,7 +77,7 @@ CREATE TABLE `drug` (
 
 LOCK TABLES `drug` WRITE;
 /*!40000 ALTER TABLE `drug` DISABLE KEYS */;
-INSERT INTO `drug` VALUES ('45','tgyhk','jnuyvy','cfctgju','ftugu','gvygigbk','yuguyhho','12','15',NULL,NULL),('13','chvjv ','ftuyhb','drhfyg','sesdfdr','drtytiu','edytutf','21','20',NULL,NULL);
+INSERT INTO `drug` VALUES ('45','tgyhk','jnuyvy','cfctgju','ftugu','gvygigbk','yuguyhho','12','15',NULL,NULL),('13','chvjv ','ftuyhb','drhfyg','sesdfdr','drtytiu','edytutf','21','20',NULL,NULL),('18','18 the med','duno','sa','asd','fe','ef','5','hg1',NULL,NULL);
 /*!40000 ALTER TABLE `drug` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +178,7 @@ CREATE TABLE `purchasing` (
 
 LOCK TABLES `purchasing` WRITE;
 /*!40000 ALTER TABLE `purchasing` DISABLE KEYS */;
-INSERT INTO `purchasing` VALUES (1,'13','20',50,'2016-09-03','2016-09-01','2016-09-30',15),(2,'45','14',30,'2016-09-03','2016-09-01','2016-09-29',20),(3,'16','12',100,'2016-08-23','2016-09-05','2016-09-30',10),(4,'18','14',150,'2016-08-30','2016-08-10','2016-09-29',11);
+INSERT INTO `purchasing` VALUES (1,'13','20',50,'2016-09-03','2016-09-01','2016-09-30',15),(2,'45','14',30,'2016-09-03','2016-09-01','2016-09-29',20),(3,'16','12',100,'2016-08-23','2016-09-05','2016-09-30',10),(4,'18','14',150,'2016-08-25','2016-08-10','2016-09-29',11);
 /*!40000 ALTER TABLE `purchasing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +236,7 @@ CREATE TABLE `selling` (
 
 LOCK TABLES `selling` WRITE;
 /*!40000 ALTER TABLE `selling` DISABLE KEYS */;
-INSERT INTO `selling` VALUES (1,'45','2016-09-03','10',10,25),(2,'13','2016-09-03','20',15,30),(3,'13','2016-09-03','10',12,30);
+INSERT INTO `selling` VALUES (1,'45','2016-09-03','10',10,25),(2,'13','2016-09-03','20',15,30),(3,'13','2016-08-01','10',12,30);
 /*!40000 ALTER TABLE `selling` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,7 +267,7 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES ('02','10','asfg',5,'ghth','2016-09-06','2016-09-01','2016-09-30',10,12),('15','26',' bv ',3,'gnhbvgh','2016-09-01','2016-09-01','2016-09-22',52,60),('13','25','guhn',150,'ftyuh','2016-09-02','2016-08-03','2016-10-13',15,20),('45','40','v hgvb jm',200,'cfgv','2016-09-01','2016-08-01','2016-10-26',10,50);
+INSERT INTO `stock` VALUES ('02','10','asfg',5,'ghth','2016-09-06','2016-09-01','2016-09-30',10,12),('15','26',' bv ',3,'gnhbvgh','2016-09-01','2016-09-01','2016-09-22',52,60),('13','25','guhn',150,'ftyuh','2016-09-02','2016-08-03','2016-10-13',15,20),('45','40','v hgvb jm',200,'cfgv','2016-09-01','2016-08-01','2016-10-26',10,50),('18','22','ffmp',44,'asd','2016-09-01','2016-08-09','2016-09-02',6,8),('18','22','jjjk',44,'hg','2016-09-06','2016-08-18','2016-08-03',6,8);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,4 +308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-05 21:46:06
+-- Dump completed on 2016-09-06  8:42:05
