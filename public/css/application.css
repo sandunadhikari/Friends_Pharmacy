@@ -1,0 +1,143 @@
+.customer_template_container{
+    margin-left: 200px;
+    
+}
+body{
+    font-family: "Arial";
+    background-color: #F1F8E9;
+    margin: 0px;
+}
+
+/* Heading bar css */
+.mainHeader{
+    float: right;
+    margin-left: 200px;
+    padding-left:15px;
+    width:calc(100% - 210px);
+    background-color:#6AB82A;
+    height:10px;
+    position: fixed 
+}
+
+.header_content{    
+    position:relative;
+    top:0px;
+    
+}
+
+/* navigation panel styles*/
+
+.nav{
+    height: 100%;
+    position: fixed;
+    padding-top: 20px;
+    background-color:#263238; 
+}
+
+.mainmenu {
+    font-size: 16px;
+    padding: 0;
+    width: 200px;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.mainmenu > li {
+    box-sizing: border-box;
+    height: 48px;
+    color: #f7f1e3;
+    border-bottom: 2px solid #263238;
+    background-color: #6AB82A;
+}
+
+.mainmenu > a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+
+.mainmenu > li span {
+    line-height: 48px;
+    display: block;
+    padding-left: 20px; 
+}
+
+.mainmenu > li .icon {
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    padding: 14px 20px 0 20px;
+}
+
+.mainmenu > li .messages {
+    font-size: 11px;
+    line-height: 19px;
+    display: block;
+    float: right;
+    width: 34px;
+    height: 18px;
+    margin-top: -33px;
+    margin-right: 19px;
+    padding: 0;
+    text-align: center;
+    background: url("../image/arrow-icon.png") no-repeat;
+}
+
+.expand-triangle {
+    width: 276px;
+    content: " ";
+}
+
+.expand-triangle img {
+    width: inherit;
+    height: inherit;
+    margin-left: -40px;
+    vertical-align: top;
+}
+
+/*------------ Sub Menu ------------*/
+.submenu {
+    font-size: 13px;
+    box-sizing: border-box;
+    content: " ";
+    color: #ae9f9f;
+}
+
+.submenu li {
+    line-height: 20px;
+    height: 35px;
+    margin-left: -40px;
+    padding-top: 11px;
+    transition: border-left 220ms ease-in;
+    border-left: solid 6px #484141;
+    background-color: #484141;
+}
+
+.submenu .chosen,
+.submenu .chosen:hover {
+    border-left: solid 6px #96d145;
+}
+
+.submenu li:hover {
+    border-left: solid 6px #d05942;
+}
+
+.submenu li span a{
+    margin-left: 30px;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.logo{
+    height: 50px;
+    width: 190px;
+}
+
+.customer_template_container {
+    position: relative;
+  
+   
+}

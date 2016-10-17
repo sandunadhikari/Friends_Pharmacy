@@ -1,0 +1,222 @@
+
+.type {
+    width: 280px;
+    padding: 4px;
+    
+}
+
+ul {
+ list-style-type: none;
+ list-style-position: inside;
+ margin: 0 0 3px 0;
+ }
+#medicineList {
+    background-color: lavender;
+    width: 280px;
+    left: 725px;
+    margin-top: -15px;
+    position: relative; 
+    
+}
+.overViewTable
+{
+    width: 900px;
+    border: 2px solid rgb(255,232,57);
+    margin:auto;
+}
+
+.overViewTable tr
+{
+    padding: 7px;
+}
+
+.overViewTable td
+{
+    padding: 4px;
+    border: 1px solid #E3E3E3;
+}
+.inputField
+{
+    width: 280px;
+    padding: 4px;
+}
+.drugBox {
+    width: 280px;
+    padding: 4px;
+}
+.lblf
+{
+    float: left;
+    width: 200px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.lbls {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.lblr {
+    
+    width: 200px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+fieldset{
+  border: 2px solid rgb(255,232,57);
+  width: 600px;
+  margin:auto;
+  text-align: center;
+ 
+}
+.date {
+    width: 165px;
+}
+
+
+
+body{
+background-color:#FFF2E7;
+}
+.mainHeader{
+	top:0px;
+	left:0px;
+	padding-left:15px;
+	width:100%;
+	background-color:#f9a03d;
+	height:60px;
+	position:fixed;	
+	margin:0px auto;
+}
+
+.header_content{	
+	position:relative;
+	top:0px;
+}
+
+.menu{
+	float:left;
+	margin-top:18px;
+	margin-right:2%;
+	width:32px;
+	height:32px;
+}
+.logo {
+	vertical-align:center;
+	float:left;
+	width:12%;
+	height:130%;
+	margin-left:1%;
+	margin-right:5%;
+}
+.note{
+	padding-top:15px;	
+	padding-right:30px;
+}
+
+.number{
+	float:left;	
+	padding-left:100px;
+	border-radius: 60px;    
+    background-color:#fed7b0;
+	padding: 6px 12px; 
+}
+
+.task{
+	padding-left:0px;
+}
+
+.sidenav {
+    height: 88%;
+    width: 0;
+    position:left;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#514947;
+    overflow-x: hidden;
+    padding-top: 20px;
+	margin-top:60px;
+	position:fixed;	
+}
+.stock {
+    position:fixed;	
+}
+
+.content{
+	
+    padding-left:13px;
+    padding-top:20px;
+    margin-top:2.28%;
+	
+}
+
+.dropbtn{
+	border:none;
+	padding-left:20px;	
+	
+}
+.dropdown-content{
+	display:none;
+	position:absolute;	
+}
+li{list-style: none;}
+
+
+.main-nav a:hover {background:rgba(121,165,162,1,00); }
+.main-nav-ul ul {display: none;}
+.main-nav-ul #stock:hover #stockList {
+    display: block;
+}
+.main-nav-ul #newMedicine:hover #newMedicineList {
+    display: block;
+}
+
+
+a{text-decoration: none;}
+#nav{padding: 0; margin: 0;}
+#stock1{padding-left: 10px;}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    display: block;
+	text-decoration:none;
+	color:#e0e0d1;
+}
+.sidenav a:hover{
+	color:#FFF2E7;
+}
+
+.dropdown-content a {
+    padding-left:30px;
+    display: block;
+	width:210px;
+	padding-left:42px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+Footer{
+	width:100%;
+	float:right;
+	background-color:#514947;
+ }
+Footer a{
+	color:#e0e0d1;
+	text-decoration:none;
+ }
+Footer a:hover{
+	color:#FFF2E7;
+}
+Footer p{
+	padding-left:250px;
+ }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+#entryDate {
+    width: 250px;
+}
