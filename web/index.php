@@ -17,7 +17,7 @@
 				<li><a href="index.php">Home </a></li>
 				<li><a href="about.php">About Us </a></li>
 				<li><a href="otc.php">Over the Counter Products </a></li>
-				<li><a href="prescription.php">Prescription Products </a></li>
+				<li><a href="prescription.php">Prescription Products Orders</a></li>
 				<li><a href="events.php">Events </a></li>
 				<li><a href="contact.php">Contact Us </a></li>
 				<button id="myBtn">LOGIN</button>
