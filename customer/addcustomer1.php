@@ -33,10 +33,7 @@
               border: 2px solid rgb(106,184,42);
               padding-top: 30px;
               background-color: rgb(229, 249, 212);
-              height:400px;
-             
               top:100px;
-              left:100px;
 
             }
             form div {
@@ -47,9 +44,7 @@
             }
             #btn{
                 position:relative;
-                top:340px;
                 float:right;
-                right:250px;
                 height:30px;
             }
             #tbl{
@@ -112,8 +107,10 @@
         </tr>
                 <br>
                 <br>
-               
-        <input id="btn" type="submit" value="Next">
+        <tr>
+                <td><input id="btn" type="submit" value="Next"></td>
+        </tr>
+        
         </table> 
             </form>
         <?php // echo $content; ?>
