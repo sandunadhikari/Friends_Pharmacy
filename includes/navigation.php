@@ -1,7 +1,46 @@
+<?php    
+$con=mysqli_connect("localhost","root","") or die ("couldn't connect sql");
+mysqli_select_db($con,"friends_pharmacy") or die("couldn't connect database");
+$query=mysqli_query($con,"SELECT medicine_name,batch_no,quantity,expire_date FROM stock where expire_date=DATE_ADD(curdate(),INTERVAL 21 Day);");
+    
+   
+    $rows=mysqli_num_rows($query);
+    if($rows < 1) $rows = 0;
+while($row=mysqli_fetch_assoc($query)){
+    $medi=$row['medicine_name'];
+    $batch=$row['batch_no'];
+    $quan=$row['quantity'];
+    $ex=$row['expire_date'];
+}
+     
+    ?>
+
 
 <!--Header content goes here-->
 <div class="header_content">
-    <div class="mainHeader">		                    
+    <div class="mainHeader">
+    </div>
+    <div class="notification_area">
+        <ul>
+            <li id="noti_Container">
+                <div id="noti_Counter" class="noti_Counter"><?php echo $rows ?></div>   
+                <div id="noti_Button"></div>    
+                <div id="notifications">
+                <h3 class="noti_title">Notifications</h3>
+                <div style="height:300px;">
+                   <?php for($i=0;$i<$rows;$i++){
+                        echo "<div id=inner_noti>
+                                $quan quantity from $medi will expire on $ex date according to $batch batch number
+                                
+                            </div>";
+                        }
+                    ?>
+                </div>
+                <div class="seeAll"><a href="#">See All</a></div>
+                </div>
+            </li>
+            
+        </ul>
     </div>
 </div>	
 
@@ -60,8 +99,6 @@
           
         </ul>
 
-
+          </span>
     </ul>    
 </div>
-
-

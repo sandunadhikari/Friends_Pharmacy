@@ -8,7 +8,7 @@ body{
     position: absolute;
     float:right;
     top:110px;
-    right:500px;
+    right:400px;
 }
 #d2{
     position: absolute;
@@ -24,7 +24,7 @@ body{
 h2{
      position: absolute;
     float: right;
-    right:600px;
+    right:430px;
     top:30px;
     
 }
@@ -135,7 +135,7 @@ li{
 }
 fieldset{
   border: none;
-  width: 600px;
+  width: 550px;
   margin:auto;
   text-align: center;
   border: 2px solid rgb(106,184,42);

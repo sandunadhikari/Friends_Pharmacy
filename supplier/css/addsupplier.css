@@ -5,7 +5,8 @@ body{
     position: absolute;
     float:right;
     top:130px;
-    right:360px;
+    right:200px;
+    z-index: -1;
 }
 body{
     font-family: Calibri;
@@ -20,13 +21,13 @@ fieldset{
   padding-top: 30px;
   padding-bottom: 20px;
   background-color: rgb(229, 249, 212);
-  height:500px;
+  height:450px;
  
 }
 h2{
     position: relative;
     float: right;
-    right:600px;
+    right:450px;
     top:70px;
 }
 table {
