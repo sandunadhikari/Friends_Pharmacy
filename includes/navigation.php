@@ -1,16 +1,17 @@
 <?php    
 $con=mysqli_connect("localhost","root","") or die ("couldn't connect sql");
 mysqli_select_db($con,"friends_pharmacy") or die("couldn't connect database");
-$query=mysqli_query($con,"SELECT medicine_name,batch_no,quantity,expire_date FROM stock where expire_date=DATE_ADD(curdate(),INTERVAL 21 Day);");
+$query=mysqli_query($con,"SELECT stock.batch_no, stock.medicine_id, stock.quantity, stock.expire_date,drug.brand_name, drug.shelf_no FROM stock INNER JOIN                               drug ON stock.expire_date=DATE_ADD(curdate(),INTERVAL 21 Day);");
     
    
     $rows=mysqli_num_rows($query);
     if($rows < 1) $rows = 0;
 while($row=mysqli_fetch_assoc($query)){
-    $medi=$row['medicine_name'];
+    $medi=$row['brand_name'];
     $batch=$row['batch_no'];
     $quan=$row['quantity'];
     $ex=$row['expire_date'];
+    $shell=$row['shelf_no'];
 }
      
     ?>
@@ -30,7 +31,7 @@ while($row=mysqli_fetch_assoc($query)){
                 <div style="height:300px;">
                    <?php for($i=0;$i<$rows;$i++){
                         echo "<div id=inner_noti>
-                                $quan quantity from $medi will expire on $ex date according to $batch batch number
+                                $quan quantity from $medi will expire on $ex date according to $batch batch number in $shell shelf
                                 
                             </div>";
                         }
