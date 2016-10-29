@@ -139,17 +139,7 @@ table{
         <td>
          NIC 
         </td>
-            <?php
-            if (isset($_POST['nic'])) {
-            ?>
             <td><input type="text" name="nic" id="nic" value='<?php echo $_POST['nic']; ?>'></td>
-            <?php
-            } else {
-            ?> 
-            <td><input type="text" name="nic" id="nic"></td>
-            <?php
-            }
-            ?>
         </tr>
         
         

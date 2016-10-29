@@ -68,7 +68,7 @@ $content = "<h2 style='text-align:center;'>Add New Medicine</h2>
 
             <label for='Supplier'>Supplier: </label>
             <input type='text' class='inputField' id='supplier' name='supplier' autocomplete='off'/><br/>
-            <div id='supplierList'style='position: fixed;'></div> 
+            <div id='supplierList'style='position: absolute; left:540px;'></div> 
             <p></p>
 
             <label for='content'>content: </label>

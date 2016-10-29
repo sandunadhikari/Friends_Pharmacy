@@ -23,7 +23,7 @@
     </div>
     <div>
       <form method="post" action="deletesupplier.php">
-      <table border="1" id="tbl">
+      <table id="tbl">
         
         <?php
           include('deletesupplierdb.php');
@@ -40,7 +40,7 @@
                 echo "<h4>Supplier : $companyname</h4>";
                 echo "<input id='btn' type='submit' name='delete' value='Delete' />";
                 $drugs=mysqli_query($con,"SELECT * FROM drug_price WHERE id='$supid' ");
-                echo "<tr><th>Medicine Name</th><th>Dosage(mg)</th><th>Price(Rs.)</th></tr>";
+                echo "<tr><th>Medicine Name</th><th>Dosage</th><th>Price</th></tr>";
                 if(mysqli_num_rows($drugs)>0){
                   while ($drugrow=mysqli_fetch_assoc($drugs)) {
                     $medicinename=$drugrow['medicine_name'];

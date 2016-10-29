@@ -11,7 +11,7 @@ function showConfirm(id)
 }
 </script>
 <?php
-require ("../Entities/stockEntity.php");
+include ("../Entities/stockEntity.php");
 class stockController {
 
 function CreateStockTables($medicine_Name) {

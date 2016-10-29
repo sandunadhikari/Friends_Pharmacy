@@ -10,10 +10,7 @@
                left:50px;
                
         }
-        .customer_template_container{
-            position: relative;
-            left:100px;
-        }
+       
         .top bar{
             position: relative;
             left:100px;

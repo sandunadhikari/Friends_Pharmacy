@@ -1,5 +1,5 @@
 <?php 
-require ("../Entities/stockEntity.php");
+require ("../Entities/stockEntityHead.php");
 $host = "localhost";
 $user = "root";
 $passwd = "";
@@ -22,7 +22,7 @@ $stockArray = array();
         
 
         //Create stock objects and store them in an array.
-        $stock = new StockEntity($id,$medicineName,$batchNumber,$quantity,$entry_date,$production_date,$EXP_date);
+        $stock = new StockEntityHead($id,$medicineName,$batchNumber,$quantity,$entry_date,$production_date,$EXP_date);
         array_push($stockArray, $stock);
     }
 ?>

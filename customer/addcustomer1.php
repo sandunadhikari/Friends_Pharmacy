@@ -19,21 +19,17 @@
             .radio-left {
                 float: left;
             }
-            .customer_template_container {
-                padding-left:13px;
-                padding-top:20px;
-              
-}
+
             fieldset{
-                 position: relative;
-              border: none;
-              width: 600px;
-              margin:auto;
-              text-align: center;
-              border: 2px solid rgb(106,184,42);
-              padding-top: 30px;
-              background-color: rgb(229, 249, 212);
-              top:100px;
+                border: none;
+                width: 600px;
+                margin:auto;
+                text-align: center;
+                border: 2px solid rgb(106,184,42);
+                padding-top: 30px;
+                padding-bottom: 70px;
+                background-color: rgb(229, 249, 212);
+             
 
             }
             form div {
@@ -44,7 +40,9 @@
             }
             #btn{
                 position:relative;
+                top:370px;
                 float:right;
+                right:250px;
                 height:30px;
             }
             #tbl{
@@ -56,9 +54,14 @@
             h2{
                 position:relative;
                 float:right;
-                right:580px;
+                right:520px;
                 top:70px;
             }
+            .customer_template_container {
+                top: 160px;
+                left: 70px;
+            }
+           
 
         </style>
         
@@ -69,8 +72,8 @@
     
     <!--content goes here -->
      <h2>Add Customers</h2>
-    <div class="customer_template_container" style=" padding-left:13px; padding-top:70px;">
-        <fieldset style="padding-top: 30px;">
+    <div class="customer_template_container" >
+        <fieldset >
         <form action="reminder.php" method="POST" style="text-align:center ">
        <table id="tbl">
         <tr>
@@ -107,10 +110,8 @@
         </tr>
                 <br>
                 <br>
-        <tr>
-                <td><input id="btn" type="submit" value="Next"></td>
-        </tr>
-        
+               
+        <input id="btn" type="submit" value="Next">
         </table> 
             </form>
         <?php // echo $content; ?>

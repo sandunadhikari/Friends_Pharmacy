@@ -86,12 +86,12 @@
          <?php require_once("../includes/navigation.php") ?>
     
     <!--content goes here -->
-    <h2 style="position:relative;top:70px; ">View Customer Details</h2>
+    <h2 style="position:relative;top:70px; left: 100px ">View Customer Details</h2>
     <div class="customer_template_container" style=" padding-left:13px; padding-top:70px;"">
         
         
         
-        <fieldset>
+        <fieldset style="border: 2px solid rgb(106,184,42);">
         <div class="top bar">
         <div class="left-float" style="padding-top:5px;">
             <div style="float:left">

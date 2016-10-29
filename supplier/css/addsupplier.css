@@ -5,8 +5,7 @@ body{
     position: absolute;
     float:right;
     top:130px;
-    right:200px;
-    z-index: -1;
+    right:360px;
 }
 body{
     font-family: Calibri;
@@ -17,17 +16,17 @@ fieldset{
   width: 600px;
   margin:auto;
   text-align: center;
-  border: 2px solid rgb(106,184,42);
+  
   padding-top: 30px;
   padding-bottom: 20px;
   background-color: rgb(229, 249, 212);
-  height:450px;
+  height:500px;
  
 }
 h2{
     position: relative;
     float: right;
-    right:450px;
+    right:600px;
     top:70px;
 }
 table {

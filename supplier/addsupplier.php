@@ -83,7 +83,7 @@ if(isset($_POST['go'])){
             
     <div id="d1">
         <center>
-        <fieldset>
+            <fieldset style="border: 2px solid rgb(106,184,42);">
             <center>
         <form method="post" action="addsupplier.php" onsubmit=" return validate();">
             <frameset>
