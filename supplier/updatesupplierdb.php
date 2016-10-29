@@ -9,7 +9,7 @@ $connect=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error())
  if(isset($_POST["query"]))  
  {  
       $output = '';  
-      $query = "SELECT * FROM supplier WHERE company_name LIKE '%".$_POST["query"]."%'";  
+      $query = "SELECT * FROM supplier WHERE company_name LIKE '".$_POST["query"]."%'";  
       $result = mysqli_query($connect, $query);  
         
       if(mysqli_num_rows($result) > 0)  

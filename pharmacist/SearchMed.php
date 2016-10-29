@@ -9,7 +9,7 @@ $connect=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error())
  if(isset($_POST["query"]))  
  {  
       $output = '';  
-      $query = "SELECT DISTINCT medicine_name FROM stock WHERE medicine_name LIKE '%".$_POST["query"]."%'";  
+      $query = "SELECT DISTINCT medicine_name FROM stock WHERE medicine_name LIKE '".$_POST["query"]."%'";  
       $result = mysqli_query($connect, $query);  
       $output = '<ul class="list-unstyled">';  
       if(mysqli_num_rows($result) > 0)  

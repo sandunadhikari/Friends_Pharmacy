@@ -29,7 +29,10 @@ function validateForm() {
         alert("EXP date must be filled out");
         return false;
     }
-    
+    if (s == null || s == "") {
+        alert("Production date must be filled out");
+        return false;
+    }
     
 }
 
@@ -43,7 +46,8 @@ $content = "<h2 style='text-align:center;'>Add New Stock</h2>
     
       <fieldset>
         <label class='lblf' for='name'>Medicine Name: </label>
-        <input type ='text' id='a' class='inputField' name ='txtMedicineName' autocomplete='off'><br/>
+        <input type ='text' id='txtMedicineName' class='inputField' name ='txtMedicineName' autocomplete='off'><br/>
+        <div id='medicineList'></div> 
         <p></p>
         <label class='lblf' for='batch_number'>Batch Number: </label>
 	<input type='text' class='inputField' name='txtbatchNumber' autocomplete='off'/><br/>
@@ -115,7 +119,35 @@ include 'template.php';
 
 ?>
 <script>
-    $(document).ready(function() {
+   
+
+
+$(document).ready(function(){  
+      $('#txtMedicineName').keyup(function(){  
+           var query = $(this).val();  
+           if(query != '')  
+           {  
+                $.ajax({  
+                     url:"Search.php",  
+                     method:"POST",  
+                     data:{query:query},  
+                     success:function(data)  
+                     {  
+                          $('#medicineList').fadeIn();  
+                          $('#medicineList').html(data);  
+                     }  
+                });  
+           }  
+      });  
+      $(document).on('click', 'li', function(){  
+           $('#txtMedicineName').val($(this).text());  
+           $('#medicineList').fadeOut(); 
+           
+           
+        });  
+ }); 
+ 
+  $(document).ready(function() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
@@ -124,4 +156,5 @@ include 'template.php';
     document.getElementById("entryDate").defaultValue = yyyy+"-"+mm+"-"+dd;
     
 });
+ 
 </script>>
