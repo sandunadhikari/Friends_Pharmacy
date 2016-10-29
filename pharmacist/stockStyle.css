@@ -16,8 +16,8 @@ ul {
 #medicineList {
     background-color: lavender;
     width: 280px;
-    left: 624px;
-    position: relative; 
+    position: absolute; 
+    left: 550px;
     
 }
 #supplierList {

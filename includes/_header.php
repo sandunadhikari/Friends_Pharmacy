@@ -146,7 +146,7 @@ $stockArray = array();
         background-color: #a9f26a;
     }
         
-    h3 {
+    #h3 {
         display:block;
         color:#333; 
         background:#FFF;
@@ -209,7 +209,7 @@ $stockArray = array();
 
                 <!--THE NOTIFICAIONS DROPDOWN BOX.-->
                 <div id="notifications">
-                    <h3>Notifications</h3>
+                    <h3 id="h3">Notifications</h3>
 			<?php 
                         foreach ($stockArray as $key => $stock) {
                         echo "<div id=inner_noti>

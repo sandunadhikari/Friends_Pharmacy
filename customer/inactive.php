@@ -1,7 +1,6 @@
 <html>
 <head>
-    <?php require('../includes/_header.php'); ?>
-	
+    
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
         h2{

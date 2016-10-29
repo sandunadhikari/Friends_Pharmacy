@@ -43,7 +43,7 @@ body{
     padding-top: 20px;
 }
 
-.mainmenu > li {
+.mainmenu  li {
     box-sizing: border-box;
     height: 48px;
     color: #f7f1e3;
@@ -51,7 +51,7 @@ body{
     background-color: #6AB82A;
 }
 
-.mainmenu > a {
+.mainmenu  a {
     text-decoration: none;
     color: white;
     display: block;
@@ -141,4 +141,9 @@ body{
     position: relative;
   
    
+}
+#menu{
+        display: block;
+        text-decoration: none;
+        color: white;
 }

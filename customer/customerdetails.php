@@ -1,7 +1,6 @@
 <html>
 <head>
-    <?php require('../includes/_header.php'); ?>
-	
+    	
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" type="text/css" href="customerStyle.css" />
     <script src="js/jquery-2.0.0.js"></script>
