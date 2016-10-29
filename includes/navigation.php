@@ -1,50 +1,5 @@
-<?php    
-$con=mysqli_connect("localhost","root","") or die ("couldn't connect sql");
-mysqli_select_db($con,"friends_pharmacy") or die("couldn't connect database");
-$query=mysqli_query($con,"SELECT stock.batch_no, stock.medicine_id, stock.quantity, stock.expire_date,drug.brand_name, drug.shelf_no FROM stock INNER JOIN                               drug ON stock.expire_date=DATE_ADD(curdate(),INTERVAL 21 Day);");
-    
-   
-    $rows=mysqli_num_rows($query);
-    if($rows < 1) $rows = 0;
-while($row=mysqli_fetch_assoc($query)){
-    $medi=$row['brand_name'];
-    $batch=$row['batch_no'];
-    $quan=$row['quantity'];
-    $ex=$row['expire_date'];
-    $shell=$row['shelf_no'];
-}
-     
-    ?>
-
 
 <!--Header content goes here-->
-<div class="header_content">
-    <div class="mainHeader">
-    </div>
-    <div class="notification_area">
-        <ul>
-            <li id="noti_Container">
-                <div id="noti_Counter" class="noti_Counter"><?php echo $rows ?></div>   
-                <div id="noti_Button"></div>    
-                <div id="notifications">
-                <h3 class="noti_title">Notifications</h3>
-                <div style="height:300px;">
-                   <?php for($i=0;$i<$rows;$i++){
-                        echo "<div id=inner_noti>
-                                $quan quantity from $medi will expire on $ex date according to $batch batch number in $shell shelf
-                                
-                            </div>";
-                        }
-                    ?>
-                </div>
-                <div class="seeAll"><a href="#">See All</a></div>
-                </div>
-            </li>
-            
-        </ul>
-    </div>
-</div>	
-
 <div class="nav">
     <div class="logo">
         <img  src="../public/image/logo_white.png" class="logo">    
@@ -100,6 +55,8 @@ while($row=mysqli_fetch_assoc($query)){
           
         </ul>
 
-          </span>
+
     </ul>    
 </div>
+
+
