@@ -9,17 +9,17 @@ body{
 }
 
 /* Heading bar css */
-.mainHeader{
+/*.mainHeader{
     float: right;
     margin-left: 200px;
     padding-left:15px;
     width:calc(100% - 210px);
     background-color:#6AB82A;
-    height:50px;
-    position: fixed;
-    z-index: -1;
+    height:10px;
+    position: fixed ;
+    z-index: +1;
 }
-
+*/
 .header_content{    
     position:relative;
     top:0px;
@@ -31,7 +31,7 @@ body{
 .nav{
     height: 100%;
     position: fixed;
-    padding-top: 20px;
+    padding-top: 60px;
     background-color:#263238; 
 }
 
@@ -142,117 +142,3 @@ body{
   
    
 }
-
-
-/*--------------------------------------- Notification area css* -------------------------------------*/
-
-
-
-.notification_area{
-    margin-left:170px;
-    padding-top: 15px;
-    position: fixed;
-    z-index: 1;
-}
-
-    #noti_Container {
-        position:relative;
-        
-    }
-
-    #inner_noti{
-        height:35px;
-        border-bottom:solid 1px rgba(100, 100, 100, .30); 
-
-    }
-       
-   
-    #noti_Button {
-        width:22px;
-        height:22px;
-        line-height:22px;
-        border-radius:50%;
-        -moz-border-radius:50%; 
-        -webkit-border-radius:50%;
-        background:#32CD32;
-        margin:-3px 10px 0 10px;
-        cursor:pointer;
-        z-index: 2;
-    }
-        
-  
-    .noti_Counter {
-        display:block;
-        position:absolute;
-        background:#E1141E;
-        color:#FFF;
-        font-size:12px;
-        font-weight:normal;
-        padding:1px 3px;
-        margin:-8px 0 0 25px;
-        border-radius:2px;
-        -moz-border-radius:2px; 
-        -webkit-border-radius:2px;
-        z-index:1;
-        height: 15px;
-        width: 15px;
-    }
-        
-  
-    #notifications {
-        display:none;
-        width:430px;
-        position:absolute;
-        top:30px;
-        left:0;
-        background:#FFF;
-        border:solid 1px rgba(100, 100, 100, .20);
-        -webkit-box-shadow:0 3px 8px rgba(0, 0, 0, .20);
-        z-index: 0;
-    }
-  
-    #notifications:before {         
-        content: '';
-        display:block;
-        width:0;
-        height:0;
-        color:transparent;
-        border:10px solid #CCC;
-        border-color:transparent transparent #FFF;
-        margin-top:-20px;
-        margin-left:10px;
-    }
-        
-    .noti_title {
-        display:block;
-        color:#333; 
-        background:#FFF;
-        font-weight:bold;
-        font-size:13px;    
-        padding:8px;
-        margin:0;
-        border-bottom:solid 1px rgba(100, 100, 100, .30);
-    }
-        
-    .seeAll {
-        background:#F6F7F8;
-        padding:8px;
-        font-size:12px;
-        font-weight:bold;
-        border-top:solid 1px rgba(100, 100, 100, .30);
-        text-align:center;
-    }
-    .seeAll a {
-        color:black;
-    }
-    .seeAll 
-.notification_area{
-    margin-left:100px;
-}
-a:hover {
-            background:#F6F7F8;
-        
-        text-decoration:underline;
-
-    }
-

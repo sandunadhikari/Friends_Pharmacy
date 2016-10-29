@@ -13,38 +13,4 @@ $(document).ready( function() {
   $mainmenu.children('li:last-child').on('click', function() {
     $mainmenu.fadeOut().delay(500).fadeIn();
   });
-    
-    
-    /// --------------------------- Notification area js
-    $('#noti_Counter')
-        .css({ opacity: 0 })             
-        .css({ top: '-10px' })
-        .animate({ top: '-1px', opacity: 1 },500);
-
-    $('#noti_Button').click(function () {
-        $('#notifications').fadeToggle('fast', 'linear', function () {
-            if ($('#notifications').is(':hidden')) {
-                $('#noti_Button').css('background-color', '#32CD32');
-            }
-            else $('#noti_Button').css('background-color', '#FFF');        
-        });
-
-        $('#noti_Counter').fadeOut('slow');              
-
-        return false;
-    });
-
-
-    $(document).click(function () {
-        $('#notifications').hide();
-        if ($('#noti_Counter').is(':hidden')) {
-            $('#noti_Button').css('background-color', '#32CD32');
-        }
-    });
-
-    $('#notifications').click(function () {
-        return false;      
-    });
-    
-    
 });
