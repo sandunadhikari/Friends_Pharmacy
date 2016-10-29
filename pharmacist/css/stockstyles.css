@@ -1,8 +1,11 @@
+.customer_template_container {
+    top: 80px;
+}
 html {
     font-family: Segoe,Segoe UI,Optima,Arial,sans-serif;
 }
 
-body {
+h2 {
     text-align: center;
 }
 

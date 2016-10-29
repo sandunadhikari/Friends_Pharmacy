@@ -8,12 +8,18 @@
     <title><?php echo $title; ?></title>
 </head>
 
+
 <body>
+    <style>
+        body{
+            background-color: rgb(229, 249, 212);
+        }
+    </style>
     
     <?php require_once("../includes/navigation.php") ?>
     
     <!--content goes here -->
-    <div class="customer_template_container">
+    <div class="customer_template_container" >
         
        <div class="mainContent">	
 		<div class="content">
@@ -125,13 +131,13 @@
 								
 								?>
 				<form action="daily.php" method="POST" name="hhh">
-					<fieldset class="explicit-width">
+					<fieldset class="explicit-width" style="background-color: rgb(229, 249, 212); height: 400px;">
 							<legend>Report Method:</legend>
 					<?php $sql = "SELECT  * FROM staff";
 					$con = mysqli_connect("localhost","root","","friends_pharmacy");
 					$result = mysqli_query($con,$sql);
 					$rows = mysqli_num_rows($result);					?>
-					<table class="tableNormal" cellspacing="0" cellpadding="0">
+					<table class="tableNormal" cellspacing="0" cellpadding="0" style="background-color: rgb(229, 249, 212);">
 					
 					
 								
@@ -158,7 +164,7 @@
 													}
 												} ?> </select></td>
 					</tr>
-					</fieldset>
+					
 					
 						
 					<tr><td colspan="2"><label for="meeting1">Date  : </label><input id="meeting1" type="date" name="dates" value="<?php echo date("Y-m-d")?>" required/><!--<label for="meeting"> To : </label><input id="meeting" type="date" name="dates2" value="<?php echo date("Y-m-d")?>" required/> -->
@@ -195,7 +201,7 @@
 						</fieldset>--></td>
 					</tr>
 					<tr><td colspan="2">
-						<fieldset class="explicit">
+						<fieldset class="explicit" style="background-color: rgb(229, 249, 212);">
 							<legend>Report Mode:</legend>
 								
 								<input type="radio" name="mode" <?php if (isset($mode) && $mode=="Details") echo "checked";?> value="Details" required>Details<br><br>
@@ -206,11 +212,13 @@
 					</tr>
 				
 					<tr><td>
-						<button class="button" style="vertical-align:middle" onClick="document.hhh.click();";><span>Enter</span></button>
+						<button class="buttonx" style="vertical-align:middle; position: absolute; left: 570px;" onClick="document.hhh.click(); ">Enter</button>
 						</td><td></td>
 					</tr>
 					</table>
-					</form>     
+                                                        </fieldset>
+					</form>  
+                                    
 					<br><br><br><br>
 				</div>	
 			

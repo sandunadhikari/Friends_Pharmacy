@@ -48,7 +48,7 @@
     <!--content goes here -->
     <div class="customer_template_container">
         
-        <b>View Stock</b>
+        <h2>View Stock</h2>
 
         <div class="top-bar">
             <div class="left-float" style="padding-top:5px;">

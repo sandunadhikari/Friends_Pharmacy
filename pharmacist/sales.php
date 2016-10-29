@@ -1,38 +1,27 @@
- <DOCTYPE html>
-<html lang="en">
 
+
+
+<html>
 <head>
-	<title>Welcome to Friends Pharmacy</title>
 	
-	<meta charset="utf-8" />
-	<link rel="stylesheet" href="aboutStyle.css" type="text/css" />	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+    <?php require('../includes/_header.php'); ?>
+    <link rel="stylesheet" href="aboutStyle.css" type="text/css" />	
+    <title><?php echo $title; ?></title>
 </head>
 
-<body class="body">
-	
-	<header class="mainHeader">
-		<img src="images/logo.png">
-		
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About Us</a></li>
-				<li><a href="otc.html">Over the Counter Products</a></li>
-				<li><a href="prescription.html">Prescription Products</a></li>
-				<li><a href="events.html">Events</a></li>
-				<li><a href="contact.html">Contact Us</a></li>		
-			</ul>
-		</nav>
-	</header>
-	
-	<div class="mainContent">	
+<body>
+    
+    <?php require_once("../includes/navigation.php") ?>
+    
+    <!--content goes here -->
+    <div class="customer_template_container" style="position: relative; top: 50px;">
+        	<div class="mainContent">	
 		<div class="content">
 			<article class="topContent">
 			<div  id = "printContent">
 				<div class="center">
-					<img src="images/logo.png"><h3>Kirulapana</h3>
+					<img src="../public/image/logo_green.png" style="width: 20%;">
+                                        <h5 style="position: relative; top: -25px; margin-bottom:-40px; ">Kirulapone</h5>
 					<h4>Reg No:A5SH1120GB21</h4>
 					<h1>SALES REPORT</h1>
 				</div>
@@ -165,7 +154,7 @@
 				</div>
 				<div class="location">
 						<iframe id="prt" name="prt" style="display:none;"></iframe>
-						<button class="button" style="vertical-align:middle" onclick="myFunction();"><span>Print </span></button>
+						<button style="vertical-align:middle" onclick="myFunction();"><span>Print </span></button>
 						<script>
 							function myFunction() {
 								var mywindow = window.open('', 'my div', 'height=800,width=1200');
@@ -191,16 +180,12 @@
 		</div>
 	</div>
 	
+        
+    </div>		
 	
-	
-	
-	
-		
-	
-	<footer class="mainFooter">
-		<p>Copyright &copy; <a href="#" title="Friends Pharmacy">friendspharmacy.lk</a></p>
-	</footer>
-
+    
+    <?php require_once('../includes/_footer.php') ?>
+    
 </body>
 
 </html>

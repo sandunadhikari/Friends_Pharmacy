@@ -99,9 +99,9 @@
     <?php require_once("../includes/navigation.php") ?>
     
     <!--content goes here -->
-    <div class="customer_template_container">
+    <div class="customer_template_container" style="z-index: -1;">
         
-         <b>View Usage</b>
+         <h2>View Usage</h2>
 
         <div class="top-bar">
            <!-- <div class="left-float" style="padding-top:5px;">

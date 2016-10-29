@@ -211,7 +211,7 @@
 					</tr>
 				
 					<tr><td>
-						<button class="button" style="vertical-align:middle" onClick="document.hhh.click();";><span>Enter</span></button>
+						<button style="vertical-align:middle; position: relative; left: 0px;" onClick="document.hhh.click();";><span>Enter</span></button>
 						</td><td></td>
 					</tr>
 					</table>
