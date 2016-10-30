@@ -18,7 +18,7 @@ ul {
     width: 280px;
     position: absolute; 
     left: 550px;
-    
+      
 }
 #supplierList {
     background-color: lavender;
@@ -31,7 +31,7 @@ ul {
     padding: 4px;
     
 }
-.overViewTable
+.sortable
 {
     width: 900px;
     border: 2px solid rgb(106,184,42);
@@ -39,23 +39,23 @@ ul {
     border-collapse: collapse;
 }
 
-.overViewTable tr
+.sortable tr
 {
     padding: 7px;
    
     text-align: center;
  }
- .overViewTable tr:hover {
+ .sortable tr:hover {
      background-color: rgb(229, 249, 212);
  }
-.overViewTable th {
+.sortable th {
     padding: 8px;
     border: 1px solid rgb(106,184,42);
     text-align: center;
     background-color: rgb(214, 247, 185);
 }
 
-.overViewTable td
+.sortable td
 {
     padding: 8px;
     border: 1px solid rgb(106,184,42);

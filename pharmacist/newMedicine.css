@@ -26,19 +26,19 @@ ul {
     padding: 4px;
     
 }
-.overViewTable
+.sortable
 {
     width: 900px;
     border: 0px solid rgb(255,232,57);
     margin:auto;
 }
 
-.overViewTable tr
+.sortable tr
 {
     padding: 7px;
 }
 
-.overViewTable td
+.sortable td
 {
     padding: 4px;
     border: 1px solid #E3E3E3;

@@ -44,7 +44,7 @@ function CreateStockTables($medicine_Name) {
    $result = ""; 
    $result = "
        <h3 style='text-align:center;'>$medicine_Name<h3>
-          <table class='overViewTable'>
+          <table class='sortable'>
                 <tr>
                     
                     <th></th>
@@ -110,21 +110,21 @@ function UpdateStockTables($medicine_Name) {
        
        <h3 style='text-align:center;'>$medicine_Name<h3>
         
-          <table class='overViewTable'>
+          <table class='sortable'>
                 <tr>
                     
-                    <td></th>
-                    <td><b>batch no</b></th>
-                    <td><b>quantity</b></th>
-                    <td><b>entry date</b></th>
-                    <td><b>expire date</b></th>
-                    <td><b>production date</b></th>
+                    <th></th>
+                    <th><b>batch no</b></th>
+                    <th><b>quantity</b></th>
+                    <th><b>entry date</b></th>
+                    <th><b>expire date</b></th>
+                    <th><b>production date</b></th>
                     
                 </tr>";
   foreach ($stockArray as $key => $stock) {
       $result = $result ."
                     
-               
+                
                 <tr>
                     
                     <td><a href='updateStock1.php?update=$stock->id' >Update</td>
@@ -135,10 +135,12 @@ function UpdateStockTables($medicine_Name) {
                     <td><b>$stock->production_date</b></td>
                     
                 </tr>
+               
 
 ";
       
   }
+  
   $result = $result."</table>";
   return $result;
     

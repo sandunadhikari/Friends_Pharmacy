@@ -1,3 +1,4 @@
+<script src="../public/js/sort.js"></script>
 <?php
 require 'stockController.php';
 $title = "Update Stock";

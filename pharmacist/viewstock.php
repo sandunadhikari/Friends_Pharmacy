@@ -1,5 +1,6 @@
 <html>
 <head>
+        <script src="../public/js/sort.js"></script>
 	<link rel="stylesheet" href="css/stockstyles.css"/>
         <script src="js/jquery-2.0.0.js"></script>
         <script>
@@ -38,7 +39,7 @@
         }
         </script>
     <?php require('../includes/_header.php'); ?>
-	
+        
 </head>
 
 <body>

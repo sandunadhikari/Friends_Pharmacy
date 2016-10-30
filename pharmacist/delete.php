@@ -45,11 +45,11 @@ if(isset($_POST['btnView'])){
     
       <fieldset>
         <label for='name'>Medicine ID: </label>
-        <input type ='text' class='inputField' name ='txtMedicineID' value='$medicine_id'><br/>
+        <label class='inputField' name ='txtMedicineID'>$medicine_id'</label><br/>
             <p></p>
             
         <label for='Brand Name'>Brand Name: </label>
-        <input type ='text' class='inputField' name ='txtBrandName' value='$brand_name'><br/>
+        <label class='inputField' name ='txtBrandName'>$brand_name</label><br/>
 	
         <p></p>
         <label for='name'>Generic Name: </label>
