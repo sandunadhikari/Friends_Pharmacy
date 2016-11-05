@@ -1,4 +1,4 @@
-$(document).ready( function() {
+ $(document).ready( function() {
   var $submenu = $('.submenu');
   var $mainmenu = $('.mainmenu');
   $submenu.hide();

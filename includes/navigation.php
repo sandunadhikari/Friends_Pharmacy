@@ -10,7 +10,8 @@
 </style>
 <div class="nav">
     <div class="logo">
-        <img  src="../public/image/logo_white.png" class="logo">    
+        <img  src="../public/image/logo_white.png" class="logo">  
+        <script src="../public/js/application.js"></script>
     </div>
     
     <ul class="mainmenu">
@@ -56,7 +57,13 @@
         </ul>
       
       <li><span><a href="#" id="menu">Report</a></span></li>
-  
+      <ul class="submenu">
+          <li><span><a href="../pharmacist/report4.php">Daily Report</a></span></li>
+          <li><span><a href="../pharmacist/report2.php">Sales of each Medicine</a></span></li>
+          <li><span><a href="../pharmacist/report3.php">Cashier Wise Report</a></span></li>
+          
+        </ul>
+
 
     </ul>    
 </div>
