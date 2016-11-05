@@ -40,7 +40,7 @@ $title = "";
 $content = "<h2 style='text-align:center;'>Add New Medicine</h2>
     <form name='myForm' action='AddMedicine.php' method ='post' onsubmit='return validateForm()'>
         <fieldset>
-            <label for='email'>Brand Name: </label>
+            <label for='Brand Name'>Brand Name: </label>
             <input type='text' class='inputField' name='txtBrandName' autocomplete='off' placeholder='Ex: Amoxil'/><br/>
             <p></p>
             <label for='name'>Generic Name: </label>
