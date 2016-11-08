@@ -1,0 +1,45 @@
+body{
+    line-height: 1.5;
+    background-color: #F1F8E9;    
+}
+
+ .bottomContent{
+ 	position:relative;
+ 	width: 1333px;
+ 	height: 500px; 	
+ 	display: inline;
+ }
+
+ .bottomContent h3{
+ 	text-align: center;
+ }
+
+ .bottomLeft{
+ 	width: 390px;
+ 	text-align: justify;
+ 	/*background-color: red;*/
+ 	position: relative;
+ 	float:left;
+ 	padding-left: 24px;
+ 	padding-right: 30px;
+ }
+
+ .bottomMiddle{
+ 	width: 380px;
+ 	text-align: justify;
+ 	/*background-color: green;*/
+ 	position: relative;
+ 	float:left;
+ 	padding-left: 32px;
+ 	padding-right: 32px;
+ }
+
+.bottomRight{
+	width: 390px;
+	text-align: justify;
+	/*background-color: blue;*/
+	position: relative;
+ 	float:left;
+ 	padding-left: 30px;
+ 	padding-right: 24px;
+}

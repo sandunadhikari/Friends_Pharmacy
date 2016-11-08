@@ -1,0 +1,58 @@
+body{
+    line-height: 1.5;
+    background-color: #F1F8E9;    
+}
+
+
+.tc{
+     position: absolute;
+     margin-left: 300px;
+     margin-top: 20px;
+ }
+
+
+
+
+
+
+.topContent{
+ 	width: 1500px;
+ 	height: 390px;
+ 	background-color: #6AB82A;
+ }
+.content{
+	width: 72%;
+	padding-left: 30px;
+	padding-right: 25px;
+	padding-top: 35px;
+	background-color: #F1F8E9;
+	margin-top: 1%;
+}
+.content form{
+	margin-top: 3%;
+}
+.content form input{
+	margin-bottom: 2%;
+}
+
+
+.topSide img{
+	position: relative;
+	top: -278px;
+	width:23%;
+	height: 350px;
+	float:right;
+	margin-top: 0%;	
+ }
+ 
+ .bottomSide img{
+ 	position: relative;
+ 	top:12px;
+ 	left: 310px;
+	width:23%;
+	height: auto;
+	float:right;
+	margin-top: 5%;	
+ }
+ 
+ 
