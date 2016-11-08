@@ -1,3 +1,18 @@
+<script>
+//Display a confirmation box when trying to delete an object
+function showConfirm()
+{
+    // build the confirmation box
+    var c = confirm("Are you sure you wish to Delete this medicine?");
+    
+    // if true, delete item and refresh
+    if(c)
+        return true;
+    else {
+        return false;
+    }
+}
+</script>
 <?php
 
 $title = "";
@@ -41,63 +56,40 @@ if(isset($_POST['btnView'])){
   $image  =$row[7];
   
   $content = "<h3 style='text-align:center;'>Delete Medicine</h3>
-    <form action='delete.php' method ='post'>
+    <form action='#' method ='post' onsubmit='return showConfirm()'>
     
       <fieldset>
-        <label for='name'>Medicine ID: </label>
-        <label class='inputField' name ='txtMedicineID'>$medicine_id'</label><br/>
-            <p></p>
-            
         <label for='Brand Name'>Brand Name: </label>
-        <label class='inputField' name ='txtBrandName'>$brand_name</label><br/>
+        <input class='inputField' name ='txtBrandName' value='$brand_name' readonly/><br/>
 	
         <p></p>
         <label for='name'>Generic Name: </label>
-	<input type='text' class='inputField' name='txtGenericName' value='$generic_name'/><br/>
+	<input type='text' class='inputField' name='txtGenericName' value='$generic_name' readonly/><br/>
         <p></p>
         
         
         <label for='Type'>Type: </label>
-        <select class = 'type' name='types'>
-           <option value='$type'>$type</option>
-          <option value='Tablets'>Tablets</option>
-          <option value='Capsules'>Capsules</option>
-          <option value='liquid'>liquid</option>
-        </select></br>
+        <input type='text' class='inputField' name='txttype' value='$type' readonly/><br/>
         <p></p>
         
         
         <label for='Category'>Category: </label>
-	<input type='text' class='inputField' name='txtGenericName' value='$category'/><br/>
+	<input type='text' class='inputField' name='txtGenericName' value='$category' readonly/><br/>
         <p></p>
 
         
         <label for='group'>Group: </label>
-        <select class = 'type' name = 'groups'>
-          <option value='$group'>$group</option>
-          <option value='OC'>Over the counter drug</option>
-          <option value='Two ii'>Two ii drug</option>
-          <option value='Narcootics'>Narcootics</option>
-        </select></br>
+        <input type='text' class='inputField' name='txtgroup' value='$group' readonly/><br/>
         <p></p>
                                 
         <label for='Supplier'>Supplier: </label>
-        <select class = 'type' name = 'suppliers'>
-            <option value='$supplier_id'>$supplier_id</option>
-          <option value='Supplier1'>Supplier1</option>
-          <option value='Supplier2'>Supplier2</option>
-          <option value='Supplier3'>Supplier3</option>
-        </select></br>
+        <input type='text' class='inputField' name='txtsupplier' value='$supplier_id' readonly/><br/>
         <p></p>
                                 
         <label for='content'>content: </label>
-	<textarea cols='33' rows='12' name='txtContent'>$content</textarea></br>
+	<textarea cols='33' rows='12' name='txtContent' readonly>$content</textarea></br>
 	<p></p>			
          
-        <label for='image'>Add image: </label>
-        <input type='file' name='pic' accept='image/*' value='$image'>
-        <p></p>
-        
         <input type='submit' name = 'btnDelete' value='Delete' ></span><br/> 
         </fieldset>
 </form> ";
