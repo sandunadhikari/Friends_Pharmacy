@@ -16,7 +16,7 @@ $connect=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error())
       {  
            while($row = mysqli_fetch_array($result))  
            {  
-                $output .= '<li>'.$row["company_name"].'</li>';  
+                $output .= '<li id="lisup">'.$row["company_name"].'</li>';  
            }  
       }  
       else  

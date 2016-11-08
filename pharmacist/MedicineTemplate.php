@@ -1,21 +1,18 @@
-<script>
 
-
-function searchForm() {
-    var x = document.forms["myForm"]["txtMedicinedName"].value;
-    
-    
-    if (x == null || x == "" ) {
-        alert("feild must be filled out");
-        return false;
-    }
-}
-
-
-</script>
 <html>
 <head>
-	
+<script>
+    function searchForm() {
+        var x = document.forms["myForm"]["txtMedicinedName"].value;
+
+
+        if (x == null || x == "" ) {
+            alert("feild must be filled out");
+            return false;
+        }
+    }
+</script>
+
     <?php require('../includes/_header.php'); ?>
     <link rel="stylesheet" type="text/css" href="newMedicine.css" />
     <title><?php echo $title; ?></title>
@@ -36,7 +33,6 @@ function searchForm() {
 </body>
 
 </html>
-
 
 
 

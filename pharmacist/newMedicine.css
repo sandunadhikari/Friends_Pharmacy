@@ -21,6 +21,11 @@ ul {
     width: 280px;
   
 }
+#categoryList {
+    background-color: lavender;
+    width: 280px;
+  
+}
 .type {
     width: 280px;
     padding: 4px;
