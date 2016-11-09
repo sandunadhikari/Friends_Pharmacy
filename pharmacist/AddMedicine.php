@@ -21,8 +21,16 @@ function validateForm() {
         alert("Medicine name must be filled out");
         return false;
     }
+    if (!isNaN(x)) {
+        alert("Medicine name sould not have numerics");
+        return false;
+    }
     if (y == null || y == "") {
-        alert("Batch number must be filled out");
+        alert("Genaric name be filled out");
+        return false;
+    }
+    if (!isNaN(y)) {
+        alert("Genaric name sould not have numerics");
         return false;
     }
     if (z == null || z == "") {

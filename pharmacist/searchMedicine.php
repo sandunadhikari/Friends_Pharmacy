@@ -22,6 +22,17 @@ if(isset($_POST['btnSearch'])){
     $passwd = "";
     $database = "friends_pharmacy";
     $mysqli=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+    
+     if (!mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM drug WHERE medicine_name ='$medicine_id'")))
+    {	
+        echo '<script language="javascript">';
+        echo 'alert("Medicine is not found")';
+        echo '</script>';
+    }
+    else {
+    
+    
+    
     $query = "SELECT * FROM drug WHERE medicine_name LIKE '$medicine_id'";
     $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
     
@@ -87,6 +98,7 @@ if(isset($_POST['btnSearch'])){
         <input type='submit' name = 'btnUpdate' value='update' ></span><br/> 
         </fieldset>
 </form> ";
+    }
 }
 if(isset($_GET["id"])) {
     
