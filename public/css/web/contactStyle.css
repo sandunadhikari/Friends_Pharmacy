@@ -1,0 +1,79 @@
+body{
+    line-height: 1.5;
+    background-color: #F1F8E9;    
+}
+
+.mainContent{
+	background-color:#F1F8E9;	
+	padding:0px 30px;
+	margin-top:1%;
+	width: 65%;
+	float: left;
+	border-style: ridge;
+	border-width: 4px;
+	margin-left: 1%;
+	margin-bottom: 1%;
+}
+
+.mainContent p{
+	margin-top: -2px;
+}
+.mainContent form{
+	margin-top:-20px;
+}
+
+.mainContent form input{
+	height: 30px;
+	width: 400px;
+	padding-left: 10px;
+	margin-top: 0.5%;
+	margin-bottom: 2%;
+	margin-left: 10px;
+	font-style: Calibri;
+}
+.mainContent form textarea{
+	margin-top: 0.5%;
+	margin-bottom: 1%;
+	padding-left: 10px;
+	font-family: Calibri;
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.mainContent form button{
+	width: 80px;
+	height: 30px;
+	margin-left: 10px;
+	margin-bottom: 1%;
+}
+
+.contactSide{
+	width:22%;
+	height: auto;
+	float:right;
+	margin-top: 1%;	
+	margin-bottom: 1%;
+	border-style: ridge;
+	border-width: 4px;
+	padding:10px 30px;
+	margin-right: 1%;
+}
+
+.contactSide label{
+	padding-left: 15px;
+	font-size: 18px;
+}
+
+.contactSide p{
+	margin-top: 0px;
+	margin-bottom: 30px;
+	padding-left: 35px;
+}
+
+
+
+
+
+
+
+

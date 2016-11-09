@@ -63,7 +63,10 @@
           <li><span><a href="../pharmacist/report3.php">Cashier Wise Report</a></span></li>
           
         </ul>
-
+      <li><span><a href="#" id="menu">Sms</a></span></li>
+      <ul class="submenu">
+          <li><span><a href="../pharmacist/sms.php">Message</a></span></li>
+        </ul>
 
     </ul>    
 </div>

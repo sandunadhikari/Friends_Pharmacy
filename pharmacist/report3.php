@@ -1,32 +1,15 @@
 
+<?php
+$title = "CASHIER WISE REPORT";
 
+$content = "<h2 style='text-align:center;'>CASHIER WISE REPORT</h2>" ?>
+<?php include 'template.php';
 
-
-
-
-<html>
-<head>
-	
-    <?php require('../includes/_header.php'); ?>
-    
-    <link rel="stylesheet" href="aboutStyle.css" type="text/css" />
-    <title><?php echo $title; ?></title>
-</head>
-
-<body>
-    
-    <?php require_once("../includes/navigation.php") ?>
-    
-    <!--content goes here -->
-    <div class="customer_template_container" style="position: relative; top:70px;">
-        
-       <div class="center">
-						<h1>Cashier Wise Report</h1>
-					</div>
-					<?php
+?>
+<?php
 								// define variables and set to empty values
-								$nameErr =$cashier_nameErr = $codeErr =$dateErr=$timeErr=$methodeErr=$typeErr=$In_typeErr=$modeErr= "";
-								$name =$cashier_name = $code = $dates=$dates2 =$shelf=$times=$times2=$methode=$type=$In_type=$mode= "";
+								$asErr =$nameErr =$cashier_nameErr = $codeErr =$dateErr=$timeErr=$methodeErr=$typeErr=$In_typeErr=$modeErr= "";
+								$as=$name =$cashier_name = $code = $dates=$dates2 =$shelf=$times=$times2=$methode=$type=$In_type=$mode= "";
 
 								if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								  if (empty($_POST["name"])) {
@@ -110,6 +93,11 @@
 								  } else {
 									$mode = test_input($_POST["mode"]);
 								  }
+								  if (empty($_POST["as"])) {
+									$modeErr = "as is required";
+								  } else {
+									$as = test_input($_POST["as"]);
+								  }
 								}
 
 								function test_input($data) {
@@ -120,8 +108,11 @@
 								}
 								
 								?>
-				<fieldset>				
-				<form action="casier_wise.php" method="POST" name="hhh">
+					<div class="daily">
+					<form name='myForm' action='casier_wise.php' method ='post' autocomplete='off' onsubmit='return validateForm()'>
+				
+					<fieldset class="explicit-width" style="background-color: rgb(229, 249, 212); height: 400px;"> 
+					
 					<?php $sql = "SELECT  * FROM staff";
 					$con = mysqli_connect("localhost","root","","friends_pharmacy");
 					$result = mysqli_query($con,$sql);
@@ -215,21 +206,12 @@
 						</td><td></td>
 					</tr>
 					</table>
-					</form> 
-					</fieldset>
-					<br><br><br><br>
-				</div>	
-			
-			</article>
-			
-			
-		</div>	
-        
-    </div>		
-	
-    
-    <?php require_once('../includes/_footer.php') ?>
-    
-</body>
+					</form>
+						</fieldset>
+						</div>
 
-</html>
+
+
+
+
+

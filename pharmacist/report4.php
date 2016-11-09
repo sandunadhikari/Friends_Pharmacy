@@ -1,34 +1,12 @@
 
+<?php
+$title = "DAILY REPORT";
 
-<html>
-<head>
-	<title>Reports</title>
-    <?php require('../includes/_header.php'); ?>
-    <link rel="stylesheet" href="aboutStyle.css" type="text/css" />	
-    <title><?php echo $title; ?></title>
-</head>
+$content = "<h2 style='text-align:center;'>DAILY REPORT</h2>" ?>
+<?php include 'template.php';
 
-
-<body>
-    <style>
-        body{
-            background-color: rgb(229, 249, 212);
-        }
-    </style>
-    
-    <?php require_once("../includes/navigation.php") ?>
-    
-    <!--content goes here -->
-    <div class="customer_template_container" >
-        
-       <div class="mainContent">	
-		<div class="content">
-			<article class="topContent">
-				<div class="size">
-					<div class="center">
-						<h2>Daily Report</h2>
-					</div>
-						<?php
+?>
+<?php
 								// define variables and set to empty values
 								$asErr =$nameErr =$cashier_nameErr = $codeErr =$dateErr=$timeErr=$methodeErr=$typeErr=$In_typeErr=$modeErr= "";
 								$as=$name =$cashier_name = $code = $dates=$dates2 =$shelf=$times=$times2=$methode=$type=$In_type=$mode= "";
@@ -130,8 +108,10 @@
 								}
 								
 								?>
-				<form action="daily.php" method="POST" name="hhh">
-					<fieldset class="explicit-width" style="background-color: rgb(229, 249, 212); height: 400px;">
+					<div class="daily">
+					<form name='myForm' action='daily.php' method ='post' autocomplete='off' onsubmit='return validateForm()'>
+				
+					<fieldset class="explicit-width" style="background-color: rgb(229, 249, 212); height: 400px;"> 
 							<legend>Report Method:</legend>
 					<?php $sql = "SELECT  * FROM staff";
 					$con = mysqli_connect("localhost","root","","friends_pharmacy");
@@ -216,23 +196,13 @@
 						</td><td></td>
 					</tr>
 					</table>
-                                                        </fieldset>
-					</form>  
-                                    
-					<br><br><br><br>
-				</div>	
-			
-			</article>
-			
-			
-		</div>	
-	</div>
-        
-    </div>		
-	
-    
-    <?php require_once('../includes/_footer.php') ?>
-    
-</body>
+                                                        
+					</form>
+						</fieldset>
+						</div>
 
-</html>
+
+
+
+
+

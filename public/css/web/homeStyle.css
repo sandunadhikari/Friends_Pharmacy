@@ -1,0 +1,42 @@
+ body{
+    line-height: 1.5;
+    background-color: #F1F8E9;    
+}
+
+ .bottomContent{
+ 	
+ 	width: 1333px;
+ /*	display: inline;*/
+ }
+
+ .bottomContent h3{
+ 	text-align: center;
+ }
+
+ .bottomLeft{
+ 	width: 380px;
+ 	text-align: justify;
+ 	/*position: relative;*/
+ 	float:left;
+ 	padding-left: 30px;
+ 	padding-right: 30px;
+ }
+
+ .bottomMiddle{
+ 	width: 380px;
+ 	text-align: justify;
+ 	/*position: relative;*/
+ 	float:left;
+ 	padding-left: 30px;
+ 	padding-right: 30px;
+ }
+
+.bottomRight{
+	width: 380px;
+	text-align: justify;
+	/*position: relative;*/
+ 	float:left;
+ 	padding-left: 30px;
+ 	padding-right: 30px;
+}
+
