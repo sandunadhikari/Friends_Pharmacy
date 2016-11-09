@@ -33,6 +33,10 @@ function validateForm() {
         alert("Production date must be filled out");
         return false;
     }
+    if(q<s) {
+        alert("EXP date must be greater than producton date");
+        return false;
+    }
     
 }
 
@@ -88,9 +92,16 @@ if(isset($_POST['btnSubmit'])){
     $passwd = "";
     $database = "friends_pharmacy";
     $mysqli=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
-   
     
-    if (mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM stock WHERE medicine_name ='$MedicineName' AND batch_no='$batchNumber'")))
+    
+   if (!mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM drug WHERE medicine_name ='$MedicineName'")))
+    {	
+        echo '<script language="javascript">';
+        echo 'alert("Medicine is not found")';
+        echo '</script>';
+    }
+    
+    elseif (mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM stock WHERE medicine_name ='$MedicineName' AND batch_no='$batchNumber'")))
     {	
         echo '<script language="javascript">';
         echo 'alert("Stock is already added")';
