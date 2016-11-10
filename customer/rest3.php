@@ -12,12 +12,21 @@ if (!$conn) {
 
 switch($type) {
     case 'search': {
+
+        // Setup limit suffix
+        $limit = $_GET['limit'];
+        $suffix = '';
+        if ($limit !== "all") {
+            $suffix = ' LIMIT ' . $limit;
+        }
+
         if(isset($_GET['active'])) {
             $active = $_GET['active'];
             $sql = "SELECT * FROM customer WHERE nic LIKE '$nic%' AND active=$active";
         } else {
             $sql = "SELECT * FROM customer WHERE nic LIKE '$nic%'";
-        }        
+        }
+        $sql .= $suffix;
         $result = mysqli_query($conn, $sql);
         $res_data = array();
         while($row = mysqli_fetch_assoc($result)) {

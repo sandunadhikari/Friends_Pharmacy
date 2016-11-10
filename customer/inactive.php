@@ -36,7 +36,8 @@
                         type: "search",
                         nic: $('#nic').val(),
                         active: $('#active').val(),
-                        search: $('#search').val()
+                        search: $('#search').val(),
+                        limit: $('#limit').val()
                      }
                 })
                 .done(function(data){
@@ -134,13 +135,20 @@
         <div class="top bar">
         <div class="left-float" style="padding-top:5px;">
             <div >
-            NIC
-            <input type="text" name="nic" id="nic" placeholder="search" oninput="loadcustomers()"/>
-            Active
-            <select id='active' onchange='loadcustomers()'>
-                <option value='1'>Active</option>
-                <option value='0'>Inactive</option>
-            </select>
+                NIC
+                <input type="text" name="nic" id="nic" placeholder="search" oninput="loadcustomers()"/>
+                View only
+                <select id='active' onchange='loadcustomers()'>
+                    <option value='1'>Active</option>
+                    <option value='0'>Inactive</option>
+                </select> customers
+                <div style="float: right">
+                Show
+                <select id='limit' onchange="loadcustomers()">
+                    <option value="20">20</option>
+                    <option value="all">All</option>
+                </select> results
+                </div>
             </div>
             </div>
         </div>
@@ -154,7 +162,7 @@
                         <th>Customer Name</th>
                         <th>Email Address</th>
                         <th>Contact Number</th>
-                        <th>Active?</th>
+                        <th>Active or Inactive customer (Click to change)</th>
                     </tr>
                 </thead>
                 <tbody id="table_body"></tbody>
