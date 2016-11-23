@@ -1,25 +1,26 @@
 
 <?php 
-       $con=mysqli_connect("localhost","root","") or die("coudn't connect") ;
-        mysqli_select_db($con,"friends_pharmacy");
-        if(isset($_POST['cname'])){
-                $cname=$_POST['cname'];
-            }
-        if(isset($_POST['add'])){
-                $add=$_POST['add'];
-            }
-        if(isset($_POST['mno'])){
-                $mno=$_POST['mno'];
-            }
-        if(isset($_POST['lno'])){
-                $lno=$_POST['lno'];
-            }
-        if(isset($_POST['mail'])){
-                $mail=$_POST['mail'];
-            }
-        if(isset($_POST['fax'])){
-                $fax=$_POST['fax'];
-            }  
+   $con=mysqli_connect("localhost","root","") or die("coudn't connect") ;
+    mysqli_select_db($con,"friends_pharmacy");
+    if(isset($_POST['cname'])){
+            $cname=$_POST['cname'];
+        }
+    if(isset($_POST['add'])){
+            $add=$_POST['add'];
+        }
+    if(isset($_POST['mno'])){
+            $mno=$_POST['mno'];
+        }
+    if(isset($_POST['lno'])){
+            $lno=$_POST['lno'];
+        }
+    if(isset($_POST['mail'])){
+            $mail=$_POST['mail'];
+        }
+    if(isset($_POST['fax'])){
+            $fax=$_POST['fax'];
+        }
+          
 if(isset($_POST['go'])){
     
    $query= mysqli_query($con,"SELECT * FROM supplier WHERE company_name='$cname'");
