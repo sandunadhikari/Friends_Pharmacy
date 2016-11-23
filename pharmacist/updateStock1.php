@@ -37,7 +37,7 @@ if(isset($_GET["update"])) {
     
     $query = "SELECT * FROM stock WHERE id LIKE ($id)";
     
-     $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+    $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
     
     $row = mysqli_fetch_array($result);
     mysqli_close($mysqli);

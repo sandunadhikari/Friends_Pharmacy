@@ -213,7 +213,7 @@ $stockArray = array();
 			<?php 
                         foreach ($stockArray as $key => $stock) {
                         echo "<div id=inner_noti>
-                                <a href='#' id='link1'> $stock->quantity quantity from $stock->medicine_name will expire on $stock->expire_date date according to $stock->batch_no batch number</a>
+                                <a href='#'> $stock->medicine_name  $stock->quantity quantity will expire on $stock->expire_date date according to $stock->batch_no batch number</a>
                            </div>";
                       
                         }

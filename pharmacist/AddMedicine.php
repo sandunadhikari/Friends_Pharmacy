@@ -21,8 +21,16 @@ function validateForm() {
         alert("Medicine name must be filled out");
         return false;
     }
+    if (!isNaN(x)) {
+        alert("Medicine name sould not have numerics");
+        return false;
+    }
     if (y == null || y == "") {
-        alert("Batch number must be filled out");
+        alert("Genaric name be filled out");
+        return false;
+    }
+    if (!isNaN(y)) {
+        alert("Genaric name sould not have numerics");
         return false;
     }
     if (z == null || z == "") {
@@ -237,10 +245,20 @@ if(isset($_POST['btnSubmit'])){
     $mysqli=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error()); 
     
     
-    if (mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM drug WHERE medicine_name ='$brand_name'")))
+    if (mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM drug WHERE medicine_name ='$brand_name'")) )
     {	
         echo '<script language="javascript">';
         echo 'alert("Stock is already added")';
+        echo '</script>';
+    }
+    elseif (!mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM supplier WHERE company_name ='$supplier_name'")) ) {
+        echo '<script language="javascript">';
+        echo 'alert("Supplier is not found")';
+        echo '</script>';
+    }
+    elseif (!mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM category WHERE category_name ='$category'")) ) {
+        echo '<script language="javascript">';
+        echo 'alert("Category is not found")';
         echo '</script>';
     }
     else {
