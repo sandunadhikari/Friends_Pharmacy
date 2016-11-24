@@ -38,6 +38,10 @@
 		<img src="images/letter.png"> <label><b>Address</b></label> <br>
 		<p>No: 65, <br> Main Street, <br> Kirulapone </p>
 	</aside>
+	<div id="map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.346597921573!2d79.87071011772228!3d6.880222420450976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25a367c0cc0e9%3A0xfb690e92b68a5eec!2sKirulapone%2C+Colombo!5e0!3m2!1sen!2slk!4v1479953320568" width="1306" height="480" frameborder="0" style="border:0;margin-left: 1%;" allowfullscreen></iframe>
+	</div>
+	
 
     <?php require '../includes/customer_footer.php';?>
 

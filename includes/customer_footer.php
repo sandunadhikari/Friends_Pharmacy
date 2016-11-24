@@ -26,7 +26,7 @@
 			<font style="color: #6da33e;">Email : </font> <font style="color: #e0dede;">friendspharmacy@gmail.com</font> <br>
 			<font style="color: #6da33e;">Phone : </font> <font style="color: #e0dede;">+94-11-342 3462</font> <br>
 			<font style="color: #6da33e;">Fax : </font> <font style="color: #e0dede;">+94-11-259 2549</font> <br>
-			<font style="color: #6da33e;">Map : </font> <a href="#">View Map</a><br>
+			<font style="color: #6da33e;">Map : </font> <a href="contact.php#map">View Map</a><br>
 
 		</div>
 		<div class="footer_right">

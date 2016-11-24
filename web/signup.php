@@ -16,10 +16,17 @@ if(isset($_POST['submit']))
 	$encrypt_password=md5($password);
 	$sql = "INSERT INTO customer (first_name, last_name, nic, email, password, birthday, gender, contact_number) VALUES ('$first','$last','$nic','$email','$encrypt_password','$bday','$gender','$contact')";
 	
-	mysqli_query($conn, $sql) or die(mysqli_error($conn));
-	mysqli_close($conn);	
 	
-	header("Location: index.php");	
+	if(mysqli_query($conn, $sql))
+    {
+    	echo'<script>alert("Your account has been created."); window.location.href="index.php";</script></script>';  
+    }
+    else
+    {
+    	echo '<script>alert("Unsuccessful); window.location.href="index.php";</script></script>';
+    }
+
+    mysqli_close($conn);	
 }
 
 ?>
