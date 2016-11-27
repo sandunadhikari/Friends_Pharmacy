@@ -1,18 +1,18 @@
 <script>
-function searchForm() {
-    var x = document.forms["myForm"]["txtMedicinedName"].value;
-   
-    if (x == null || x == "") {
-        alert("Medicine name must be filled out");
-        return false;
+    function searchForm() {
+        var x = document.forms["myForm"]["txtMedicinedName"].value;
+
+        if (x == null || x == "") {
+            alert("Medicine name must be filled out");
+            return false;
+        }
     }
-}
 
 </script>
 <?php
 $title = "Update Stock";
 
-$content="
+$content = "
     <h2 style='text-align:center;'>Update Stock</h2>
     <form action='updateStock2.php' method ='post' onsubmit='return searchForm()'  name='myForm' >
     
@@ -26,31 +26,31 @@ $content="
 </form> 
 ";
 
-if(isset($_GET["update"])) {
-    
+if (isset($_GET["update"])) {
+
     $id = ($_GET["update"]);
     $host = "localhost";
     $user = "root";
     $passwd = "";
     $database = "friends_pharmacy";
-    $mysqli=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
-    
+    $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+
     $query = "SELECT * FROM stock WHERE id LIKE ($id)";
-    
-    $result = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
-    
+
+    $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+
     $row = mysqli_fetch_array($result);
     mysqli_close($mysqli);
-        
-        
-        $medicineName = $row[1];
-        $batchNumber =$row[2];
-        $quantity = $row[3];
-        $entry_date = $row[4];
-        $production_date = $row[5];
-        $EXP_date = $row[6];
-  
-  $content = $content."
+
+
+    $medicineName = $row[1];
+    $batchNumber = $row[2];
+    $quantity = $row[3];
+    $entry_date = $row[4];
+    $production_date = $row[5];
+    $EXP_date = $row[6];
+
+    $content = $content . "
     <form action='updateStock1.php?update2=$id' method ='post' '>
     
       <fieldset>
@@ -80,32 +80,31 @@ if(isset($_GET["update"])) {
       
      </fieldset>
 </form> ";
-
 }
-if(isset($_GET["update2"])) {
-    $id=$_GET["update2"];
-    
+if (isset($_GET["update2"])) {
+    $id = $_GET["update2"];
+
     $quantity = $_POST["txtQuantity"];
     $entry_date = $_POST["entry_date"];
     $production_date = $_POST["production_date"];
     $EXP_date = $_POST["EXP_date"];
-    
+
     $host = "localhost";
     $user = "root";
     $passwd = "";
     $database = "friends_pharmacy";
-    $mysqli=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
-   
-   
-    
-    $query="UPDATE stock
+    $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+
+
+
+    $query = "UPDATE stock
             SET quantity=$quantity,entry_date='$entry_date',production_date='$production_date',expire_date='$EXP_date'
             WHERE id='$id'";
-	
 
-    
-    
-    mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
+
+
+
+    mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
     mysqli_close($mysqli);
     echo '<script language="javascript">';
     echo 'alert("Updated successfully")';
@@ -114,15 +113,15 @@ if(isset($_GET["update2"])) {
 
 include 'template.php';
 ?>
-<script> 
-function showConfirm(qty)
-{
-    
-    if (isNaN(qty)) 
-  {
-    alert("Must input numbers");
-    return false;
-  }
-}     
-    
+<script>
+    function showConfirm(qty)
+    {
+
+        if (isNaN(qty))
+        {
+            alert("Must input numbers");
+            return false;
+        }
+    }
+
 </script>>

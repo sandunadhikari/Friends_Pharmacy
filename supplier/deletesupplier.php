@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Delete supplier</title>
-    <?php require('../includes/_header.php'); ?>
+    <?php require('../includes/_header.php');
+//        session_start();
+    ?>
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>  
     <link type="text/css" rel="stylesheet" href="css/deletesupplier.css"/>
 </head>
@@ -10,7 +12,7 @@
         <h2>Delete Supplier</h2>
         <?php require_once("../includes/navigation.php") ?>
         <?php 
-         session_start();
+//         session_start();
         $output='';
         ?>
         <div id="alldiv">
@@ -30,13 +32,13 @@
                 
           if(isset($_POST['search'])){
             $companyname=$_POST['companyname'];
-            $sql="SELECT id from supplier where company_name='$companyname'";
+            $sql="SELECT supplier_id from supplier where company_name='$companyname'";
             $result=mysqli_query($con,$sql);
 
             if(mysqli_num_rows($result)>0){
               while ($row=mysqli_fetch_assoc($result)) {
-                $_SESSION['supid']=$row['id']; 
-                $supid=$row['id'];   
+                $_SESSION['supid']=$row['supplier_id']; 
+                $supid=$row['supplier_id'];   
                 echo "<h4>Supplier : $companyname</h4>";
                 echo "<input id='btn' type='submit' name='delete' value='Delete' />";
                 $drugs=mysqli_query($con,"SELECT * FROM drug_price WHERE id='$supid' ");
@@ -73,6 +75,7 @@
             
           //echo "Deleted supplier";
         }
+//          session_destroy();
       ?>
       </form>
     </div>

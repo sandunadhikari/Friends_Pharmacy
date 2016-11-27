@@ -3,8 +3,8 @@ body{
 }
 h2{
     position: absolute;
-    float: left;
-    right: 630px;
+    
+    right: 320px;
     top:70px;
     
 }
@@ -94,6 +94,8 @@ li{
 	border-bottom: 2px solid #CFD8DC ;
 	border-right: 1px solid #CFD8DC ;
 	border-left: 1px solid #CFD8DC ;
+    position: absolute;
+    right:530px;
 }
 
 #alldiv{
@@ -104,8 +106,10 @@ li{
 }
 #tbl {
     border-collapse: collapse;
-    width: 100%;
+    width: 60%;
     border-spacing: 5px;
+    position:absolute;
+    top:100px;
 }
 #tbl border, tr, td {
     

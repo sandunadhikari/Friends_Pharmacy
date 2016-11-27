@@ -30,7 +30,8 @@ $stockArray = array();
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<script src="../public/js/jquery-2.0.0.js"></script>
 </head>
 <style>
     .ul {
@@ -213,7 +214,7 @@ $stockArray = array();
 			<?php 
                         foreach ($stockArray as $key => $stock) {
                         echo "<div id=inner_noti>
-                                <a href='#'> $stock->medicine_name  $stock->quantity quantity will expire on $stock->expire_date date according to $stock->batch_no batch number</a>
+                                <a href='../pharmacist/removeStock2.php?outofstock=$stock->medicine_name'> $stock->medicine_name  $stock->quantity quantity will expire on $stock->expire_date date according to $stock->batch_no batch number</a>
                            </div>";
                       
                         }
@@ -268,10 +269,9 @@ $stockArray = array();
         });
 
         $('#notifications').click(function () {
-            return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+            return True;       // DO NOTHING WHEN CONTAINER IS CLICKED.
         });
     });
 </script>
-
 
 <link rel="stylesheet" type="text/css" href="../public/css/application.css"/>

@@ -4,22 +4,21 @@ require 'stockController.php';
 $title = "Update Stock";
 $stockController = new stockController();
 
-if(isset($_POST['btnView'])){
+if (isset($_POST['btnView'])) {
     $medicine_Name = $_POST["txtMedicinedName"];
-    
-     $host = "localhost";
+
+    $host = "localhost";
     $user = "root";
     $passwd = "";
     $database = "friends_pharmacy";
-    $mysqli=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
-    
-    if (!mysqli_num_rows(mysqli_query($mysqli,"SELECT * FROM stock WHERE medicine_name ='$medicine_Name'")))
-    {	
+    $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+
+    if (!mysqli_num_rows(mysqli_query($mysqli, "SELECT * FROM stock WHERE medicine_name ='$medicine_Name'"))) {
         echo '<script language="javascript">';
         echo 'alert("Stock is not found")';
         echo '</script>';
-        
-        $content="
+
+        $content = "
     <h2 style='text-align:center;'>Update Stock</h2>
     <form action='updateStock2.php' method ='post' onsubmit='return searchForm()'  name='myForm' >
     
@@ -32,12 +31,9 @@ if(isset($_POST['btnView'])){
       </fieldset>
     </form> 
     ";
-
-        
-    }
-    else {
-    $stockTable = $stockController->UpdateStockTables($medicine_Name);
-    $content = $stockTable;
+    } else {
+        $stockTable = $stockController->UpdateStockTables($medicine_Name);
+        $content = $stockTable;
     }
 }
 

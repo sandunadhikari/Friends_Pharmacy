@@ -16,7 +16,7 @@ $connect=mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error())
       {  
            while($row = mysqli_fetch_array($result))  
            {  
-                $output .= '<li>'.$row["medicine_name"].'</li>';  
+                $output .= '<li><a href="#" id="a" style="text-decoration:none; color:green;">'.$row["medicine_name"].'</a></li>';  
            }  
       }  
       else  
