@@ -61,6 +61,12 @@ $content = "<h2 style='text-align:center;'>Add New Stock</h2>
         <label class='lblf' for='quantity'>Quantity: </label>
 	<input type='number' class='inputField' name='txtQuantity' autocomplete='off' /><br/>
         <p></p>
+         <label class='lblf' >Dosage : </label>
+	<input type='text' class='inputField' name='txtdosage' autocomplete='off' placeholder='Ex: 250mg'/><br/>
+        <p></p>
+        <label class='lblf' >Price(Rs) : </label>
+	<input type='number' class='inputField' name='price' autocomplete='off' /><br/>
+        <p></p>
         <label class='lblf' for='Entry_date'>Entry Date: </label>
 	<input type='date' id='entryDate' class='inputField' name='entry_date'  /><br/>
         <p></p>
@@ -75,7 +81,7 @@ $content = "<h2 style='text-align:center;'>Add New Stock</h2>
         
 </form> 
 
-<button id='myBtn' onclick='myFunction()' style='position:absolute; top:170px; right:208px; background-color: rgb(106,184,42); color: white;
+<button id='myBtn' onclick='myFunction()' style='position:absolute; top:170px; right:200px; background-color: rgb(106,184,42); color: white;
     padding: 5px 5px;
     border: none;
     border-radius: 4px;
@@ -89,6 +95,8 @@ if (isset($_POST['btnSubmit'])) {
     $entry_date = $_POST["entry_date"];
     $production_date = $_POST["production_date"];
     $EXP_date = $_POST["EXP_date"];
+    $dosage = $_POST["txtdosage"];
+    $price = $_POST['price'];
 
 
     $host = "localhost";
@@ -109,9 +117,9 @@ if (isset($_POST['btnSubmit'])) {
     } else {
 
         $query2 = "INSERT INTO stock
-    (medicine_name,batch_no,quantity,entry_date,production_date,expire_date)
+    (medicine_name,batch_no,quantity,entry_date,production_date,expire_date,dosage,price)
     VALUES
-    ('$MedicineName','$batchNumber','$quantity','$entry_date','$production_date','$EXP_date')";
+    ('$MedicineName','$batchNumber','$quantity','$entry_date','$production_date','$EXP_date','$dosage','$price')";
 
         mysqli_query($mysqli, $query2) or die(mysqli_error($mysqli));
         mysqli_close($mysqli);

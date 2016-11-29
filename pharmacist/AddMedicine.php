@@ -6,17 +6,12 @@
             return false;
         }
     }
-
     function validateForm() {
         var x = document.forms["myForm"]["txtBrandName"].value;
         var y = document.forms["myForm"]["txtGenericName"].value;
         var z = document.forms["myForm"]["type"].value;
         var p = document.forms["myForm"]["category"].value;
         var q = document.forms["myForm"]["supplier"].value;
-
-
-
-
         if (x == null || x == "") {
             alert("Medicine name must be filled out");
             return false;
@@ -49,24 +44,19 @@
 
     function myFunction() {// Get the modal
         var modal = document.getElementById('myModal');
-
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
-
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-
         // When the user clicks the button, open the modal
         btn.onclick = function() {
             modal.style.display = "block";
             document.getElementById("mybtn2").style.display = "block";
         }
-
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
         }
-
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -75,8 +65,6 @@
         }
     }
 </script>
-
-
 <?php
 $title = "";
 
@@ -96,12 +84,10 @@ $content = "<h2 style='text-align:center;'>Add New Medicine</h2>
             <option value='liquid<'>liquid</option>
             </select></br>
             <p></p>
-
             <label for='Category'>Category: </label>
             <input type='text' class='inputField' name='category' id='category' autocomplete='off' placeholder='Ex: Antibiotic'/><br/>
             <div id='categoryList'></div> 
             <p></p>
-
             <label for='group'>Group: </label>
             <select class = 'type' name='group'>
             <option value='OC'>Over the counter</option>
@@ -109,25 +95,18 @@ $content = "<h2 style='text-align:center;'>Add New Medicine</h2>
             <option value='Narcotics'>Narcotics</option>
             </select></br>
             <p></p>
-
             <label for='Supplier'>Supplier: </label>
             <input type='text' class='inputField' id='supplier' name='supplier' autocomplete='off'/><br/>
             <div id='supplierList'></div> 
             <p></p>
-
             <label for='content'>content: </label>
             <textarea cols='37' rows='12' name='txtContent'></textarea></br>
             <p></p>			
-
             <label for='image'>Add image: </label>
             <input type='file' name='pic' accept='image/*'>
             <p></p>
-
             <input type='submit' name = 'btnSubmit' location.href = 'AddMedicine.php'></span><br/> 
             <p></p>
-
-
-
         </fieldset>
     </form>
     <button id='myBtn' onclick='myFunction()' style='position:absolute; top:300px; right:270px; background-color: rgb(106,184,42); color: white;
@@ -138,7 +117,7 @@ $content = "<h2 style='text-align:center;'>Add New Medicine</h2>
     <div id='myModal' class='modal'>
         <div class='modal-content'>
           <span class='close'>x</span>
-          <h3 style='text-align:center;'>Add catogery</h3>
+          <h3 style='text-align:center;'>Add category</h3>
 
           <form name='myForm2' action='AddMedicine.php'  method ='post' onsubmit='return validateForm2()'>
 
@@ -146,7 +125,7 @@ $content = "<h2 style='text-align:center;'>Add New Medicine</h2>
           <input type='text' class='inputField' name='addcat' autocomplete='off' placeholder='Ex:Antibiotic'/><br/>
           <p></p>
           <input type='submit' name = 'btnSubmitcat'>
-
+          </form>
         </div>
 
      </div>";

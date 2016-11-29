@@ -78,7 +78,7 @@ fieldset{
 }
 input[type=submit] {
     width: 100px;
-    height: 40px;
+    height: auto;
     position: relative;
     left: 180px;
     background-color: rgb(106,184,42);

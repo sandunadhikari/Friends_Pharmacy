@@ -35,10 +35,12 @@ class stockController {
             $entry_date = $row[4];
             $production_date = $row[5];
             $EXP_date = $row[6];
+            $dosage = $row[7];
+            $price = $row[8];
 
 
             //Create stock objects and store them in an array.
-            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date);
+            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date,$dosage,$price);
             array_push($stockArray, $stock);
         }
         mysqli_close($mysqli);
@@ -51,6 +53,8 @@ class stockController {
                     <th></th>
                     <th><b>batch_no</b></th>
                     <th><b>quantity</b></th>
+                    <th><b>dosage</b></th>
+                    <th><b>price</b></th>
                     <th><b>entry_date</b></th>
                     <th><b>expire_date</b></th>
                     <th><b>production_date</b></th>
@@ -65,6 +69,8 @@ class stockController {
                     <td><a href='#' onClick=showConfirm($stock->id) >Delete</td>
                     <td><b>$stock->batch_no</b></td>
                     <td><b>$stock->quantity</b></td>
+                    <td><b>$stock->price</b></td>
+                    <td><b>$stock->quantity</b></td>    
                     <td><b>$stock->entry_date </b></td>
                     <td><b>$stock->expire_date</b></td>
                     <td><b>$stock->production_date</b></td>
@@ -97,9 +103,11 @@ class stockController {
             $entry_date = $row[4];
             $production_date = $row[5];
             $EXP_date = $row[6];
+            $dosage = $row[7];
+            $price = $row[8];
 
             //Create stock objects and store them in an array.
-            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date);
+            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date, $dosage, $price);
             array_push($stockArray, $stock);
         }
         mysqli_close($mysqli);
@@ -114,6 +122,8 @@ class stockController {
                     <th></th>
                     <th><b>batch no</b></th>
                     <th><b>quantity</b></th>
+                    <th><b>dosage</b></th>
+                    <th><b>price</b></th>
                     <th><b>entry date</b></th>
                     <th><b>expire date</b></th>
                     <th><b>production date</b></th>
@@ -128,6 +138,8 @@ class stockController {
                     <td><a href='updateStock1.php?update=$stock->id' >Update</td>
                     <td><b>$stock->batch_no</b></td>
                     <td><b>$stock->quantity</b></td>
+                    <td><b>$stock->dosage</b></td>
+                    <td><b>$stock->price</b></td>
                     <td><b>$stock->entry_date </b></td>
                     <td><b>$stock->expire_date</b></td>
                     <td><b>$stock->production_date</b></td>
