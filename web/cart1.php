@@ -56,15 +56,15 @@ if (isset($_POST['btnsubmititem'])) {
                  <th>
                  pic
                 </th>';
-    
-                 
-               
+
+
+
     echo '</tr>';
 
 
     foreach ($_SESSION['name'] as $key => $item) {
         echo '<tr>';
-        
+
         echo '<td>';
         echo $item;
         echo '</td>';
@@ -81,7 +81,7 @@ if (isset($_POST['btnsubmititem'])) {
         echo $_SESSION['unitprice'][$key] * $_SESSION['qty'][$key];
         echo '</td>';
         echo '<td>';
-        echo '<img  src="../public/image/cancel.png" style="width: 20px; height: 20px;">'  ;
+        echo '<img  class="cancel" src="../public/image/cancel.png" style="width: 20px; height: 20px;">';
         echo '</td>';
         echo '</tr>';
 
@@ -103,34 +103,33 @@ if (isset($_POST['btnsubmititem'])) {
     //session_destroy();
 }
 ?>
-<?php 
-
-    if (empty($_SESSION['cart'])) {
-        $_SESSION['name'] = array();
-        $_SESSION['cart'] = array();
-        $_SESSION['qty'] = array();
-        $_SESSION['dosage'] = array();
-        $_SESSION['unitprice'] = array();
-    }
-    
-    
-    
-
-
-    //array_push($_SESSION['unitprice'], $_POST['dosagetype']);
-
-    echo "<div id='notifications'>";
+<?php
+if (empty($_SESSION['cart'])) {
+    $_SESSION['name'] = array();
+    $_SESSION['cart'] = array();
+    $_SESSION['qty'] = array();
+    $_SESSION['dosage'] = array();
+    $_SESSION['unitprice'] = array();
+}
 
 
 
 
-    echo "<h3 id='h3' style='text-align: center'>Shopping Cart</h3>";
-    echo "<div id=inner_noti>";
+
+//array_push($_SESSION['unitprice'], $_POST['dosagetype']);
+
+echo "<div id='notifications'>";
 
 
-    echo '<table id="myTable">';
-    echo '<tr>';
-    echo '     
+
+
+echo "<h3 id='h3' style='text-align: center'>Shopping Cart</h3>";
+echo "<div id=inner_noti>";
+
+
+echo '<table id="myTable">';
+echo '<tr>';
+echo '     
         
                 <th>
                     Medicine name
@@ -151,52 +150,51 @@ if (isset($_POST['btnsubmititem'])) {
                  <th>
                  pic
                 </th>';
-    
-                 
-               
+
+
+
+echo '</tr>';
+
+
+foreach ($_SESSION['name'] as $key => $item) {
+    echo '<tr>';
+
+    echo '<td>';
+    echo $item;
+    echo '</td>';
+    echo '<td>';
+    echo $_SESSION['dosage'][$key];
+    echo '</td>';
+    echo '<td>';
+    echo $_SESSION['qty'][$key];
+    echo '</td>';
+    echo '<td>';
+    echo $_SESSION['unitprice'][$key];
+    echo '</td>';
+    echo '<td>';
+    echo $_SESSION['unitprice'][$key] * $_SESSION['qty'][$key];
+    echo '</td>';
+    echo '<td>';
+    echo '<img  src="../public/image/cancel.png" style="width: 20px; height: 20px;">';
+    echo '</td>';
     echo '</tr>';
 
 
-    foreach ($_SESSION['name'] as $key => $item) {
-        echo '<tr>';
-        
-        echo '<td>';
-        echo $item;
-        echo '</td>';
-        echo '<td>';
-        echo $_SESSION['dosage'][$key];
-        echo '</td>';
-        echo '<td>';
-        echo $_SESSION['qty'][$key];
-        echo '</td>';
-        echo '<td>';
-        echo $_SESSION['unitprice'][$key];
-        echo '</td>';
-        echo '<td>';
-        echo $_SESSION['unitprice'][$key] * $_SESSION['qty'][$key];
-        echo '</td>';
-        echo '<td>';
-        echo '<img  src="../public/image/cancel.png" style="width: 20px; height: 20px;">'  ;
-        echo '</td>';
-        echo '</tr>';
-
-
-        //echo "<a>$item</a>";
-    }
-    echo '</table>';
-    echo "</div>";
+    //echo "<a>$item</a>";
+}
+echo '</table>';
+echo "</div>";
 
 
 
-    echo "</div>";
+echo "</div>";
 
 
 
 
-    //print_r($_SESSION['cart']);
-    //print_r($_SESSION['qty']);
-    //session_destroy();
-
+//print_r($_SESSION['cart']);
+//print_r($_SESSION['qty']);
+//session_destroy();
 ?>
 <?php
 include ("../Entities/drugEntity.php");
@@ -266,7 +264,12 @@ while ($row = mysqli_fetch_array($result)) {
             }
         </style>
         <script>
-
+            $(".cancel").click(function() {
+                var inputValue = $(this).closest("tr").find("input[type=text]").val();
+                var selectValuse = $(this).closest("tr").find("[name='select_job']").val();
+                var index = $(this).closest("tr").index();
+                alert(index);
+            });
 
             $(document).ready(function() {
 
@@ -372,7 +375,7 @@ while ($row = mysqli_fetch_array($result)) {
             <div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
             <div id="noti_Button">
                 <div>
-                    <img  src="../public/image/cart1.png" style="width: 50px; height: 50px; position: absolute; right: 50px;">    
+                    <img  class="cancel" src="../public/image/cart1.png" style="width: 50px; height: 50px; position: absolute; right: 50px;">    
                 </div>
             </div>  
             <div id="notifications">
@@ -384,15 +387,15 @@ while ($row = mysqli_fetch_array($result)) {
         </div>
 
 
-        <?php require '../includes/customer_header.php'; ?>
+<?php require '../includes/customer_header.php'; ?>
 
         <div class="content">
-            <?php foreach ($drugArray as $key => $drug) { ?>
+<?php foreach ($drugArray as $key => $drug) { ?>
 
                 <table class = 'drugTable'>
                     <tr>
 
-                        <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
+    <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
 
                         <th width = '75px' >Brand: </th>
                         <td><?php echo $drug->medicine_name ?> </td>
@@ -427,7 +430,7 @@ while ($row = mysqli_fetch_array($result)) {
                         <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
                     </tr>   
                 </table>
-            <?php } ?>
+<?php } ?>
         </div>	
         <aside class="topSide">			
             <img src="../public/image/add3.jpg">
@@ -438,10 +441,10 @@ while ($row = mysqli_fetch_array($result)) {
         </aside>
 
 
-        <?php require '../includes/customer_footer.php'; ?>
+<?php require '../includes/customer_footer.php'; ?>
 
 
-        <?php if (isset($_GET['id'])) { ?>
+<?php if (isset($_GET['id'])) { ?>
             <?php echo $id2 = $_GET['id']; ?>
 
             <?php
@@ -505,12 +508,12 @@ while ($row = mysqli_fetch_array($result)) {
             <div id = 'myModal' class = 'modal'>
                 <div class = 'modal-content'>
                     <h3 style = 'text-align:center;'><?php echo $drugforcart->medicine_name ?></h3>
-                    
-                    <?php echo " <form name = 'myForm2' action = 'cart1.php?id2=$id2' method = 'post' onsubmit = 'return validateForm2()'>" ?>
+
+    <?php echo " <form name = 'myForm2' action = 'cart1.php?id2=$id2' method = 'post' onsubmit = 'return validateForm2()'>" ?>
                     <table class = 'drugforcartTable'>
                         <tr>
 
-                            <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
+    <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
                             <td><input type="hidden" name ="medname" value=<?php echo $drugforcart->medicine_name ?>></td>
 
                         </tr>
@@ -549,7 +552,7 @@ while ($row = mysqli_fetch_array($result)) {
                             <td>
                                 <select name = 'dosagetype' >
 
-                                    <?php foreach ($disdosage as $value) { ?>
+    <?php foreach ($disdosage as $value) { ?>
                                         <?php $drid = $disid[array_search($value, $disdosage)] ?>
                                         <?php $drprice = $disprice[array_search($value, $disdosage)] ?>
                                         <?php echo "<option value=$drid>$value" . " (Rs " . $disprice[array_search($value, $disdosage)] . ")" . "</option>"; ?>
@@ -569,18 +572,18 @@ while ($row = mysqli_fetch_array($result)) {
                         </tr>   
                         <tr>
                             <td><?php foreach ($disdosage as $value) { ?>
-                                    <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
+        <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
                                 <?php } ?></td>
                             <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
                             <td><button  onclick= "window.location.href = 'cart1.php?test=<?php $drid ?>'"><span>Close</span></button></td>
                         </tr>   
 
                     </table>
-                <?php "</form>" ?>
+    <?php "</form>" ?>
 
                 </div>
             </div>
-        <?php } ?>
+<?php } ?>
 
     </body>
 </html>
