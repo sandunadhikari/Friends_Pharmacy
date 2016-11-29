@@ -84,7 +84,8 @@ if(isset($_POST['go'])){
         
          <?php require_once("../includes/navigation.php") ?>
            
-            
+   
+<!--        gfh-->
     <div id="d1">
         <center>
         <fieldset>
