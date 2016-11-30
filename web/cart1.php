@@ -294,6 +294,7 @@ echo "</div>";
                 -webkit-border-radius:2px;
                 z-index:1;
             }
+            
 
             /* THE NOTIFICAIONS WINDOW. THIS REMAINS HIDDEN WHEN THE PAGE LOADS. */
             #notifications {
@@ -389,7 +390,7 @@ echo "</div>";
                     </tr>   
                     <tr>
                         <td></td>
-                        <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'cart1.php?id=<?php echo $drug->id ?>'"><span>Add to Cart</span></button></td>
+                        <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'cart1.php?id=<?php echo $drug->id ?>'"><span >Add to Cart</span></button></td>
                         <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
                     </tr>   
                 </table>
