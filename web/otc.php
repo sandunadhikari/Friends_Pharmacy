@@ -569,7 +569,7 @@ echo "</div>";
                                     <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
                                 <?php } ?></td>
                             <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
-                            <?php echo "<td><a href='otc.php?page=".$page."> Cancel </a></td>"; ?>
+                            <td><a href='otc.php'> Cancel </a></td>
                         </tr>   
 
                     </table>
