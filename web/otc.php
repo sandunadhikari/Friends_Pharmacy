@@ -4,20 +4,25 @@ include '../database/dbconnect.php';
 include ("../Entities/drugEntity.php");
 include ("../Entities/stockEntity.php");
 include 'drugcon.php';
-$results_per_page = 5;
+
+
 
 if (isset($_GET["page"])) { 
     $page  = $_GET["page"];
     } 
     else { $page=1; };
-    
-   
+if(isset($_POST['next'])) {
+     $page++;
+}
+else if(isset($_POST['previous'])) {
+     $page--;
+}
+$results_per_page = 5;
 $start_from = ($page-1) * $results_per_page;
-
 $query = "SELECT COUNT(id) AS total FROM drug"; 
 $resultpage = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 $row = $resultpage->fetch_assoc();
-$total_pages = ceil($row["total"] / $results_per_page);
+$total_pages = ceil($row["total"] / $results_per_page);   
 
 
 if (empty($_SESSION['cart'])) {
@@ -421,13 +426,15 @@ echo "</div>";
                             <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
                         </tr>   
                     </table>
-                <?php } ?>		
+                
+                <?php } ?>
+                <?php if($total_pages<$page) {?>
+                <form>
+                     <input type="submit" name='next' value='next'>
+                </form>
+                <?php } ?>
             </article>
-        </div>	
-
-
-
-
+        </div>
         <aside class="topSide">			
             <img src="../public/image/add3.jpg">
         </aside>
@@ -573,10 +580,13 @@ echo "</div>";
                         </tr>   
 
                     </table>
-                    <?php "</form>" ?>
+                    <?php 
+                    "</form>" 
+                    ?>
 
                 </div>
             </div>
         <?php } ?>
+       
     </body>
 </html>

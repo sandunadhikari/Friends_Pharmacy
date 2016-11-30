@@ -11,6 +11,7 @@ $(document).ready(function(){
                 },
         
            mobile:{
+			   maxlength:10,
                 required:true,
                 number:true    
                 },
@@ -29,6 +30,7 @@ $(document).ready(function(){
             dob:"Enter birth date",
                
             mobile:{
+					maxlength:"Length of mobile number is incorrect",
                     required:"Please enter contact number",
                     number:"Enterd number is wrong",
                         },
