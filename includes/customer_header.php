@@ -17,8 +17,8 @@
             <li><a href="../web/prescription.php" class="active">Prescription Products </a></li>
             <li><a href="../web/events.php" class="active">Events </a></li>
             <li><a href="../web/contact.php" class="active">Contact Us </a></li>
-            <li>
-                
+
+            <li>                
                 <a href="#" id="loginform">Login</a>
                 <div class="login">
                   <div class="arrow-up"></div>
@@ -41,6 +41,8 @@
                   </div>
                 </div>
             </li>
+            <li><a href="logout.php" class="active">Logout</a></li>
+            <li><a href="profile.php" class="active">Profile</a></li>
         </ul>
     </nav>
 </header>

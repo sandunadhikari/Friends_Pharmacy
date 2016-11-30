@@ -22,17 +22,18 @@ if(isset($_POST['login']))
 		}
 		if($email == $dbemail && md5($password) == $dbpassword)
 		{
-			echo'<script>alert("You are logged in."); window.location.href="index.php";</script></script>';  
+			echo'<script>alert("Welcome to Friends Pharmacy."); window.location.href="index.php";</script>';  
 			$_SESSION['email'] = $email;
+			
 		}
 		else
 		{
-			echo'<script>alert("Your password is incorrect."); window.location.href="index.php";</script></script>';  
+			echo'<script>alert("Your password is incorrect."); window.location.href="index.php";</script>';  
 		}
 	}
 	else
 	{
-		echo'<script>alert("You are not registered. \nPlease create an account."); window.location.href="index.php";</script></script>';  
+		echo'<script>alert("You are not registered. \nPlease create an account."); window.location.href="index.php";</script>';  
 	}
 }
 

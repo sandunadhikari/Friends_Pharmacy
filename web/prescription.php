@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,95 +31,113 @@
 	
 	if(isset($_POST['submit']))
 	{
-		//specifies the directory where the file is going to be placed
-		$target_dir = "../customer/uploads/";
-
-
-		//specifies the path of the file to be uploaded
-		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-
-		//check whether the file already exists in the "uploads" folder.
-		$uploadOk = 1;
-
-
-		//holds the file extension of the file
-		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
-
-		// Check if image file is an actual image or fake image
-		// if(isset($_POST["submit"])) 
-		// {
-		//     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-		//     if($check !== false) {
-		//     	$message = "File is an image - " . $check["mime"] . ".<br>";
-		// 		echo "<script type='text/javascript'>alert('$message');</script>";
-		//         // echo "File is an image - " . $check["mime"] . ".<br>";
-		//         $uploadOk = 1;
-		//     } else {
-		//     	$message = "File is not an image.";
-		// 		echo "<script type='text/javascript'>alert('$message');</script>";
-		//         // echo "File is not an image.<br>";
-		//         $uploadOk = 0;
-		//         exit();
-		//     }
-		// }
-
-		//check the file is already exist or not
-		if (file_exists($target_file)) 
+		session_start();
+		if(isset($_SESSION['email']) && !empty($_SESSION['email']))
 		{
-			$message = "Sorry, file already exists.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
-		    // echo "Sorry, file already exists.<br>";
-		    $uploadOk = 0;
-		    exit();
-		}
+			//specifies the directory where the file is going to be placed
+			$target_dir = "../customer/uploads/";
 
-		// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) 
-		{
-			$message = "Sorry, your file is too large.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
-	    	// echo "Sorry, your file is too large.<br>";
-	    	$uploadOk = 0;
-	    	exit();
-		}
 
-		// Allow certain file cairo_format_stride_for_width(format, width)
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
-		{
-			$message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
-		    // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
-		    $uploadOk = 0;
-		    exit();
-		}
+			//specifies the path of the file to be uploaded
+			$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
-		// Check if $uploadOk is set to 0 by an error
-		if ($uploadOk == 0) 
-		{
-			$message = "Sorry, your file was not uploaded.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
-			exit();
-		    // echo "Sorry, your file was not uploaded.";
-		} 
-		// if everything is ok, try to upload file
-		else 
-		{
-		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
-		    {
-		    	$message = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been successfully uploaded.";
+			//check whether the file already exists in the "uploads" folder.
+			$uploadOk = 1;
+
+
+			//holds the file extension of the file
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+
+			// Check if image file is an actual image or fake image
+			// if(isset($_POST["submit"])) 
+			// {
+			//     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+			//     if($check !== false) {
+			//     	$message = "File is an image - " . $check["mime"] . ".<br>";
+			// 		echo "<script type='text/javascript'>alert('$message');</script>";
+			//         // echo "File is an image - " . $check["mime"] . ".<br>";
+			//         $uploadOk = 1;
+			//     } else {
+			//     	$message = "File is not an image.";
+			// 		echo "<script type='text/javascript'>alert('$message');</script>";
+			//         // echo "File is not an image.<br>";
+			//         $uploadOk = 0;
+			//         exit();
+			//     }
+			// }
+
+			// check a file to upload is selected or not
+			if(empty($_FILES["fileToUpload"]["name"]))
+			{
+				$message = "Please select an image to upload..";
 				echo "<script type='text/javascript'>alert('$message');</script>";
-				// echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been successfully uploaded.";
+				$uploadOk = 0;
+			    exit();
+			}
+
+			//check the file is already exist or not
+			if (file_exists($target_file)) 
+			{
+				$message = "Sorry, file already exists.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+			    // echo "Sorry, file already exists.<br>";
+			    $uploadOk = 0;
+			    exit();
+			}
+
+			// Check file size
+			if ($_FILES["fileToUpload"]["size"] > 1000000) 
+			{
+				$message = "Sorry, your file is too large.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+		    	// echo "Sorry, your file is too large.<br>";
+		    	$uploadOk = 0;
+		    	exit();
+			}
+
+			// Allow certain file cairo_format_stride_for_width(format, width)
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
+			{
+				$message = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+			    // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
+			    $uploadOk = 0;
+			    exit();
+			}
+
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) 
+			{
+				$message = "Sorry, your file was not uploaded.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
 				exit();
-		    } 
-		    else 
-		    {
-		    	$message = "Sorry, there was an error uploading your file.";
-				echo "<script type='text/javascript'>alert('$message');</script>";
-		        // echo "Sorry, there was an error uploading your file.";
-		        exit();
-	   		}
+			    // echo "Sorry, your file was not uploaded.";
+			} 
+			// if everything is ok, try to upload file
+			else 
+			{
+			    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+			    {
+			    	$message = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been successfully uploaded.";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					// echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been successfully uploaded.";
+					exit();
+			    } 
+			    else 
+			    {
+			    	$message = "Sorry, there was an error uploading your file.";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+			        // echo "Sorry, there was an error uploading your file.";
+			        exit();
+		   		}
+			}
 		}
+		else
+		{
+			echo'<script>alert("\t\t\tYou are not logged in.\nPlease logged in before uploading a prescription."); window.location.href="prescription.php";</script></script>';  
+		}
+		
 	}	
 
 ?>

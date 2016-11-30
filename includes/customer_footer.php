@@ -25,9 +25,8 @@
 			<font style="color: #6da33e;">Address : </font> <font style="color: #e0dede;">No:65, Main street, Kirulapone</font> <br>
 			<font style="color: #6da33e;">Email : </font> <font style="color: #e0dede;">friendspharmacy@gmail.com</font> <br>
 			<font style="color: #6da33e;">Phone : </font> <font style="color: #e0dede;">+94-11-342 3462</font> <br>
-			<font style="color: #6da33e;">Fax : </font> <font style="color: #e0dede;">+94-11-259 2549</font> <br>
-			<font style="color: #6da33e;">Map : </font> <a href="contact.php#map">View Map</a><br>
-
+			<font style="color: #6da33e;">Fax : </font> <font style="color: #e0dede;">+94-11-259 2549</font> <br><br>
+			<a href="contact.php" style="color: #6bc91a">View Map</a><br>
 		</div>
 		<div class="footer_right">
 			<h3>Follow Us</h3>

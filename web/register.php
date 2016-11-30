@@ -12,11 +12,10 @@
 
 	<?php require '../includes/customer_header.php';?>
 
-
 	<h3 style="text-align: center;">Create A New Account</h3>
 	<div class="signup_table">
 		<form action="signup.php" method="POST" enctype="multipart/form-data">
-			<label style="text-align: center;">All feilds are required</label><br><br>
+			<label>All feilds are required</label><br><br>
 			<table>				
 				<tr><td>First Name: </td><td><input type="text" name="fname" required="required"></td></tr>
 				<tr><td>Last Name:</td><td><input type="text" name="lname" required="required"></td></tr>
@@ -28,7 +27,7 @@
 									<td><Input type="radio" name="gender" value="female" required="required">Female</td></tr>
 				<tr><td>Contact Number:</td><td><input type="tel" name="contact" required="required"></td></tr>			
 					
-				<tr><td><input type="submit" name="submit" value="Create an Account"></td></tr>
+				<tr><td><input type="submit" name="submit" value="Create My Account"></td></tr>
 			</table>			
 		</form>
 	</div>

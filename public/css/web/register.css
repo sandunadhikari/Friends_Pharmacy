@@ -1,8 +1,4 @@
-.signup_table table-layout: {
-	margin-left: 10%;
-}
-
-.signup_table input{
+.signup_table input[type="email"], .signup_table input[type="password"] {
   padding: 7px 5px;
   margin: 10px 0;
   width: 96%;
@@ -15,7 +11,20 @@
   -o-transition: 0.3s linear;
   transition: 0.3s linear;
 }
-
-body{
-	background-color: #ECF0F1;
+.signup_table input[type="email"]:focus, .signup_table input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 1px 1px #1abc9c;
+}
+.signup_table input[type="submit"] {
+  background: #66B223;
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+  width: 99%;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+.signup_table input[type="submit"]:hover {
+  background: #61A526;
 }

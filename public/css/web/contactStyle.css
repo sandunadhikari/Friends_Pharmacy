@@ -40,16 +40,13 @@ body{
 	margin-left: 10px;
 }
 
-.mainContent form button{
+#btn_send{
 	width: 80px;
-	height: 30px;
-	margin-left: 10px;
-	margin-bottom: 1%;
 }
 
 .contactSide{
 	width:22%;
-	height: auto;
+	height: 635px;
 	float:right;
 	margin-top: 1%;	
 	margin-bottom: 1%;
