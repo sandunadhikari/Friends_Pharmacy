@@ -1,5 +1,10 @@
 <?php
 include '../database/dbconnect.php';
+
+include ("../Entities/drugEntity.php");
+include ("../Entities/stockEntity.php");
+
+include 'drugcon.php';
 session_start();
 if (empty($_SESSION['cart'])) {
     $_SESSION['name'] = array();
@@ -29,9 +34,34 @@ if (isset($_POST['btnsubmititem'])) {
     //print_r($_SESSION['qty']);
     //session_destroy();
 }
-?>
 
-<?php
+
+
+
+
+$query = "SELECT * FROM drug ";
+
+$drugArray = array();
+$result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+while ($row = mysqli_fetch_array($result)) {
+
+
+    $id = $row[0];
+    $medicine_name = $row[1];
+    $generic_name = $row[2];
+    $type = $row[3];
+    $category = $row[4];
+    $supplier_id = $row[5];
+    $discription = $row[6];
+    $image = $row[7];
+    $group_name = $row[8];
+
+
+    $drug = new drugEntity($id, $medicine_name, $generic_name, $type, $category, $supplier_id, $discription, $image, $group_name);
+    array_push($drugArray, $drug);
+}
+
+
 //array_push($_SESSION['unitprice'], $_POST['dosagetype']);
 
 echo "<div id='notifications'>";
@@ -97,34 +127,7 @@ echo "</div>";
 //print_r($_SESSION['qty']);
 //session_destroy();
 ?>
-<?php
-include ("../Entities/drugEntity.php");
-include ("../Entities/stockEntity.php");
 
-include 'drugcon.php';
-
-$query = "SELECT * FROM drug ";
-
-$drugArray = array();
-$result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
-while ($row = mysqli_fetch_array($result)) {
-
-
-    $id = $row[0];
-    $medicine_name = $row[1];
-    $generic_name = $row[2];
-    $type = $row[3];
-    $category = $row[4];
-    $supplier_id = $row[5];
-    $discription = $row[6];
-    $image = $row[7];
-    $group_name = $row[8];
-
-
-    $drug = new drugEntity($id, $medicine_name, $generic_name, $type, $category, $supplier_id, $discription, $image, $group_name);
-    array_push($drugArray, $drug);
-}
-?>
 
 
 <!DOCTYPE html>
@@ -193,8 +196,8 @@ while ($row = mysqli_fetch_array($result)) {
             }
         </style>
         <script>
-            
-            
+
+
 
             $(".cancel").click(function() {
                 var index = $(this).closest("tr").index();
@@ -206,33 +209,25 @@ while ($row = mysqli_fetch_array($result)) {
                         method: "POST",
                         data: {query: index},
                         success: function(data)
-                    {
-                        $('.totalno').show();
-                        $('.totalno').html(data);
-                    }
-                    
+                        {
+                            $('.totalno').show();
+                            $('.totalno').html(data);
+                        }
+
                     });
                 }
-                
-            });
-            
-            
 
-            $(".cancel").click(function() {
-                var inputValue = $(this).closest("tr").find("input[type=text]").val();
-                var selectValuse = $(this).closest("tr").find("[name='select_job']").val();
-                var index = $(this).closest("tr").index();
                 var here = this;
-                var total=<?php echo count($_SESSION['cart']); ?>;
+
                 $(this).closest('tr').find('td').fadeOut('fast',
                         function(here) {
                             $(here).parents('tr:first').remove();
                         });
-                
-               
-               
+
+
             });
-            
+
+
 
             $(document).ready(function() {
 
