@@ -7,6 +7,7 @@ if (empty($_SESSION['cart'])) {
     $_SESSION['qty'] = array();
     $_SESSION['dosage'] = array();
     $_SESSION['unitprice'] = array();
+    $_SESSION['amount'] = array();
 }
 //session_destroy();
 if (isset($_POST['btnsubmititem'])) {
@@ -15,11 +16,13 @@ if (isset($_POST['btnsubmititem'])) {
     array_push($_SESSION['cart'], $_POST['dosagetype']);
     array_push($_SESSION['qty'], $_POST['qtybox']);
     $stockid = $_POST['dosagetype'];
+    $qty = $_POST['qtybox'];
     $query = "SELECT dosage,price FROM stock where id = $stockid";
     $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
     while ($row = mysqli_fetch_array($result)) {
         array_push($_SESSION['dosage'], $row[0]);
         array_push($_SESSION['unitprice'], $row[1]);
+        array_push($_SESSION['amount'], ($row[1] * $qty));
     }
     //array_push($_SESSION['unitprice'], $_POST['dosagetype']);
     //print_r($_SESSION['cart']);
@@ -27,11 +30,18 @@ if (isset($_POST['btnsubmititem'])) {
     //session_destroy();
 }
 ?>
+
 <?php
 //array_push($_SESSION['unitprice'], $_POST['dosagetype']);
 
 echo "<div id='notifications'>";
 echo "<h3 id='h3' style='text-align: center'>Shopping Cart</h3>";
+
+echo "<p class='totaltxt' style='text-align: center'>Total :</p>";
+echo "<p class='totalno' style='text-align: center'>" . array_sum($_SESSION['amount']) . "</p>";
+
+echo "<button class='addorder'  onclick= 'window.location.href ='index.php''><span>Add to Order list</span></button>";
+
 echo "<div id=inner_noti>";
 echo '<table id="myTable">';
 echo '<tr>';
@@ -52,7 +62,7 @@ echo '<th>
         </th>
 
          <th>
-         pic
+         
         </th>';
 echo '</tr>';
 
@@ -73,13 +83,12 @@ foreach ($_SESSION['name'] as $key => $item) {
     echo $_SESSION['unitprice'][$key];
     echo '</td>';
     echo '<td>';
-    echo $_SESSION['unitprice'][$key] * $_SESSION['qty'][$key];
+    echo $_SESSION['amount'][$key];
     echo '</td>';
     echo '<td>';
     echo '<img  class="cancel" src="../public/image/cancel.png" style="width: 20px; height: 20px;">';
     echo '</td>';
     echo '</tr>';
-
 }
 echo '</table>';
 echo "</div>";
@@ -129,6 +138,34 @@ while ($row = mysqli_fetch_array($result)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../public/js/jquery-2.0.0.js"></script>
         <style>
+            .totaltxt {
+                position: absolute;
+                right: 380px;
+                top:25px;
+            }
+            .totalno {
+                position: absolute;
+                right: 340px;
+                top:25px;
+            }
+            .addorder {
+                width: 100px;
+                height: autopx;
+                position: absolute;
+                right:5px; top:0px;
+                background-color: rgb(106,184,42);
+                color: white;
+                padding: 10px 10px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                border-radius: 6px;
+
+            }
+            .addorder:hover {
+                background-color:rgb(152, 214, 72);
+
+            }
             .drugTable
             {
                 width: 750px;
@@ -156,33 +193,46 @@ while ($row = mysqli_fetch_array($result)) {
             }
         </style>
         <script>
+            
+            
 
             $(".cancel").click(function() {
                 var index = $(this).closest("tr").index();
+                $('.totalno').hide();
                 if (index != '')
                 {
                     $.ajax({
                         url: "removecart.php",
                         method: "POST",
                         data: {query: index},
+                        success: function(data)
+                    {
+                        $('.totalno').show();
+                        $('.totalno').html(data);
+                    }
+                    
                     });
                 }
+                
             });
-
+            
+            
 
             $(".cancel").click(function() {
                 var inputValue = $(this).closest("tr").find("input[type=text]").val();
                 var selectValuse = $(this).closest("tr").find("[name='select_job']").val();
                 var index = $(this).closest("tr").index();
                 var here = this;
+                var total=<?php echo count($_SESSION['cart']); ?>;
                 $(this).closest('tr').find('td').fadeOut('fast',
                         function(here) {
                             $(here).parents('tr:first').remove();
                         });
-
-
-
+                
+               
+               
             });
+            
 
             $(document).ready(function() {
 
@@ -190,7 +240,7 @@ while ($row = mysqli_fetch_array($result)) {
                 $('#noti_Counter')
                         .css({opacity: 0})
                         .text(<?php echo count($_SESSION['cart']); ?>)               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
-                        .css({top: '-10px'})
+                        .css({top: '-15px', right: '10px'})
                         .animate({top: '10px', opacity: 1}, 500);
 
                 $('#noti_Button').click(function() {
@@ -227,7 +277,9 @@ while ($row = mysqli_fetch_array($result)) {
         </script>
 
         <style>
-
+            .cancel {
+                cursor:pointer;
+            }
             #noti_Button {
                 cursor:pointer;
             }
@@ -287,14 +339,18 @@ while ($row = mysqli_fetch_array($result)) {
             <div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
             <div id="noti_Button">
                 <div>
-                    <img  class="cancel" src="../public/image/cart1.png" style="width: 50px; height: 50px; position: absolute; right: 50px;">    
+                    <img  class="cancel" src="../public/image/cart1.png" style="width: 50px; height: 50px; position: absolute; right: 10px;">    
                 </div>
             </div>  
             <div id="notifications">
+
                 <h3 id="h3" style="text-align: center">Shopping Cart</h3>
 
-                <div style="height:auto;"></div>
 
+
+
+
+                <div style="height:auto;"></div>
             </div>
         </div>
 
