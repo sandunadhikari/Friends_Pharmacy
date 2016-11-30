@@ -54,7 +54,7 @@ if(isset($_POST['go'])){
     <title>Update supplier details</title>
     <script type="text/javascript"></script>
     <link type="text/css" rel="stylesheet" href="css/updatesupplier.css" >
-    <script src="js/jquery-3.1.0.min.js"></script>
+<!--    <script src="js/jquery-3.1.0.min.js"></script>-->
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/updatesupplier.js"></script>
      <?php require('../includes/_header.php'); ?>
