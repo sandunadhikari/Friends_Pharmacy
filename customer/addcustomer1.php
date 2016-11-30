@@ -128,7 +128,7 @@
          </tr>
            <tr>        
             <td><span class="star">*</span>Contact Number</td>
-        <td><input type="number" name="mobile"></td>
+        <td><input type="text" name="mobile"></td>
         </tr>
                 <br>
                 <br>

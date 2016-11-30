@@ -11,14 +11,15 @@ $(document).ready(function(){
                 },
         
            mobile:{
-			   maxlength:10,
-                required:true,
-                number:true    
+			    required:true,
+                number:true, 
+                maxlength:10,
+                minlength:10,
                 },
            nic:{
-               required:true,
-               maxlength:10,
-           }
+                required:true,
+                maxlength:10,
+           },
                     
             
       },
@@ -30,12 +31,13 @@ $(document).ready(function(){
             dob:"Enter birth date",
                
             mobile:{
-					maxlength:"Length of mobile number is incorrect",
-                    required:"Please enter contact number",
+				    required:"Please enter contact number",
                     number:"Enterd number is wrong",
+                    maxlength:" Enterd number is incorrect",
+                    minlength:" Enterd number is incorrect"
                         },
             email:{
-                    required:"Please enter emil",
+                    required:"Please enter email",
                     number:"Enterd number is wrong",
                         
                     },
