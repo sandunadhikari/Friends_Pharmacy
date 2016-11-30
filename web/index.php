@@ -13,18 +13,18 @@
 
 	<div class="bottomContent">
 		<div class="bottomLeft">
-			<h3>Why do we need pharmacy?</h3>
-			<p>Today, the vast majority of websites selling prescription drugs online are doing so illegally — many of them selling unapproved, substandard, and counterfeit medicine. NABP has reviewed nearly 11,000 Internet drug outlets selling prescription medications and found 96% to be out of compliance with United States pharmacy laws and practice standards that protect the public health. Of these websites identified as Not Recommended, nearly half offer foreign or non-Food and Drug Administration-approved drugs, and many distribute dangerous counterfeits to unsuspecting consumers. Learn more about why buying online can be risky in the Buying Safely section or click on the button below for a list of .pharmacy websites.</p>
+			<h3>Why you need pharmacy?</h3>
+			<p  style="font-size:20px">As human beigns we all fall in sick in several times. After doctors pharmacy is the place where you fulfill your medical needs. Those medical needs are inevitable. But there are so many pharmacies out there will they fulfill all your medical needs? </p>
 		</div>
 
 		<div class="bottomMiddle">
 			<h3>What makes a ‘Good’ pharmacy?</h3>
-			<p>During the prototype inspection phase the published inspection decision making framework has been used by inspectors as the primary means to support the indicative judgements they make about pharmacies. With the benefit of several months’ experience of the new inspection process we are now able to highlight some of the common features inspectors have found in good pharmacies.  .</p>
+			<p style="font-size:20px"> Pharmacy is a place where most of the people tend to come in their day to day life. So the famarcy should win the trust of their customers highly. While providing medicine a pharmacy should take care of the patients  </p>
 		</div>
 
 		<div class="bottomRight">
-			<h3>“We are an online pharmacy and this is a great way to set us apart from rogue pharmacies.” </h3>
-			<p>Just by seeing the .pharmacy domain, your audience will know that your website is legitimate and operating legally and meets standards set by a global coalition that includes International Pharmaceutical Federation (FIP) and NABP, which has supported the United States boards of pharmacy in their goal of protecting the public health since 1904.</p>
+			<h3>“Why you should choose us among others” </h3>
+			<p style="font-size:20px">Selling medicine is not the one and only thing we provide for our customers. We always take good care of you and put our maximum to ease your medical needs. </p>
 		</div>
 	</div>
 

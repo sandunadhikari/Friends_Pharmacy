@@ -1,21 +1,22 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
-body{
-    font-family: arial;
-}
-#d1{
+
+#search_box{
     position: absolute;
     float:right;
     top:110px;
     right:500px;
 }
-#d2{
+/*
+#update_box{
     position: absolute;
     float: right;
     right:600px;
     top:330px;
 }
+*/
+
 #us_table{
 	border-bottom:1px solid #ddd;
 	margin: 10px;
@@ -78,7 +79,7 @@ li{
 }
 
 
-#d1{
+#search_box{
 	width: 24%;
 	border-top: 1px solid #CFD8DC;
 	border-bottom: 2px solid #CFD8DC ;
@@ -109,13 +110,22 @@ li{
 }
 
 #tbl{
-    border-spacing: 6px;
+   border-spacing: 6px;
+    position: relative;
+   left: 132px;
+}
+#search{
+    position:absolute;
+    
+    left:110px;
 }
 
-#d2{
-	width: 24%;
-	font-family: sans-serif;
-	margin: 4px;
+#update_box{
+	position: relative;
+    float: right;
+    left: 1%;
+    top: 45%;
+    width: 100%;
 }
 #i1{
     text-align: center;
@@ -141,7 +151,12 @@ fieldset{
   border: 2px solid rgb(106,184,42);
   padding-top: 30px;
   padding-bottom: 20px;
+  padding-right: 50px;
   background-color: rgb(229, 249, 212);
-  height:300px;
+/*  height:500px;*/
  
+}
+.star{
+    color:red;
+    font-weight: bold;
 }

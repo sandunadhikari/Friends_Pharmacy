@@ -25,21 +25,24 @@ if(isset($_POST['go'])){
     
    $query= mysqli_query($con,"SELECT * FROM supplier WHERE company_name='$cname'");
     $numrows=mysqli_num_rows($query);
-    if($numrows!=0){
-        echo '<script language="javascript">';
-        echo 'alert("This supplier already exist")';
-        
-        echo '</script>';
-    
-    }else 
-        {
-            mysqli_query($con,"INSERT INTO supplier (company_name,address,telephone,mobile,email,fax) VALUES ('$cname','$add','$mno','$lno','$mail','$fax');") or die("coudn't connect");
-        }
-    ?>
-    <script>alert('Added successfully');</script>
-    <?php 
+    if($numrows!=0){ ?>
+                <script>
+                    alert("This supplier exist");
+               </script>
+
+<?php
     }
-?> 
+    else{
+    
+            mysqli_query($con,"INSERT INTO supplier (company_name,address,telephone,mobile,email,fax) VALUES ('$cname','$add','$mno','$lno','$mail','$fax');") or die("coudn't connect");
+        ?>
+<script>
+    alert("Added successfully");
+</script>
+<?php        
+    }
+}
+    ?>
     
 
 
@@ -49,64 +52,65 @@ if(isset($_POST['go'])){
 <html>
 <head>
     <title>Add Supplier</title>
-<link href="css/addsupplier.css" rel="stylesheet" type="text/css">
-<?php require('../includes/_header.php'); ?>
-  <script type="text/javascript">
-        function validate(){
-            var cname=document.getElementById("cname").value;
-            var add=document.getElementById("add").value;
-            var lno=document.getElementById("mno").value;
-            var mno=document.getElementById("lno").value;
-            var mail=document.getElementById("mail").value;
-            var fax=document.getElementById("fax").value;
-            var atpos = mail.indexOf("@");
-         if( cname=="" || add=="" || mno=="" || mail==""){
-                    alert("Please Enter empty fields");
-                    return false;    
-                }else{
-                    if(isNaN(mno) || isNaN(lno) || isNaN(fax)){
-                        alert("Please Enter numbers correctly");
-                        return false;
-                    }
-                    if(atpos<0){
-                        alert("You have enterd a invalid email address");
-                        return false;
-                    }
+    <?php require('../includes/_header.php'); ?>
+    <link href="css/addsupplier.css" rel="stylesheet" type="text/css">
+
+
+   <script src="js/jquery.validate.min.js"></script>
+    <script src="js/addsupplier.js"></script>
+<style>
+            .error {
+                    color: #ff0000;
+  
+  
                 }
-            }
-    </script> 
+
+            label.error {
+                        display:block;
+                        height:17px;
+                        margin-left:9px;
+                        padding:1px 5px 0px 5px;
+                        font-size:medium;
+                        position:absolute;
+                        left:270px;
+    
+                }
+</style>
+ 
 </head>
     <body>
             <h2>Add Supplier</h2>
-    <?php require_once("../includes/navigation.php") ?>
+
         
-      
-            
+         <?php require_once("../includes/navigation.php") ?>
+           
+   
+<!--        gfh-->
     <div id="d1">
         <center>
-            <fieldset style="border: 2px solid rgb(106,184,42);">
+        <fieldset>
             <center>
-        <form method="post" action="addsupplier.php" onsubmit=" return validate();">
-            <frameset>
+        <form method="post" action="addsupplier.php" id="form">
+            
         <table>
             <tr height=60>
-            <td >Company name</td>
+            <td ><span class="star">*</span>Company name</td>
             <td><input type="text" id="cname" name="cname" autocomplete="off"></td>
             </tr>
             <tr height=60>
-            <td>Address </td>.
-            <td><input type="text" id="add" name="add" autocomplete="off"></td>
+            <td><span class="star">*</span>Address </td>.
+                <td><textarea rows="4" cols="22" type="text" id="add" name="add" autocomplete="off"></textarea></td>
             </tr>
              <tr height=60>
-            <td>Land number </td>
+            <td><span class="star">*</span>Land number </td>
             <td><input type="text" id="lno" name="lno" autocomplete="off"></td>
             </tr>
              <tr height=60>
-            <td>Mobile number </td>
+            <td><span class="star">*</span>Mobile number </td>
             <td><input type="text" id="mno" name="mno" autocomplete="off"></td>
             </tr>
              <tr height=60>
-            <td>Email </td>
+            <td><span class="star">*</span>Email </td>
             <td><input type="text" id="mail" name="mail" autocomplete="off"></td>
             </tr>
              <tr height=60>
@@ -114,17 +118,19 @@ if(isset($_POST['go'])){
             <td><input type="text" id="fax" name="fax" autocomplete="off"></td>
             </tr>
         </table>
-            <input id="i1" type="submit" name="go" value="Add"  >
-          
-       
-        </form>
+            <input id="i1" type="submit" name="go" value="Add" >
+        
+           
+           
+           </form>
+                            
+
         </center>
         </fieldset>
         </center>
         </div>
        
        
-          
-         <?php require_once('../includes/_footer.php') ?>
+      <?php require_once('../includes/_footer.php') ?>
     </body>
 </html>

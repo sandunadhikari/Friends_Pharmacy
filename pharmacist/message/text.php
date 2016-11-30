@@ -7,9 +7,11 @@
 	
 
 	// Authorisation details.
-	$username = "sachinperera200@gmail.com";
-	$hash = "28c50dbddbb8acce9afd17b12cf5fa99337b3eac";
-
+	$username = "mithsendesilva@gmail.com";
+	$apiKey = "T3IUHWbFrYs-ET7Tuv2tRA3LzJTq7wyyqsERuBJkf5";
+	//$hash = "28c50dbddbb8acce9afd17b12cf5fa99337b3eac";
+        //$pword = "Mm@0711446323";
+                 
 	// Config variables. Consult http://api.txtlocal.com/docs for more info.
 	$test = "0";
 
@@ -20,7 +22,7 @@
 	// 612 chars or less
 	// A single number or a comma-seperated list of numbers
 	$message = urlencode($message);
-	$data = "username=".$username."&hash=".$hash."&message=".$message."&sender=".$sender."&numbers=".$numbers."&test=".$test;
+	$data = "username=".$username."&apiKey=".$apiKey."&message=".$message."&sender=".$sender."&numbers=".$numbers."&test=".$test;
 	$ch = curl_init('http://api.txtlocal.com/send/?');
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);

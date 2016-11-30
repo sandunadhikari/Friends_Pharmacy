@@ -33,6 +33,7 @@
                 }
 
             }
+            header("Location: ../pharmacist/reminder2.php?nic=$nic&cno=$mobile");
         ?>
 <html>
 <head>

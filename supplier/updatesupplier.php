@@ -1,110 +1,149 @@
-<?php
- 
+<?php 
+
+error_reporting(0);
+
+    $displayForm = "display:none";
+    
+    $output='';
     $cname='';
     $add='';
-    $mno='';
     $lno='';
+    $mno='';
     $mail='';
     $fax='';
-$con=mysqli_connect("localhost","root","") or die("coudn't connect") ;
-        mysqli_select_db($con,"friends_pharmacy");
-         if(isset($_POST['btn'])){
-            $search=$_POST['search'];
-            
-           $query1= mysqli_query($con,"SELECT * FROM supplier WHERE company_name='$search'") or die("don't work");
-      while($row=mysqli_fetch_array($query1)){
-          $cname=$row['company_name'];
-          $add=$row['address'];
-          $lno=$row['telephone'];
-          $mno=$row['mobile'];
-          $mail=$row['email'];
-          $fax=$row['fax'];
-      }
-    }
-    if(isset($_POST['go'])){
-        $cname=$_POST['cname'];
-        $add=$_POST['add'];
-        $mno=$_POST['mno'];
-        $lno=$_POST['lno'];
-        $mail=$_POST['mail'];
-        $fax=$_POST['fax'];
-        
-        $query2 =mysqli_query($con,"UPDATE supplier SET company_name='$cname', address='$add', mobile=$mno, telephone=$lno, email='$mail', fax=$fax WHERE company_name='$cname'");
-      
-?>
-    <script>alert('Updated!');</script>
-    <?php 
-    }
-?> 
-    
+$con=mysqli_connect("localhost","root","") or die("Couldn't connect sql");
+mysqli_select_db($con,"friends_pharmacy") or die ("Couldn't connect to database");
 
-        
+if(isset($_POST['search'])){
+    
+    $company=$_POST['company'];
+    
+        $displayForm = "display:none"; 
+    
+    $query1= mysqli_query($con,"SELECT * FROM supplier WHERE company_name='$company'") or die("don't work");
+    
+   if($query1){
+            $displayForm = "display:block";
+    }
+   
+    }
+
+if(isset($_POST['go'])){
+    $cname=$_POST['cname'];
+    $add=$_POST['add'];
+    $lno=$_POST['lno'];
+    $mno=$_POST['mno'];
+    $mail=$_POST['mail'];
+    $fax=$_POST['fax'];
+    
+    $query2=mysqli_query($con,"UPDATE supplier set company_name='$cname' ,address='$add',telephone='$lno', mobile='$mno', email='$mail',fax='$fax'   WHERE company_name='$cname'");
+    ?>
+<script>
+     alert("Updated successfully!");
+</script>
+<?php
+}
+?>
+
+
+
+
 
 <html>
 <head>
-    <title>Update Supplier</title>
-<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
-<link type="text/css" href="css/updatesupplier.css" rel="stylesheet">
-   <?php require('../includes/_header.php'); ?>
+    <title>Update supplier details</title>
+    <script type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="css/updatesupplier.css" >
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/updatesupplier.js"></script>
+     <?php require('../includes/_header.php'); ?>
+    
+    <style>
+            .error {
+                    color: #ff0000;
+  
+  
+                }
+
+            label.error {
+                        display:block;
+                        height:17px;
+                        margin-left:9px;
+                        padding:1px 5px 0px 5px;
+                        font-size:medium;
+                        position:absolute;
+                        left:270px;
+    
+                }
+
+</style>
+ 
+    
+    
+    
 </head>
     
-<body>
-      <?php require_once("../includes/navigation.php") ?>
+    <body>
+        <h2>Update supplier</h2>
+        <?php require_once("../includes/navigation.php") ?>
+        <div id="search_box">
+            <form id="search_form" method="post" action="" >
+                <input type="text" placeholder="Enter company name" id="companyname" name="company" autocomplete="off">
+                <div id="companyList"><?php echo $output ?></div><br><br><br>
+                <input type="submit" name="search" id="search" value="Search">
+            </form>   
+        </div>
+        
+        <?php  while($rows=mysqli_fetch_assoc($query1)){ ?>
     
-    <?php 
-    $output='';
-    ?>
-    <h2>Update Supplier</h2>
-
-<div id="d1">
-    <form action="updatesupplier.php" method="post">
-    <input id= "companyname" type="text" name="search" placeholder="Company name" autocomplete="off">
-    <div id="companyList"><?php echo $output?></div>
-   <input id="load" type="submit" name="btn" value="Search">
-    </form>
+      
+        <div id="update_box" style="<?php echo $displayForm ?>" >
+            <fieldset>
+            <form id="update_form" method="post" action="updatesupplier.php" >
+             
+                <table id="tbl">
+                    <tr height=60>
+                        <td><span class="star">*</span>Company name</td>
+                        <td><input type="text" id="cname" name="cname"  value="<?php  echo $rows['company_name']; ?>" ></td>
+                    </tr>
+                    <tr height=60>
+                        <td><span class="star">*</span>Address </td>
+                        <td><textarea cols="22" rows="4" type="text" id="add" name="add" value="<?php echo $rows['address']; ?> "><?php echo $rows['address']; ?> </textarea></td>
+                    </tr>
+                    <tr height=60>
+                        <td><span class="star">*</span>Land number </td>
+                        <td><input type="text" id="lno" name="lno" value="<?php echo $rows['telephone']; ?> "></td>
+                    </tr>
+                    <tr height=60>
+                        <td><span class="star">*</span>Mobile number </td>
+                        <td><input type="text" id="mno" name="mno" value="<?php echo $rows['mobile']; ?> "></td>
+                    </tr>
+                    <tr height=60>
+                        <td><span class="star">*</span>Email </td>
+                        <td><input type="text" id="mail" name="mail" value="<?php echo $rows['email']; ?>"></td>
+                    </tr>
+                    <tr height=60>
+                        <td>Fax </td>
+                        <td><input type="text" id="fax" name="fax" value="<?php echo $rows['fax']; ?>"></td>
+                    </tr>
+            </table>
+                    <input  type="submit" name="go" value="Update" >
+            
+            </form>
+           
+         </fieldset>
+        </div>
+          
+            <?php } ?>
+        <?php require_once('../includes/_footer.php') ?>
     
-</div> 
-    <div id="d2">
-        <fieldset>
-    <center>
-    <form method="post" action="updatesupplier.php">
-       
-        <table id="tbl">
-            <tr >
-            <td>Company name</td>
-            <td ><input type="text" id="cname" name="cname" value="<?php  echo $cname; ?>"></td>
-            </tr>
-            <tr>
-            <td >Address </td>
-            <td><input type="text" id="add" name="add" value="<?php  echo $add; ?>"></td>
-            </tr>
-             <tr >
-            <td >Land number </td>
-            <td><input type="text" id="lno" name="lno" value="<?php  echo $lno; ?>"></td>
-            </tr>
-            <tr >
-            <td>Mobile number </td>
-            <td><input type="text" id="mno" name="mno" value="<?php  echo $mno; ?>"></td>
-            </tr>
-             <tr >
-            <td>Email </td>
-            <td><input type="text" id="mail" name="mail" value="<?php  echo $mail; ?>"></td>
-            </tr>
-             <tr >
-            <td>fax </td>
-            <td><input type="text" id="fax" name="fax" value="<?php  echo $fax; ?>"></td>
-            </tr>
-        </table>
-            <input id="i1" type="submit" name="go" value="Update">
-        </form>    
-    </center>
-        </fieldset>
-    </div>
-    
-     <?php require_once('../includes/_footer.php') ?>
-    
-</body>    
+    </body>
 </html>
+
+
+
+
 <script>
 $(document).ready(function(){  
       $('#companyname').keyup(function(){  
@@ -129,6 +168,7 @@ $(document).ready(function(){
            
            
         });  
+    
  });  
  
  </script>
