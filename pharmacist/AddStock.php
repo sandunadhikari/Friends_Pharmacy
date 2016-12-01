@@ -178,4 +178,4 @@ include 'template.php';
 
     });
 
-</script>>
+</script>

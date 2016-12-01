@@ -6,23 +6,26 @@ include ("../Entities/stockEntity.php");
 include 'drugcon.php';
 
 
+if (isset($_POST["next"])) {
+    $page = $_GET["page"] + 1;
+}
 
-if (isset($_GET["page"])) { 
-    $page  = $_GET["page"];
-    } 
-    else { $page=1; };
-if(isset($_POST['next'])) {
-     $page++;
+else if (isset($_POST["previous"])) {
+    $page = $_GET["page"] - 1;
 }
-else if(isset($_POST['previous'])) {
-     $page--;
-}
+else if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = 1;
+};
+
+
 $results_per_page = 5;
-$start_from = ($page-1) * $results_per_page;
-$query = "SELECT COUNT(id) AS total FROM drug"; 
+$start_from = ($page - 1) * $results_per_page;
+$query = "SELECT COUNT(id) AS total FROM drug";
 $resultpage = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 $row = $resultpage->fetch_assoc();
-$total_pages = ceil($row["total"] / $results_per_page);   
+$total_pages = ceil($row["total"] / $results_per_page);
 
 
 if (empty($_SESSION['cart'])) {
@@ -81,7 +84,9 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 
-//array_push($_SESSION['unitprice'], $_POST['dosagetype']);
+
+
+
 
 echo "<div id='notifications'>";
 echo "<h3 id='h3' style='text-align: center'>Shopping Cart</h3>";
@@ -173,6 +178,16 @@ echo "</div>";
                 right: 340px;
                 top:25px;
             }
+            .next {
+                
+                background-color: rgb(106,184,42);
+                color: white;
+                
+                border: none;
+                cursor: pointer;
+                border-radius: 6px;
+            }
+             
             .addorder {
                 width: 100px;
                 height: autopx;
@@ -215,6 +230,60 @@ echo "</div>";
                 -moz-border-radius: 50px;
                 -webkit-border-radius: 50px;
                 border-radius: 50px;
+            }
+            .cancel {
+                cursor:pointer;
+            }
+            #noti_Button {
+                cursor:pointer;
+            }
+            #noti_Counter {
+                display:block;
+                position:absolute;
+
+                right:30px;
+                background:#E1141E;
+                color:#FFF;
+                font-size:12px;
+                font-weight:normal;
+                padding:1px 3px;
+                margin:-8px 0 0 25px;
+                border-radius:2px;
+                -moz-border-radius:2px; 
+                -webkit-border-radius:2px;
+                z-index:1;
+            }
+
+            /* THE NOTIFICAIONS WINDOW. THIS REMAINS HIDDEN WHEN THE PAGE LOADS. */
+            #notifications {
+                display:none;
+                width:430px;
+                position:absolute;
+                top:60px;
+                right:5px;
+                background:#FFF;
+                border:solid 1px rgba(100, 100, 100, .20);
+                -webkit-box-shadow:0 3px 8px rgba(0, 0, 0, .20);
+                z-index: 0;
+            }
+            /* AN ARROW LIKE STRUCTURE JUST OVER THE NOTIFICATIONS WINDOW */
+            #notifications:before {         
+                content: '';
+                display:block;
+                width:0;
+                height:0;
+                color:transparent;
+                border:10px solid #CCC;
+                border-color:transparent transparent #FFF;
+                margin-top:-20px;
+                margin-left:80%;
+            }
+            #inner_noti {
+                border-bottom:solid 1px rgba(100, 100, 100, .30);
+                background-color: #caf7a3;
+            }
+            #inner_noti:hover {
+                background-color: #a9f26a;
             }
         </style>
         <script>
@@ -293,64 +362,10 @@ echo "</div>";
             });
         </script>
 
-        <style>
-            .cancel {
-                cursor:pointer;
-            }
-            #noti_Button {
-                cursor:pointer;
-            }
-            #noti_Counter {
-                display:block;
-                position:absolute;
-
-                right:30px;
-                background:#E1141E;
-                color:#FFF;
-                font-size:12px;
-                font-weight:normal;
-                padding:1px 3px;
-                margin:-8px 0 0 25px;
-                border-radius:2px;
-                -moz-border-radius:2px; 
-                -webkit-border-radius:2px;
-                z-index:1;
-            }
-
-            /* THE NOTIFICAIONS WINDOW. THIS REMAINS HIDDEN WHEN THE PAGE LOADS. */
-            #notifications {
-                display:none;
-                width:430px;
-                position:absolute;
-                top:60px;
-                right:5px;
-                background:#FFF;
-                border:solid 1px rgba(100, 100, 100, .20);
-                -webkit-box-shadow:0 3px 8px rgba(0, 0, 0, .20);
-                z-index: 0;
-            }
-            /* AN ARROW LIKE STRUCTURE JUST OVER THE NOTIFICATIONS WINDOW */
-            #notifications:before {         
-                content: '';
-                display:block;
-                width:0;
-                height:0;
-                color:transparent;
-                border:10px solid #CCC;
-                border-color:transparent transparent #FFF;
-                margin-top:-20px;
-                margin-left:80%;
-            }
-            #inner_noti {
-                border-bottom:solid 1px rgba(100, 100, 100, .30);
-                background-color: #caf7a3;
-            }
-            #inner_noti:hover {
-                background-color: #a9f26a;
-            }
-        </style>
+        
     </head>
     <body>
+
         <div id="noti_Container" >
             <div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
             <div id="noti_Button">
@@ -371,7 +386,7 @@ echo "</div>";
         </div>
 
 
-        <?php require '../includes/customer_header.php'; ?>
+<?php require '../includes/customer_header.php'; ?>
 
         <div class="content">
             <article>				
@@ -385,12 +400,12 @@ echo "</div>";
 
                 <p>Browse by category:</p>
 
-                <?php foreach ($drugArray as $key => $drug) { ?>
+<?php foreach ($drugArray as $key => $drug) { ?>
 
                     <table class = 'drugTable'>
                         <tr>
 
-                            <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
+    <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
 
                             <th width = '75px' >Brand: </th>
                             <td><?php echo $drug->medicine_name ?> </td>
@@ -421,18 +436,29 @@ echo "</div>";
                         </tr>   
                         <tr>
                             <td></td>
-                            
+
                             <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'otc.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
                             <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
                         </tr>   
                     </table>
-                
+
                 <?php } ?>
-                <?php if($total_pages<$page) {?>
-                <form>
-                     <input type="submit" name='next' value='next'>
-                </form>
+                <?php if ($total_pages > $page) { ?>
+    <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
+
+                <input type='submit' name="next" class="next" value="Next" style="height:30px; width: 90px;">
+
+                    <?php echo "</form>" ?>
                 <?php } ?>
+
+                <?php if (!($page<=1)) { ?>
+    <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
+
+                    <input type='submit' name="previous" value="Previous" class="previous">
+
+                    <?php echo "</form>" ?>
+<?php } ?>
+
             </article>
         </div>
         <aside class="topSide">			
@@ -509,12 +535,12 @@ echo "</div>";
             <div id = 'myModal' class = 'modal'>
                 <div class = 'modal-content'>
                     <h3 style = 'text-align:center;'><?php echo $drugforcart->medicine_name ?></h3>
-                  
-                    <?php echo " <form name = 'myForm2' action = 'otc.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
+
+    <?php echo " <form name = 'myForm2' action = 'otc.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
                     <table class = 'drugforcartTable'>
                         <tr>
 
-                            <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
+    <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
                             <td><input type="hidden" name ="medname" value=<?php echo $drugforcart->medicine_name ?>></td>
 
                         </tr>
@@ -557,7 +583,7 @@ echo "</div>";
                                         <?php $drid = $disid[array_search($value, $disdosage)] ?>
                                         <?php $drprice = $disprice[array_search($value, $disdosage)] ?>
                                         <?php echo "<option value=$drid>$value" . " (Rs " . $disprice[array_search($value, $disdosage)] . ")" . "</option>"; ?>
-                                    <?php } ?>
+    <?php } ?>
                                 </select>      
                             </td>
 
@@ -574,19 +600,20 @@ echo "</div>";
                         <tr>
                             <td><?php foreach ($disdosage as $value) { ?>
                                     <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
-                                <?php } ?></td>
+    <?php } ?></td>
                             <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
                             <td><a href='otc.php'> Cancel </a></td>
                         </tr>   
 
                     </table>
-                    <?php 
-                    "</form>" 
+                    <?php
+                    "</form>"
                     ?>
 
                 </div>
             </div>
-        <?php } ?>
-       
+<?php } ?>
+
     </body>
 </html>
+

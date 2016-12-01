@@ -3,7 +3,18 @@
         <?php require("../includes/_header.php"); ?>
         <link rel="stylesheet" type="text/css" href="css/reminder.css" />
         <title>Reminders</title>
+        <style>
+            #medicineList {
+                background-color: lavender;
+                width: 280px;
+                left: 200px;
+                position: relative;
+                list-style: none;
+
+            }
+        </style>
         <script>
+
             $(document).ready(function() {
                 $("#ch1").click(function() {
                     $(".weekdays").hide();
@@ -24,6 +35,30 @@
                 });
 
             });
+            $(document).ready(function() {
+                $('#txtmedname').keyup(function() {
+                    var query = $(this).val();
+                    if (query != '')
+                    {
+                        $.ajax({
+                            url: "Search.php",
+                            method: "POST",
+                            data: {query: query},
+                            success: function(data)
+                            {
+                                $('#medicineList').fadeIn();
+                                $('#medicineList').html(data);
+                            }
+                        });
+                    }
+                });
+                $(document).on('click', 'li', function() {
+                    $('#txtMedicineName').val($(this).text());
+                    $('#medicineList').fadeOut();
+
+
+                });
+            });
         </script>
     </head>
     <body>
@@ -33,7 +68,8 @@
             <form name="myForm" action="#" method ="post">
                 <fieldset>
                     <label>Medicine Name: </label>
-                    <input type="text" class="inputField" name="txtmedname" autocomplete="off" placeholder="Ex: Amoxil"/><br/>
+                    <input type="text" class="inputField" name="txtmedname" id ='txtmedname' autocomplete="off" placeholder="Ex: Amoxil"/><br/>
+                    <div id='medicineList'></div> 
                     <p></p>
                     <label>Instruction: </label>
                     <select class = "type" name="ins">
@@ -210,7 +246,7 @@
                                 <option value="24">24</option>
                             </select>
                         </div>
-                        
+
                         <p></p>
                         <label>Start Date: </label>
                         <input type="date" id="entryDate" class="inputField" name="startdate"  /><br/>
@@ -225,7 +261,7 @@
             </form>
         </div>		
         <?php require_once("../includes/_footer.php") ?>
-    
+
     </body>
 </html>
 <?php
