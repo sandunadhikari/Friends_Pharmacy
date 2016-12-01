@@ -65,13 +65,10 @@ fieldset {
 }
 
 .login {
-<<<<<<< HEAD
   position: relative;
   width: 280px;
-=======
   position: fixed;
   width: 250px;
->>>>>>> 6aa58ff09ca57721f9976161b805b716bc1f2f92
   display: none;
 }
 

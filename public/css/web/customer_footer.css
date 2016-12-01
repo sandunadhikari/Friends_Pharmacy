@@ -57,3 +57,7 @@ footer div a:hover{
 	text-decoration: underline;
 }
 
+.footer_middle a:hover{
+	color: #6bc91a;
+}
+
