@@ -8,7 +8,7 @@ switch ($_GET['type']) {
     case 'get' : {
       $search = $_GET['search'];
 
-$sql = "SELECT supplier.company_name ,supplier.mobile,supplier.telephone,supplier.fax,supplier.address,drug_price.medicine_name,drug_price.dosage,drug_price.price FROM supplier INNER JOIN drug_price WHERE supplier.id = drug_price.id AND drug_price.medicine_name LIKE '%$search%'";
+$sql = "SELECT supplier.company_name ,supplier.mobile,supplier.telephone,supplier.fax,supplier.address,drug.medicine_name,drug.dosage,drug.price FROM supplier INNER JOIN drug WHERE supplier.supplier_id = drug.supplier_id AND drug.medicine_name LIKE '%$search%'";
         
         $result = mysqli_query($con, $sql);
         $res_data = array();

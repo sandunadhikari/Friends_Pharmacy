@@ -32,7 +32,52 @@ $stockArray = array();
 <head>
 
 <script src="../public/js/jquery-2.0.0.js"></script>
-</head>
+
+<script>
+    $(document).ready(function () {
+
+        // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+        $('#noti_Counter')
+            .css({ opacity: 0 })
+            .text('<?php echo $rows ?>')               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+            .css({ top: '-10px' })
+            .animate({ top: '-2px', opacity: 1 }, 500);
+
+        $('#noti_Button').click(function () {
+
+            // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
+            $('#notifications').fadeToggle('fast', 'linear', function () {
+                if ($('#notifications').is(':hidden')) {
+                    $('#noti_Button').css('background-color', '#2E467C');
+                }
+                else $('#noti_Button').css('background-color', '#FFF');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
+            });
+
+            $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
+
+            return false;
+        });
+
+        // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
+        $(document).click(function () {
+            $('#notifications').hide();
+
+            // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
+            if ($('#noti_Counter').is(':hidden')) {
+                // CHANGE BACKGROUND COLOR OF THE BUTTON.
+                $('#noti_Button').css('background-color', '#2E467C');
+            }
+        });
+
+        $('#notifications').click(function () {
+            return True;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+        });
+    });
+</script>
+
+<link rel="stylesheet" type="text/css" href="../public/css/application.css"/>
+
+
 <style>
     .ul {
         position: fixed;
@@ -188,7 +233,7 @@ $stockArray = array();
     
 </style>
 </head>
-<body>
+
 
 <body style="margin:0;padding:0;">
     <div>
@@ -208,7 +253,7 @@ $stockArray = array();
                 
                 </div>    
 
-                <!--THE NOTIFICAIONS DROPDOWN BOX.-->
+               
                 <div id="notifications">
                     <h3 id="h3">Notifications</h3>
 			<?php 
@@ -229,49 +274,5 @@ $stockArray = array();
     </div>
 </body>
 
-</body>
 </html>
 
-<script>
-    $(document).ready(function () {
-
-        // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
-        $('#noti_Counter')
-            .css({ opacity: 0 })
-            .text('<?php echo $rows ?>')               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
-            .css({ top: '-10px' })
-            .animate({ top: '-2px', opacity: 1 }, 500);
-
-        $('#noti_Button').click(function () {
-
-            // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
-            $('#notifications').fadeToggle('fast', 'linear', function () {
-                if ($('#notifications').is(':hidden')) {
-                    $('#noti_Button').css('background-color', '#2E467C');
-                }
-                else $('#noti_Button').css('background-color', '#FFF');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
-            });
-
-            $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
-
-            return false;
-        });
-
-        // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
-        $(document).click(function () {
-            $('#notifications').hide();
-
-            // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
-            if ($('#noti_Counter').is(':hidden')) {
-                // CHANGE BACKGROUND COLOR OF THE BUTTON.
-                $('#noti_Button').css('background-color', '#2E467C');
-            }
-        });
-
-        $('#notifications').click(function () {
-            return True;       // DO NOTHING WHEN CONTAINER IS CLICKED.
-        });
-    });
-</script>
-
-<link rel="stylesheet" type="text/css" href="../public/css/application.css"/>

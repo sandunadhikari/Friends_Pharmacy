@@ -7,12 +7,14 @@ $(document).ready(function(){
                 required:true,
                 number:true,
                 maxlength:10,
+                minlength:10,
           },
         
           mno:{
                 required:true,
                 number:true,
-                maxlength:10
+                maxlength:10,
+                minlength:10
                 } ,
          mail:{
                 required:true,
@@ -33,11 +35,14 @@ $(document).ready(function(){
                 required:"Enter land number",
                 number:"Entered number is wrong",
                 maxlength:"Please enter a valid number",
+                minlength:"Please enter a valid number",
                    },
             mno:{
                 required:"Enter mobile number",
                 number:"Entered number is wrong",
                 maxlength:"Please enter a valid number",
+                minlength:"Please enter a valid number",
+                
                        
                        }, 
             mail:{

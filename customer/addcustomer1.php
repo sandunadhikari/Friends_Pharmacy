@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/jquery-2.0.0.js"></script>
         <script src="js/jquery-ui.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+            <script src="js/addcustomer.js"></script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
        
         <script>
@@ -23,6 +25,7 @@
             fieldset{
                 border: none;
                 width: 600px;
+                height:450px;
                 margin:auto;
                 text-align: center;
                 border: 2px solid rgb(106,184,42);
@@ -40,7 +43,7 @@
             }
             #btn{
                 position:relative;
-                top:370px;
+                top:450px;
                 float:right;
                 right:250px;
                 height:30px;
@@ -62,6 +65,26 @@
                 left: 70px;
             }
            
+            .error {
+                    color: #ff0000;
+  
+  
+                }
+
+            label.error {
+                        display:block;
+                        height:17px;
+                        margin-left:9px;
+                        font-size:15px;
+                        position:relative;
+                        top:1px;
+                        
+    
+                }
+            .star{
+                color: red;
+            }
+
 
         </style>
         
@@ -74,22 +97,22 @@
      <h2>Add Customers</h2>
     <div class="customer_template_container" >
         <fieldset >
-        <form action="reminder.php" method="POST" style="text-align:center ">
+        <form action="reminder.php" method="POST" style="text-align:center" id="form">
        <table id="tbl">
-        <tr>
-                <td>NIC</td>
+        <tr >
+                <td><span class="star">*</span>NIC</td>
         <td><input type="text" name="nic"></td>
         </tr>
-        <tr>
-          <td>First name</td>
+        <tr >
+          <td><span class="star">*</span>First name</td>
         <td><input type="text" name="fname" ><td>
         </tr>
-        <tr> 
-            <td>Last Name</td>
+        <tr > 
+            <td><span class="star">*</span>Last Name</td>
         <td><input type="text" name="lname" ></td>
         </tr>
         <tr>
-            <td>Date Of Birth</td>
+            <td><span class="star">*</span>Date Of Birth</td>
         <td><input type="date" name="dob" id="dob"></td>
         </tr>
         <tr>
@@ -100,12 +123,12 @@
        
        <tr>
         
-            <td>Email Address</td>
+            <td><span class="star">*</span>Email Address</td>
         <td><input type="email" name="email"></td>
          </tr>
            <tr>        
-            <td>Contact Number</td>
-        <td><input type="number" name="mobile"></td>
+            <td><span class="star">*</span>Contact Number</td>
+        <td><input type="text" name="mobile"></td>
         </tr>
                 <br>
                 <br>
