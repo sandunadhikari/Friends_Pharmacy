@@ -167,7 +167,7 @@ if (isset($_POST['btnSubmit'])) {
     $supplier_name = $_POST["supplier"];
     $discription = $_POST["txtContent"];
     $group = $_POST["group"];
-    $image = $_POST["pic"];
+    $image = "../public/image/drug/".$_POST["pic"];
 
     $host = "localhost";
     $user = "root";

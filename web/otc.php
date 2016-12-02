@@ -8,12 +8,9 @@ include 'drugcon.php';
 
 if (isset($_POST["next"])) {
     $page = $_GET["page"] + 1;
-}
-
-else if (isset($_POST["previous"])) {
+} else if (isset($_POST["previous"])) {
     $page = $_GET["page"] - 1;
-}
-else if (isset($_GET["page"])) {
+} else if (isset($_GET["page"])) {
     $page = $_GET["page"];
 } else {
     $page = 1;
@@ -178,8 +175,8 @@ echo "</div>";
                 right: 340px;
                 top:25px;
             }
-            .next {
-                
+            .next,.previous {
+
                 background-color: rgb(106,184,42);
                 color: white;
                 
@@ -187,7 +184,7 @@ echo "</div>";
                 cursor: pointer;
                 border-radius: 6px;
             }
-             
+
             .addorder {
                 width: 100px;
                 height: autopx;
@@ -362,7 +359,7 @@ echo "</div>";
             });
         </script>
 
-        
+
     </head>
     <body>
 
@@ -386,7 +383,7 @@ echo "</div>";
         </div>
 
 
-<?php require '../includes/customer_header.php'; ?>
+        <?php require '../includes/customer_header.php'; ?>
 
         <div class="content">
             <article>				
@@ -400,12 +397,12 @@ echo "</div>";
 
                 <p>Browse by category:</p>
 
-<?php foreach ($drugArray as $key => $drug) { ?>
+                <?php foreach ($drugArray as $key => $drug) { ?>
 
                     <table class = 'drugTable'>
                         <tr>
 
-    <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
+                            <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
 
                             <th width = '75px' >Brand: </th>
                             <td><?php echo $drug->medicine_name ?> </td>
@@ -437,28 +434,33 @@ echo "</div>";
                         <tr>
                             <td></td>
 
+
                             <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'otc.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
                             <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
                         </tr>   
                     </table>
 
                 <?php } ?>
-                <?php if ($total_pages > $page) { ?>
-    <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
+                <table>
+                    <tr>
+                
 
-                <input type='submit' name="next" class="next" value="Next" style="height:30px; width: 90px;">
+                <?php if (!($page <= 1)) { ?>
+                    <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
+
+                    <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Previous" class="previous"></td>
 
                     <?php echo "</form>" ?>
                 <?php } ?>
+                    <?php if ($total_pages > $page) { ?>
+                    <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
 
-                <?php if (!($page<=1)) { ?>
-    <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
-
-                    <input type='submit' name="previous" value="Previous" class="previous">
+                        <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
 
                     <?php echo "</form>" ?>
-<?php } ?>
-
+                <?php } ?>
+                    </tr>
+                     </table>
             </article>
         </div>
         <aside class="topSide">			
@@ -472,148 +474,153 @@ echo "</div>";
 
         <?php require '../includes/customer_footer.php'; ?>
         <?php if (isset($_GET['id'])) { ?>
-            <?php echo $id2 = $_GET['id']; ?>
+            <?php if (isset($_GET['id']) && isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
+                <?php echo $id2 = $_GET['id']; ?>
 
-            <?php
-            $query = "SELECT * FROM drug where id=$id2";
-            $drugarray = array();
-            $result1 = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
-            while ($row = mysqli_fetch_array($result1)) {
-                $id = $row[0];
-                $medicine_name = $row[1];
-                $generic_name = $row[2];
-                $type = $row[3];
-                $category = $row[4];
-                $supplier_id = $row[5];
-                $discription = $row[6];
-                $image = $row[7];
-                $group_name = $row[8];
-                $drugforcart = new drugEntity($id, $medicine_name, $generic_name, $type, $category, $supplier_id, $discription, $image, $group_name);
-            }
-
-
-
-            $query3 = "SELECT DISTINCT dosage from stock where medicine_name='$drugforcart->medicine_name'";
-            $result3 = mysqli_query($mysqli, $query3) or die(mysqli_error($mysqli));
-            $disdosage = array();
-
-            while ($row = mysqli_fetch_array($result3)) {
-                array_push($disdosage, $row[0]);
-            }
-
-            $disprice = array();
-            foreach ($disdosage as $val) {
-                $query4 = "SELECT price from stock where dosage='$val' AND medicine_name='$drugforcart->medicine_name' AND entry_date = (select max(entry_date) from stock where medicine_name='$drugforcart->medicine_name' AND dosage='$val')";
-                $result4 = mysqli_query($mysqli, $query4) or die(mysqli_error($mysqli));
-                while ($row = mysqli_fetch_array($result4)) {
-                    array_push($disprice, $row[0]);
+                <?php
+                $query = "SELECT * FROM drug where id=$id2";
+                $drugarray = array();
+                $result1 = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+                while ($row = mysqli_fetch_array($result1)) {
+                    $id = $row[0];
+                    $medicine_name = $row[1];
+                    $generic_name = $row[2];
+                    $type = $row[3];
+                    $category = $row[4];
+                    $supplier_id = $row[5];
+                    $discription = $row[6];
+                    $image = $row[7];
+                    $group_name = $row[8];
+                    $drugforcart = new drugEntity($id, $medicine_name, $generic_name, $type, $category, $supplier_id, $discription, $image, $group_name);
                 }
-            }
-            $disid = array();
-            foreach ($disdosage as $val) {
-                $query5 = "SELECT id from stock where dosage='$val' AND medicine_name='$drugforcart->medicine_name' AND expire_date = (select MIN(expire_date) from stock where medicine_name='$drugforcart->medicine_name' AND dosage='$val')";
-                $result5 = mysqli_query($mysqli, $query5) or die(mysqli_error($mysqli));
-                while ($row = mysqli_fetch_array($result5)) {
-                    array_push($disid, $row[0]);
+
+
+
+                $query3 = "SELECT DISTINCT dosage from stock where medicine_name='$drugforcart->medicine_name'";
+                $result3 = mysqli_query($mysqli, $query3) or die(mysqli_error($mysqli));
+                $disdosage = array();
+
+                while ($row = mysqli_fetch_array($result3)) {
+                    array_push($disdosage, $row[0]);
                 }
-            }
-            $disqty = array();
-            foreach ($disdosage as $val) {
-                $query6 = "SELECT quantity from stock where dosage='$val' AND medicine_name='$drugforcart->medicine_name' AND expire_date = (select MIN(expire_date) from stock where medicine_name='$drugforcart->medicine_name' AND dosage='$val')";
-                $result6 = mysqli_query($mysqli, $query6) or die(mysqli_error($mysqli));
-                while ($row = mysqli_fetch_array($result6)) {
-                    array_push($disqty, $row[0]);
+
+                $disprice = array();
+                foreach ($disdosage as $val) {
+                    $query4 = "SELECT price from stock where dosage='$val' AND medicine_name='$drugforcart->medicine_name' AND entry_date = (select max(entry_date) from stock where medicine_name='$drugforcart->medicine_name' AND dosage='$val')";
+                    $result4 = mysqli_query($mysqli, $query4) or die(mysqli_error($mysqli));
+                    while ($row = mysqli_fetch_array($result4)) {
+                        array_push($disprice, $row[0]);
+                    }
                 }
-            }
+                $disid = array();
+                foreach ($disdosage as $val) {
+                    $query5 = "SELECT id from stock where dosage='$val' AND medicine_name='$drugforcart->medicine_name' AND expire_date = (select MIN(expire_date) from stock where medicine_name='$drugforcart->medicine_name' AND dosage='$val')";
+                    $result5 = mysqli_query($mysqli, $query5) or die(mysqli_error($mysqli));
+                    while ($row = mysqli_fetch_array($result5)) {
+                        array_push($disid, $row[0]);
+                    }
+                }
+                $disqty = array();
+                foreach ($disdosage as $val) {
+                    $query6 = "SELECT quantity from stock where dosage='$val' AND medicine_name='$drugforcart->medicine_name' AND expire_date = (select MIN(expire_date) from stock where medicine_name='$drugforcart->medicine_name' AND dosage='$val')";
+                    $result6 = mysqli_query($mysqli, $query6) or die(mysqli_error($mysqli));
+                    while ($row = mysqli_fetch_array($result6)) {
+                        array_push($disqty, $row[0]);
+                    }
+                }
 
 
 
-            mysqli_close($mysqli);
-            ?>
+                mysqli_close($mysqli);
+                ?>
 
 
-            <div id = 'myModal' class = 'modal'>
-                <div class = 'modal-content'>
-                    <h3 style = 'text-align:center;'><?php echo $drugforcart->medicine_name ?></h3>
+                <div id = 'myModal' class = 'modal'>
+                    <div class = 'modal-content'>
+                        <h3 style = 'text-align:center;'><?php echo $drugforcart->medicine_name ?></h3>
 
-    <?php echo " <form name = 'myForm2' action = 'otc.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
-                    <table class = 'drugforcartTable'>
-                        <tr>
+                        <?php echo " <form name = 'myForm2' action = 'otc.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
+                        <table class = 'drugforcartTable'>
+                            <tr>
 
-    <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
-                            <td><input type="hidden" name ="medname" value=<?php echo $drugforcart->medicine_name ?>></td>
+                                <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
+                                <td><input type="hidden" name ="medname" value=<?php echo $drugforcart->medicine_name ?>></td>
 
-                        </tr>
+                            </tr>
 
-                        <tr>
-                            <th>Generic: </th>
-                            <td><?php echo $drugforcart->generic_name ?></td>
+                            <tr>
+                                <th>Generic: </th>
+                                <td><?php echo $drugforcart->generic_name ?></td>
 
-                        </tr>
+                            </tr>
 
-                        <tr>
-                            <th>Group: </th>
-                            <td><?php echo $drugforcart->group_name ?></td>
-                        </tr>
+                            <tr>
+                                <th>Group: </th>
+                                <td><?php echo $drugforcart->group_name ?></td>
+                            </tr>
 
-                        <tr>
-                            <th>Type: </th>
-                            <td><?php echo $drugforcart->type ?></td>
-                        </tr>
+                            <tr>
+                                <th>Type: </th>
+                                <td><?php echo $drugforcart->type ?></td>
+                            </tr>
 
-                        <tr>
-                            <th>Category: </th>
-                            <td><?php echo $drugforcart->category ?></td>
-                        </tr>
+                            <tr>
+                                <th>Category: </th>
+                                <td><?php echo $drugforcart->category ?></td>
+                            </tr>
 
-                        <tr>
-                            <td colspan='2' ><?php echo $drugforcart->discription ?></td>
-                        </tr> 
+                            <tr>
+                                <td colspan='2' ><?php echo $drugforcart->discription ?></td>
+                            </tr> 
 
-                        <tr>
+                            <tr>
 
 
-                            <td></td>
-                            <td>Dosage:</td>
+                                <td></td>
+                                <td>Dosage:</td>
 
-                            <td>
-                                <select name = 'dosagetype' >
+                                <td>
+                                    <select name = 'dosagetype' >
 
-                                    <?php foreach ($disdosage as $value) { ?>
-                                        <?php $drid = $disid[array_search($value, $disdosage)] ?>
-                                        <?php $drprice = $disprice[array_search($value, $disdosage)] ?>
-                                        <?php echo "<option value=$drid>$value" . " (Rs " . $disprice[array_search($value, $disdosage)] . ")" . "</option>"; ?>
-    <?php } ?>
-                                </select>      
-                            </td>
+                                        <?php foreach ($disdosage as $value) { ?>
+                                            <?php $drid = $disid[array_search($value, $disdosage)] ?>
+                                            <?php $drprice = $disprice[array_search($value, $disdosage)] ?>
+                                            <?php echo "<option value=$drid>$value" . " (Rs " . $disprice[array_search($value, $disdosage)] . ")" . "</option>"; ?>
+                                        <?php } ?>
+                                    </select>      
+                                </td>
 
-                        </tr>   
-                        <tr>
-                            <td></td>
-                            <td>Quantity:</td>
-                            <td><input type="number" name='qtybox'></td>
-                            <td>
+                            </tr>   
+                            <tr>
+                                <td></td>
+                                <td>Quantity:</td>
+                                <td><input type="number" name='qtybox'></td>
+                                <td>
 
-                            </td>
+                                </td>
 
-                        </tr>   
-                        <tr>
-                            <td><?php foreach ($disdosage as $value) { ?>
-                                    <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
-    <?php } ?></td>
-                            <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
-                            <td><a href='otc.php'> Cancel </a></td>
-                        </tr>   
+                            </tr>   
+                            <tr>
+                                <td><?php foreach ($disdosage as $value) { ?>
+                                        <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
+                                    <?php } ?></td>
+                                <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
+                                <td><a href='otc.php'> Cancel </a></td>
+                            </tr>   
 
-                    </table>
-                    <?php
-                    "</form>"
-                    ?>
+                        </table>
+                        <?php
+                        "</form>"
+                        ?>
 
+                    </div>
                 </div>
-            </div>
-<?php } ?>
+            <?php } else if (isset($_GET['id']) && !isset($_SESSION['email']) && empty($_SESSION['email'])) { ?>        
+                echo'<script>alert("\t\t\tYou are not logged in.\nPlease logged in before make an order.");
+                    window.location.href = "otc.php?page=<?php echo $page ?>";</script>';
 
+            <?php } ?>
+        <?php } ?>
     </body>
 </html>
 
