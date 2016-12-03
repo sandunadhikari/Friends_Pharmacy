@@ -54,7 +54,6 @@ if(isset($_POST['go'])){
     <title>Update supplier details</title>
     <script type="text/javascript"></script>
     <link type="text/css" rel="stylesheet" href="css/updatesupplier.css" >
-<!--    <script src="js/jquery-3.1.0.min.js"></script>-->
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/updatesupplier.js"></script>
      <?php require('../includes/_header.php'); ?>
@@ -128,7 +127,7 @@ if(isset($_POST['go'])){
                         <td><input type="text" id="fax" name="fax" value="<?php echo $rows['fax']; ?>"></td>
                     </tr>
             </table>
-                    <input  type="submit" name="go" value="Update" >
+                    <input  type="submit" name="go" value="Update" id="update" >
             
             </form>
            

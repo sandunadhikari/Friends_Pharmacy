@@ -1,7 +1,5 @@
 $(document).ready(function(){
-   
-      $("#update_form").validate({
-          
+    $("#update_form").validate({
           rules:{
                 cname:"required",
                 add:"required",
@@ -57,19 +55,6 @@ $(document).ready(function(){
     }
        
    }); 
-     $("#search_form").validate({
-          
-          rules:{
-                company:"required",
-          },
-         message:{
-             company:"Please enter supplier name",
-         },
-         
-          submitHandler: function(form) {
-      form.submit();
-    }
-          }); 
     
     
       

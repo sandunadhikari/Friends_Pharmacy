@@ -50,7 +50,7 @@
    
  <div id="d1">
         <form action="viewsupplier.php" method="post">
-           <input type="text"  id="search" name="search" oninput=" return getsuppliers()" placeholder="Medicine name"><br><br>
+           <input type="text"  id="search" name="search" oninput=" return getsuppliers()" placeholder="Medicine name" ><br><br>
         <center>
        
            <div class="d2">  

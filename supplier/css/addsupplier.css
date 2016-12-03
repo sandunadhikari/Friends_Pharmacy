@@ -39,18 +39,17 @@ table {
 #i1{
     position: absolute;
     float:right;
-    top:450px;
+    top:500px;
     left:300px;
-    
+    background-color: rgb(106,184,42);
     height:30px;
     cursor: pointer;
-   
     width:60px;
+    border-radius: 4px;
+    color: white;
 }
  
-#btn1:hover{
-    background-color: #6AB82A;
-}
+
 
 .star{
     color:red;

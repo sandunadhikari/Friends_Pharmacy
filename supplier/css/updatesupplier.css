@@ -116,8 +116,33 @@ li{
 }
 #search{
     position:absolute;
+   
+    width: 90px;
+    height: auto;
+    top:150px;
+    left: 140px;
+    background-color: rgb(106,184,42);
+    color: white;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#update{
+    position: absolute;
+    top:430px;
+    width: 90px;
+    height: auto;
+    left: 690px;
+    background-color: rgb(106,184,42);
+    color: white;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     
-    left:110px;
 }
 
 #update_box{
