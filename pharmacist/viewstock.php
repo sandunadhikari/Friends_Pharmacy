@@ -62,7 +62,7 @@
                 <input type="text" name="search" id="search" placeholder="Search" oninput='loadStock()'/>
             </div>
             <div class="left-float">
-                <span class="icon" onclick="loadStock()"><img src="Zoom-icon.png" height="40" width="40" /></span>
+                <span class="icon" onclick="loadStock()"><img src="img/Zoom-icon.png" height="40" width="40" /></span>
             </div>
             <div>
                 

@@ -22,7 +22,7 @@
 			<input type="checkbox" class="read-more-state1" id="post-1" />
                                 <img src="../public/image/event1.jpg" class="logo"> 
 				<p class="read-more-wrap">Get Your Flu Shot Today
-Get the flu shot that helps provide a lifesaving vaccine to a child in need.</p>
+				Get the flu shot that helps provide a lifesaving vaccine to a child in need. </p>
 				<label for="post-1" class="read-more-trigger1"></label>
 		</article>
 		
@@ -30,7 +30,7 @@ Get the flu shot that helps provide a lifesaving vaccine to a child in need.</p>
 			<h1>So long sore throat. Hello long distance!</h1>
 			<input type="checkbox" class="read-more-state2" id="post-2" />
                                 <img src="../public/image/event2.jpg" class="logo"> 
-				<p class="read-more-wrap">Get treatment for minor illnesses & more at select stores.</span></p>
+				<p class="read-more-wrap">Get treatment for minor illnesses and more at select stores.</span></p>
 
 				<label for="post-2" class="read-more-trigger2"></label>	
 		</article>
@@ -40,7 +40,7 @@ Get the flu shot that helps provide a lifesaving vaccine to a child in need.</p>
 			<input type="checkbox" class="read-more-state3" id="post-3" />
                                  <img src="../public/image/event3.png" class="logo">
 				<p class="read-more-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		Next time skip the waiting room. Video chat with a U.S. board-certified physician who can treat common illnesses like sinus and ear infections, sore throats, and skin problems, 24/7. Doctors can even write prescriptions, if necessary.</span></p>
+				Next time skip the waiting room. Video chat with a U.S. board-certified physician who can treat common illnesses like sinus and ear infections, sore throats, and skin problems, 24/7. Doctors can even write prescriptions, if necessary.</span></p>
 
 				<label for="post-3" class="read-more-trigger3"></label>
 		</article>

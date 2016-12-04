@@ -63,9 +63,12 @@
           <li><span><a href="../pharmacist/report3.php">Cashier Wise Report</a></span></li>
           
         </ul>
-      <li><span><a href="#" id="menu">Sms</a></span></li>
+      <li><span><a href="#" id="menu">Reminder</a></span></li>
       <ul class="submenu">
+           <li><span><a href="../pharmacist/reminder1.php">Add Reminder</a></span></li>
           <li><span><a href="../pharmacist/sms.php">Message</a></span></li>
+          <li><span><a href="../pharmacist/dayreminder.php">Day reminders</a></span></li>
+          <li><span><a href="../pharmacist/weekdayreminder.php">Week reminders</a></span></li>
         </ul>
 
     </ul>    

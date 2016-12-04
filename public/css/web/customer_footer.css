@@ -44,7 +44,20 @@ footer h3{
 footer p a{
 	color: #6bc91a;
 }
+footer p a:hover{
+	text-decoration: underline;
+}
 
 footer div a{
 	color: #e0dede;
 }
+
+footer div a:hover{
+	color: white;
+	text-decoration: underline;
+}
+
+.footer_middle a:hover{
+	color: #6bc91a;
+}
+

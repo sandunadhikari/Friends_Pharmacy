@@ -50,7 +50,10 @@ if(isset($_GET["delete"]))
     $stockTable = $stockController->CreateStockTables($medicine_Name);
     $content = $stockTable;
 }
-
+if(isset($_GET["outofstock"])) {
+    $stockTable = $stockController->CreateStockTables($_GET["outofstock"]);
+    $content = $stockTable;
+}
 
 include 'template.php';
 ?>

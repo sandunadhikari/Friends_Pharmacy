@@ -9,9 +9,11 @@ class StockEntity {
     public $entry_date;
     public $production_date;
     public $expire_date;
-   
+    public $dosage;
+    public $price;
+            
     
-    function __construct($id,$medicine_name,$batch_no,$quantity,$entry_date,$production_date,$expire_date) {
+    function __construct($id,$medicine_name,$batch_no,$quantity,$entry_date,$production_date,$expire_date,$dosage,$price) {
         $this->id = $id;
         $this->medicine_name = $medicine_name;
         $this->batch_no = $batch_no;
@@ -19,6 +21,9 @@ class StockEntity {
         $this->entry_date = $entry_date;
         $this->production_date = $production_date;
         $this->expire_date = $expire_date;
+        $this->dosage = $dosage;
+        $this->price = $price;
+        
        
     }
 

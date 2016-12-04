@@ -11,12 +11,15 @@ body{
     font-family: Calibri;
 
 }
+.cname{
+    z-index: -1;
+}
 fieldset{
   border: none;
   width: 600px;
   margin:auto;
   text-align: center;
-  
+  border: 2px solid rgb(106,184,42);
   padding-top: 30px;
   padding-bottom: 20px;
   background-color: rgb(229, 249, 212);
@@ -36,15 +39,18 @@ table {
 #i1{
     position: absolute;
     float:right;
-    top:450px;
+    top:500px;
     left:300px;
-    
+    background-color: rgb(106,184,42);
     height:30px;
     cursor: pointer;
-   
     width:60px;
+    border-radius: 4px;
+    color: white;
 }
  
-#btn1:hover{
-    background-color: #6AB82A;
+
+
+.star{
+    color:red;
 }
