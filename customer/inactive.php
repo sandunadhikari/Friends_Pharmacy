@@ -2,12 +2,12 @@
 <head>
     
     <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
     <style>
         h2{
             position: relative;
                top:70px;
                left:50px;
-               
         }
        
         .top bar{
@@ -16,16 +16,18 @@
         }
         .content{
             position: relative;
-            left:80px;
         }
         
     </style>
-    <script src="js/jquery-2.0.0.js"></script>
-        
+    <link rel="stylesheet" type="text/css" href="css/tempStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../public/css/application.css"/>
+    
+    <?php require('../includes/_header.php'); ?>    
         <script>
             $(function(){
                 loadcustomers();
                 $("#medicine-form").hide();
+                // $("#customer-table").DataTable();
             });
             function loadcustomers(){
                 $.ajax({
@@ -53,7 +55,8 @@
                         row += records[i].email + "\",";
                         row += records[i].contact_number + ")'>";
                         row += "<td>" + records[i].nic +"</td>";
-                        row += "<td>" +  name + "</td>";
+                        row += "<td>" +  records[i].first_name + "</td>";
+                        row += "<td>" + records[i].last_name + "</td>";
                         row +="<td>" + records[i].email + "</td>";
                         row +="<td>" + records[i].contact_number + "</td>";
                         row += "<td><input id='"+records[i].nic+"' type='checkbox' ";
@@ -120,7 +123,7 @@
             // }
         </script>
 	
-    <?php require('../includes/_header.php'); ?>
+
 	
 </head>
 
@@ -155,14 +158,15 @@
         <br>
         
         <div class="content">
-            <table border="1" style='width:60%;'>
+            <table id="customer-table" border="1" style='width:100%;'>
                 <thead>
                     <tr>
                         <th>NIC</th>
-                        <th>Customer Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email Address</th>
                         <th>Contact Number</th>
-                        <th>Active or Inactive customer (Click to change)</th>
+                        <th>Active or<br> Inactive customer<br> (Click to change)</th>
                     </tr>
                 </thead>
                 <tbody id="table_body"></tbody>
@@ -173,7 +177,7 @@
     </div>		
 	
     
-    <?php require_once('../includes/_footer.php') ?>
+    <!--php require_once('../includes/_footer.php') ?-->
     
         
         </div>             

@@ -13,7 +13,7 @@ body {
     height: 50px;
 }
 
-.top-bar select, input {
+.top-bar select {
     width: 200px;
     margin-left: 15px;
 }

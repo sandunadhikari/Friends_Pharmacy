@@ -28,10 +28,8 @@ $stockArray = array();
 ?>
 
 <!DOCTYPE html>
-<html>
-<head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-</head>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <style>
     .ul {
         position: fixed;
@@ -226,10 +224,6 @@ $stockArray = array();
             
         </ul>
     </div>
-</body>
-
-</body>
-</html>
 
 <script>
     $(document).ready(function () {
