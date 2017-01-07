@@ -90,23 +90,23 @@
                     <input type="number" class="inputField" name="qty" autocomplete="off"/><br/>
                     <p></p>
                     <label >Schedule type: </label><br>
-                    <input type="checkbox" name="daybox" id="ch1" value="Every Days"> Every Days<br>
+                    <input type="checkbox" name="daybox" id="ch1" value="Every Days"> Every consecutive days<br>
                     <input type="checkbox" name="weekdaybox" id="ch2" value="Every Weekdays"> Every Weekdays
                     <p></p>
                     <div class="day">
                         <label>Frequency: </label>
                         <select class = "type" name="frq">
                             <option value="1">Every 1 day</option>
-                            <option value="2">Every 2 day</option>
-                            <option value="3">Every 3 day</option>
-                            <option value="4">Every 4 day</option>
-                            <option value="5">Every 5 day</option>
-                            <option value="1">Every 6 day</option>
-                            <option value="2">Every 7 day</option>
-                            <option value="3">Every 14 day</option>
-                            <option value="4">Every 21 day</option>
-                            <option value="5">Every 30 day</option>
-                            <option value="5">Every 60 day</option>
+                            <option value="2">Every 2 days</option>
+                            <option value="3">Every 3 days</option>
+                            <option value="4">Every 4 days</option>
+                            <option value="5">Every 5 days</option>
+                            <option value="1">Every 6 days</option>
+                            <option value="2">Every 7 days</option>
+                            <option value="3">Every 14 days</option>
+                            <option value="4">Every 21 days</option>
+                            <option value="5">Every 30 days</option>
+                            <option value="5">Every 60 days</option>
                         </select></br>
                         <div class="timeselect">
                             <input type="checkbox"  name="time1" value="time1" id="t1" />One time <br>

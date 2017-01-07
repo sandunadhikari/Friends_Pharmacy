@@ -91,7 +91,7 @@ echo "<h3 id='h3' style='text-align: center'>Shopping Cart</h3>";
 echo "<p class='totaltxt' style='text-align: center'>Total :</p>";
 echo "<p class='totalno' style='text-align: center'>" . array_sum($_SESSION['amount']) . "</p>";
 
-echo "<button class='addorder'  onclick= 'window.location.href ='index.php''><span>Add to Order list</span></button>";
+echo "<button class='addorder'  onclick='confirmorder()'><span>Add to Order list</span></button>";
 
 echo "<div id=inner_noti>";
 echo '<table id="myTable" class="sortable">';
@@ -147,6 +147,7 @@ echo "</div>";
 //print_r($_SESSION['cart']);
 //print_r($_SESSION['qty']);
 //session_destroy();
+$t = sizeof($_SESSION['cart']);
 ?>
 
 
@@ -179,7 +180,7 @@ echo "</div>";
 
                 background-color: rgb(106,184,42);
                 color: white;
-                
+
                 border: none;
                 cursor: pointer;
                 border-radius: 6px;
@@ -237,7 +238,7 @@ echo "</div>";
             #noti_Counter {
                 display:block;
                 position:absolute;
-                
+
                 right:30px;
                 background:#E1141E;
                 color:#FFF;
@@ -279,15 +280,26 @@ echo "</div>";
             #inner_noti {
                 border-bottom:solid 1px rgba(100, 100, 100, .30);
                 background-color: #caf7a3;
-                
+
             }
             #inner_noti:hover {
                 background-color: #a9f26a;
             }
         </style>
         <script>
+            function confirmorder() {
+                var t = <?php echo $t ?>;
+                if (t != 0) {
+                    var c = confirm("Confirm your order");
 
-
+                    // if true, delete item and refresh
+                    if (c)
+                        window.location = "addOrder.php";
+                }
+                else {
+                    alert("Order is empty!");
+                }
+            }
 
             $(".cancel").click(function() {
                 var index = $(this).closest("tr").index();
@@ -389,7 +401,7 @@ echo "</div>";
 
         <div class="content">
             <article>				
-                <p>	Search for a products:</p>
+                <p>Search for a products:</p>
                 <form>
                     <input type="text" placeholder="Search..." required>
                     <button type="button">Search</button>
@@ -445,24 +457,24 @@ echo "</div>";
                 <?php } ?>
                 <table>
                     <tr>
-                
 
-                <?php if (!($page <= 1)) { ?>
-                    <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
 
-                    <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Previous" class="previous"></td>
+                        <?php if (!($page <= 1)) { ?>
+                            <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
 
-                    <?php echo "</form>" ?>
-                <?php } ?>
-                    <?php if ($total_pages > $page) { ?>
-                    <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
+                            <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Previous" class="previous"></td>
 
-                        <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
+                            <?php echo "</form>" ?>
+                        <?php } ?>
+                        <?php if ($total_pages > $page) { ?>
+                            <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
 
-                    <?php echo "</form>" ?>
-                <?php } ?>
+                            <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
+
+                            <?php echo "</form>" ?>
+                        <?php } ?>
                     </tr>
-                     </table>
+                </table>
             </article>
         </div>
         <aside class="topSide">			
