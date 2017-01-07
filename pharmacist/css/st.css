@@ -156,6 +156,8 @@ input[type=submit] {
     width: 280px;
     left: 200px;
     position: relative; 
+    top:-4px;
+    left:207px;
 
 }
 #supplierList {

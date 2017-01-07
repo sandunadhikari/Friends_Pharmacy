@@ -11,8 +11,8 @@ class text {
 
 
         // Authorisation details.
-        $username = "mithsendesilva@gmail.com";
-        $apiKey = "T3IUHWbFrYs-ET7Tuv2tRA3LzJTq7wyyqsERuBJkf5";
+        $username = "mage2ndmaileka@gmail.com";
+        $apiKey = "V0Mkls8wpMA-ol5DVgJzV6n3KvrxQpQJerkFX4N303";
         //$hash = "28c50dbddbb8acce9afd17b12cf5fa99337b3eac";
         //$pword = "Mm@0711446323";
         // Config variables. Consult http://api.txtlocal.com/docs for more info.

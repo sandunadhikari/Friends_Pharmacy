@@ -5,8 +5,10 @@
 </body>
 </html>
 
-
-
-
-
-
+<?php
+function f1($a,$b=1) {
+    echo $a;
+    echo $b;
+}
+f1(2,4);
+?>

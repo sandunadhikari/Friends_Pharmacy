@@ -94,7 +94,7 @@ echo "<p class='totalno' style='text-align: center'>" . array_sum($_SESSION['amo
 echo "<button class='addorder'  onclick= 'window.location.href ='index.php''><span>Add to Order list</span></button>";
 
 echo "<div id=inner_noti>";
-echo '<table id="myTable">';
+echo '<table id="myTable" class="sortable">';
 echo '<tr>';
 echo '<th>
             Medicine name
@@ -237,7 +237,7 @@ echo "</div>";
             #noti_Counter {
                 display:block;
                 position:absolute;
-
+                
                 right:30px;
                 background:#E1141E;
                 color:#FFF;
@@ -262,6 +262,7 @@ echo "</div>";
                 border:solid 1px rgba(100, 100, 100, .20);
                 -webkit-box-shadow:0 3px 8px rgba(0, 0, 0, .20);
                 z-index: 0;
+                border-radius: 6px;
             }
             /* AN ARROW LIKE STRUCTURE JUST OVER THE NOTIFICATIONS WINDOW */
             #notifications:before {         
@@ -278,6 +279,7 @@ echo "</div>";
             #inner_noti {
                 border-bottom:solid 1px rgba(100, 100, 100, .30);
                 background-color: #caf7a3;
+                
             }
             #inner_noti:hover {
                 background-color: #a9f26a;

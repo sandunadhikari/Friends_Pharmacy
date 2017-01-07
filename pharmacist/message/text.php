@@ -1,14 +1,12 @@
 <?php
 
-	$recipient=$_POST['recipient'];
-	$message=$_POST['message'];
 	
 	echo "Your message is sucsesfuly";
 	
 
 	// Authorisation details.
-	$username = "mithsendesilva@gmail.com";
-	$apiKey = "T3IUHWbFrYs-ET7Tuv2tRA3LzJTq7wyyqsERuBJkf5";
+	$username = "mage2ndmaileka@gmail.com";
+	$apiKey = "V0Mkls8wpMA-ol5DVgJzV6n3KvrxQpQJerkFX4N303";
 	//$hash = "28c50dbddbb8acce9afd17b12cf5fa99337b3eac";
         //$pword = "Mm@0711446323";
                  
@@ -17,8 +15,8 @@
 
 	// Data for text message. This is the text message data.
 	$sender = "Friends Pharmacy"; // This is who the message appears to be from.
-	$numbers = "'94'+'$recipient'"; // A single number or a comma-seperated list of numbers
-	$message = "$message";
+	$numbers = "'94'+'711446323'"; // A single number or a comma-seperated list of numbers
+	$message = "skfjsfjs";
 	// 612 chars or less
 	// A single number or a comma-seperated list of numbers
 	$message = urlencode($message);

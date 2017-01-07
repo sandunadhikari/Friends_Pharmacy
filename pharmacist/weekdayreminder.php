@@ -1,20 +1,17 @@
 <?php
 
 include ("../Entities/reminderEntity.php");
-require 'message/text2.php';
+require 'msg/example.php';
 date_default_timezone_set('Asia/Colombo');
 
-$host = "localhost";
-$user = "root";
-$passwd = "";
-$database = "friends_pharmacy";
-$mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
-
+include '../database/dbconnect.php';
 
 $today = date("l");
 $curhour = date("H");
+$m = date("i");
 
-$query = "SELECT * FROM reminderweekday where $today=1 AND time=$curhour";
+
+$query = "SELECT * FROM reminderweekday where $today=1 AND time=$curhour AND min=$m";
 $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 $reminderArray = array();
 while ($row = mysqli_fetch_array($result)) {
@@ -43,7 +40,7 @@ while ($row = mysqli_fetch_array($result)) {
 mysqli_close($mysqli);
 
 
-
+print_r($reminderArray);
 
 //print_r($reminderArray);
 $text = new text();
@@ -55,7 +52,7 @@ foreach ($reminderArray as $key => $reminder) {
     echo $reminder->time;
 
     $text->msg($reminder->medname, $reminder->instruction, $reminder->quantity, $reminder->time,$reminder->contactno);
-    //$reminder->contactno
+    //$reminder->contactno 
 }
 
 

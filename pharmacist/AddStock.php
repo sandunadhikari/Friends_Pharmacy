@@ -40,10 +40,11 @@
 
     }
     function myFunction() {
-        window.location = "AddMedicine.php"; 
+        window.location = "AddMedicine.php";
     }
 
 </script>
+
 <?php
 $title = "Add Stock";
 
@@ -51,41 +52,93 @@ $content = "<h2 style='text-align:center;'>Add New Stock</h2>
     <form name='myForm' action='AddStock.php' method ='post' autocomplete='off' onsubmit='return validateForm()'>
     
       <fieldset>
-        <label class='lblf' for='name'>Medicine Name: </label>
-        <input type ='text' id='txtMedicineName' class='inputField' name ='txtMedicineName' autocomplete='off'><br/>
+        <table>
+              <tr>
+                <td>
+                <label class='lblf' for='name'>Medicine Name: </label>
+                </td>
+                <td>
+                <input type ='text' id='txtMedicineName' class='inputField' name ='txtMedicineName' autocomplete='off'>
+                </td>
+                <td>
+                <a href='AddMedicine.php'>
+                <img src='../public/image/AddMed.PNG' >
+                </a>
+                </td>
+           </tr>
+          </table>
         <div id='medicineList'></div> 
-        <p></p>
-        <label class='lblf' for='batch_number'>Batch Number: </label>
-	<input type='text' class='inputField' name='txtbatchNumber' autocomplete='off'/><br/>
-        <p></p>
-        <label class='lblf' for='quantity'>Quantity: </label>
-	<input type='number' class='inputField' name='txtQuantity' autocomplete='off' /><br/>
-        <p></p>
-         <label class='lblf' >Dosage : </label>
-	<input type='text' class='inputField' name='txtdosage' autocomplete='off' placeholder='Ex: 250mg'/><br/>
-        <p></p>
-        <label class='lblf' >Price(Rs) : </label>
-	<input type='number' class='inputField' name='price' autocomplete='off' /><br/>
-        <p></p>
-        <label class='lblf' for='Entry_date'>Entry Date: </label>
-	<input type='date' id='entryDate' class='inputField' name='entry_date'  /><br/>
-        <p></p>
-        <label class='lblf' for='production_date'>Production Date: </label>
-	<input type='date' id='entryDate' class='inputField' name='production_date' /><br/>
-        <p></p>
-        <label class='lblf' for='expire_date'>EXP Date: </label>
-	<input type='date' id='entryDate' class='inputField' name='EXP_date' /><br/>
-        <p></p>
+        
+        <table>
+        <tr>
+            <td>
+                <label class='lblf' for='batch_number'>Batch Number: </label>
+            </td>
+            <td>
+                <input type='text' class='inputField' name='txtbatchNumber' autocomplete='off'/><br/>
+            </td>
+            </tr>
+        <tr>
+        <td>
+            <label class='lblf' for='quantity'>Quantity: </label>
+        </td>
+        <td>
+            <input type='number' class='inputField' name='txtQuantity' autocomplete='off' /><br/>
+        </td>
+        
+        </tr>
+        <tr>
+            <td>
+            <label class='lblf' >Dosage : </label>
+            </td>
+            <td>
+           <input type='text' class='inputField' name='txtdosage' autocomplete='off' placeholder='Ex: 250mg'/><br/>
+           </td>
+        </tr>
+        <tr>
+            <td>
+            <label class='lblf' >Price(Rs) : </label>
+            </td>
+            <td>
+            <input type='number' class='inputField' name='price' autocomplete='off' /><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class='lblf' for='Entry_date'>Entry Date: </label>
+            </td>
+            <td>
+            <input type='date' id='entryDate' class='inputField' name='entry_date'  /><br/>
+            </td>
+       </tr>
+       <tr> 
+            <td>
+            <label class='lblf' for='production_date'>Production Date: </label>
+            </td>
+            <td>
+            <input type='date' id='entryDate' class='inputField' name='production_date' /><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class='lblf' for='expire_date'>EXP Date: </label>
+            </td>
+            <td>
+            <input type='date' id='entryDate' class='inputField' name='EXP_date' /><br/>
+            </td>
+        </tr>
+        <tr>
+        <td>
         <input type='submit' name = 'btnSubmit'></span><br/> 
+        </td>
+        </tr>
+        <table>
+        
         </fieldset>
         
 </form> 
 
-<button id='myBtn' onclick='myFunction()' style='position:absolute; top:170px; right:200px; background-color: rgb(106,184,42); color: white;
-    padding: 5px 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;'>Add new medicine</button><br/>";
+";
 
 if (isset($_POST['btnSubmit'])) {
 

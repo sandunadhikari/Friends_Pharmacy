@@ -13,12 +13,18 @@
                     $(".day").hide();
                     $(".weekdays").toggle();
                 });
+                $("#t1").click(function() {
+                    $(".ts1").toggle();
+
+                });
 
                 $("#t2").click(function() {
+                    $(".ts1").toggle();
                     $(".ts2").toggle();
 
                 });
                 $("#t3").click(function() {
+                    $(".ts1").toggle();
                     $(".ts2").toggle();
                     $(".ts3").toggle();
                 });
@@ -78,100 +84,118 @@
                             <input type="checkbox"  name="time3" value="time3" id="t3"/>Three times <br>
                             <p></p>
                         </div>
-                        <label>Time(24 hour):</label>
-                        <div class="ts1">
-                            <select id="time1" name="daytime1">
-                                <option value="0">00</option>
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                                <option value="3">03</option>
-                                <option value="4">04</option>
-                                <option value="5">05</option>
-                                <option value="6">06</option>
-                                <option value="7">07</option>
-                                <option value="8">08</option>
-                                <option value="9">09</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                            </select>
-                        </div>
-                        <div class="ts2">
-                            <select id="time2" name="daytime2">
-                                <option value="fr1">00</option>
-                                <option value="fr2">01</option>
-                                <option value="fr3">02</option>
-                                <option value="fr4">03</option>
-                                <option value="fr5">04</option>
-                                <option value="fr5">05</option>
-                                <option value="fr5">06</option>
-                                <option value="fr5">07</option>
-                                <option value="8">08</option>
-                                <option value="8">08</option>
-                                <option value="9">09</option>
-                                <option value="10">10</option>
-                                <option value="fr3">11</option>
-                                <option value="fr4">12</option>
-                                <option value="fr5">13</option>
-                                <option value="fr5">14</option>
-                                <option value="fr5">15</option>
-                                <option value="8">16</option>
-                                <option value="fr3">17</option>
-                                <option value="fr4">18</option>
-                                <option value="fr5">19</option>
-                                <option value="fr5">20</option>
-                                <option value="fr5">21</option>
-                                <option value="8">22</option>
-                                <option value="fr5">21</option>
-                                <option value="8">22</option>
-                                <option value="fr5">23</option>
-                                <option value="8">24</option>
-                            </select></br>
-                        </div>
-                        <div class="ts3">
-                            <select id="time3" name="daytime3">
-                                <option value="fr1">00</option>
-                                <option value="fr2">01</option>
-                                <option value="fr3">02</option>
-                                <option value="fr4">03</option>
-                                <option value="fr5">04</option>
-                                <option value="fr5">05</option>
-                                <option value="fr5">06</option>
-                                <option value="fr5">07</option>
-                                <option value="8">08</option>
-                                <option value="8">08</option>
-                                <option value="9">09</option>
-                                <option value="10">10</option>
-                                <option value="fr3">11</option>
-                                <option value="fr4">12</option>
-                                <option value="fr5">13</option>
-                                <option value="fr5">14</option>
-                                <option value="fr5">15</option>
-                                <option value="8">16</option>
-                                <option value="fr3">17</option>
-                                <option value="fr4">18</option>
-                                <option value="fr5">19</option>
-                                <option value="fr5">20</option>
-                                <option value="fr5">21</option>
-                                <option value="8">22</option>
-                                <option value="fr5">21</option>
-                                <option value="8">22</option>
-                                <option value="fr5">23</option>
-                                <option value="8">24</option>
-                            </select><br>
-                        </div>
+                        <table>
+                            
+                            <tr>
+
+                                <td><label>Time(24 hour):</label><td>
+                            </tr>
+                            <tr>   
+                                <td></td>
+                                <td><div class="ts1">
+                                        hours<select id="time1" name="daytime1">
+                                            <option value="0">00</option>
+                                            <option value="1">01</option>
+                                            <option value="2">02</option>
+                                            <option value="3">03</option>
+                                            <option value="4">04</option>
+                                            <option value="5">05</option>
+                                            <option value="6">06</option>
+                                            <option value="7">07</option>
+                                            <option value="8">08</option>
+                                            <option value="9">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select>
+                                    </div></td>
+                                <td><div class="ts1">
+                                         minutes:<input type="number" min="0" max="60" name="min1"  />
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><div class="ts2">
+                                        hours<select id="time2" name="daytime2">
+                                            <option value="0">00</option>
+                                            <option value="1">01</option>
+                                            <option value="2">02</option>
+                                            <option value="3">03</option>
+                                            <option value="4">04</option>
+                                            <option value="5">05</option>
+                                            <option value="6">06</option>
+                                            <option value="7">07</option>
+                                            <option value="8">08</option>
+                                            <option value="9">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select>
+                                    </div></td>
+                                <td><div class="ts2">
+                                        minutes:<input type="number" min="0" max="60" name="min2"  />
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <th></th>    
+                                <td><div class="ts3">
+                                        hours<select id="time3" name="daytime3">
+                                            <option value="0">00</option>
+                                            <option value="1">01</option>
+                                            <option value="2">02</option>
+                                            <option value="3">03</option>
+                                            <option value="4">04</option>
+                                            <option value="5">05</option>
+                                            <option value="6">06</option>
+                                            <option value="7">07</option>
+                                            <option value="8">08</option>
+                                            <option value="9">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select><br>
+                                    </div></td>
+                                <td><div class="ts3">
+                                         minutes:<input type="number" min="0" max="60" name="min3"  />
+                                    </div></td>
+                            </tr>
+                        </table>
                         <p></p>
                     </div>
                     <div class="weekdays">
@@ -186,37 +210,46 @@
                             <input type="checkbox"  name="sunday" value="sunday" />SUNDAY <br />
                         </div>
                         <p></p>
-                        <label>Time(24 hour):</label>
-                        <div class="ts1">
-                            <select id="time" name="weektime" >
-                                <option value="0">00</option>
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                                <option value="3">03</option>
-                                <option value="4">04</option>
-                                <option value="5">05</option>
-                                <option value="6">06</option>
-                                <option value="7">07</option>
-                                <option value="8">08</option>
-                                <option value="9">09</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                            </select>
-                        </div>
-                        
+                        <table>
+                            <tr>
+                                <td style="position: relative; right:5px; widtd: 200px;"><label>time(24 hour):</label></td>
+                                <td style="position: relative; right:5px;">hour:</td>
+
+                            <div class="ts1">
+                                <td style="position: relative; right:5px;">
+                                    <select id="time" name="weektime" >
+                                        <option value="0">00</option>
+                                        <option value="1">01</option>
+                                        <option value="2">02</option>
+                                        <option value="3">03</option>
+                                        <option value="4">04</option>
+                                        <option value="5">05</option>
+                                        <option value="6">06</option>
+                                        <option value="7">07</option>
+                                        <option value="8">08</option>
+                                        <option value="9">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                    </select>
+                            </div></td>
+                            <td style="position: relative; left:25px;">minutes</td>
+                            <td style="position: relative; left:25px;"><input type="number" min="0" max="60" name="min"  /></td>
+                            </tr>
+                        </table> 
+
                         <p></p>
                         <label>Start Date: </label>
                         <input type="date" id="entryDate" class="inputField" name="startdate"  /><br/>
@@ -251,6 +284,9 @@ if (isset($_POST['btnsubmitrem'])) {
     $time1 = 100;
     $time2 = 100;
     $time3 = 100;
+    $min1 = 100;
+    $min2 = 100;
+    $min3 = 100;
 
 
 
@@ -259,24 +295,30 @@ if (isset($_POST['btnsubmitrem'])) {
 
         if (isset($_POST["time1"])) {
             $time1 = $_POST["daytime1"];
+            $min1 = $_POST["min1"];
         }
         if (isset($_POST["time2"])) {
             $time1 = $_POST["daytime1"];
             $time2 = $_POST["daytime2"];
+            $min1 = $_POST["min1"];
+            $min2 = $_POST["min2"];
         }
         if (isset($_POST["time3"])) {
             $time1 = $_POST["daytime1"];
             $time2 = $_POST["daytime2"];
             $time3 = $_POST["daytime3"];
+            $min1 = $_POST["min1"];
+            $min2 = $_POST["min2"];
+            $min3 = $_POST["min3"];
         }
 
         $dayadd = $_POST["frq"];
 
 
         $query = "INSERT INTO reminderday
-            (nic, contactno,medname, instruction, quantity, time1,time2,time3, startdate, enddate)
+            (nic, contactno,medname, instruction, quantity, time1,time2,time3, startdate, enddate,min1,min2,min3)
              VALUES
-             ('$nic', '$contactno','$medname', '$instruction', '$quantity', '$time1','$time2','$time3', CURDATE(), CURDATE()+ $dayadd)";
+             ('$nic', '$contactno','$medname', '$instruction', '$quantity', '$time1','$time2','$time3', CURDATE(), CURDATE()+ $dayadd,'$min1','$min2','$min3')";
 
 
         if (mysqli_query($mysqli, $query)) {
@@ -289,6 +331,7 @@ if (isset($_POST['btnsubmitrem'])) {
         $time = $_POST["weektime"];
         $startdate = $_POST["startdate"];
         $enddate = $_POST["enddate"];
+        $min = $_POST["min"];
         $Monday = 0;
         $Tuesday = 0;
         $Wednesday = 0;
@@ -296,6 +339,7 @@ if (isset($_POST['btnsubmitrem'])) {
         $Friday = 0;
         $Satday = 0;
         $Sunday = 0;
+        
 
 
         if (isset($_POST["monday"])) {
@@ -321,9 +365,9 @@ if (isset($_POST['btnsubmitrem'])) {
         }
 
         $query = "INSERT INTO reminderweekday
-            (nic, contactno,medname, instruction, quantity,time,startdate,enddate,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)
+            (nic, contactno,medname, instruction, quantity,time,startdate,enddate,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,min)
              VALUES
-             ('$nic', '$contactno','$medname', '$instruction', '$quantity','$time','$startdate','$enddate','$Monday','$Tuesday','$Wednesday','$Thursday','$Friday','$Satday','$Sunday')";
+             ('$nic', '$contactno','$medname', '$instruction', '$quantity','$time','$startdate','$enddate','$Monday','$Tuesday','$Wednesday','$Thursday','$Friday','$Satday','$Sunday',$min)";
 
 
         if (mysqli_query($mysqli, $query)) {

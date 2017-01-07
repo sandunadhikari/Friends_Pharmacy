@@ -1,16 +1,13 @@
 <?php
 
 include ("../Entities/dayreminderEntity.php");
-require 'message/text2.php';
+require 'msg/example.php';
 date_default_timezone_set('Asia/Colombo');
-$host = "localhost";
-$user = "root";
-$passwd = "";
-$database = "friends_pharmacy";
-$mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+include '../database/dbconnect.php';
 $curhour = date("H");
+$m = date("i");
 $curdate = date('y:m:d');
-$query = "SELECT * FROM reminderday where enddate>CURDATE() AND (time1=$curhour OR time2=$curhour OR time3=$curhour)";
+$query = "SELECT * FROM reminderday where enddate>CURDATE() AND ((time1=$curhour AND min1=$m) OR (time2=$curhour AND min2=$m) OR (time3=$curhour AND min3=$m))";
 $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 $reminderArray = array();
 while ($row = mysqli_fetch_array($result)) {

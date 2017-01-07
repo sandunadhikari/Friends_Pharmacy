@@ -36,11 +36,13 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
 
 }
 
 /* Modal Content */
 .modal-content {
+    
     background-color: rgb(229, 249, 212);
     margin: auto;
     padding-left: 50px;
@@ -69,4 +71,28 @@
 }
 .btnaddcat {
     display: none;
+}
+
+.sortable tr
+{
+    padding: 7px;
+
+    text-align: center;
+}
+.sortable tr:hover {
+    background-color: rgb(229, 249, 212);
+}
+.sortable th {
+    padding: 8px;
+    border: 1px solid rgb(106,184,42);
+    text-align: center;
+    background-color: rgb(180, 200, 180);
+}
+
+.sortable td
+{
+    padding: 8px;
+    border: 1px solid rgb(106,184,42);
+    text-align: center;
+
 }
