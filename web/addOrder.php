@@ -17,9 +17,9 @@ $order_no = $row[0] + 1;
 
 
 $query1 = "INSERT INTO cust_orders
-            (order_no,cust_email,date,total)
+            (order_no,cust_email,date,total,status)
              VALUES
-             ('$order_no','$email', CURDATE(),'$total')";
+             ('$order_no','$email', CURDATE(),'$total','not confirmed')";
 
 mysqli_query($mysqli, $query1);
 

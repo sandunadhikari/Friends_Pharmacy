@@ -9,6 +9,15 @@
         if (c)
             window.location = "removeStock2.php?delete=" + id;
     }
+    function showConfirm2(no)
+    {
+        // build the confirmation box
+        var c = confirm("Confirm the order!");
+
+        // if true, delete item and refresh
+        if (c)
+            window.location = "cust_orders.php?confirmed=" + no;
+    }
 </script>
 <?php
 include ("../Entities/stockEntity.php");
@@ -54,7 +63,7 @@ class stockController {
                     <th><b>batch_no</b></th>
                     <th><b>quantity</b></th>
                     <th><b>dosage</b></th>
-                    <th><b>price</b></th>
+                    <th><b>price (Rs)</b></th>
                     <th><b>entry_date</b></th>
                     <th><b>expire_date</b></th>
                     <th><b>production_date</b></th>
@@ -92,10 +101,8 @@ class stockController {
         $result = "
        
        <h3 style='text-align:center;'>Order List - $no<h3>
-        
-          <table class='sortable'>
+        <table class='sortable'>
                 <tr>
-                    
                     <th></th>
                     <th><b>Medicine name</b></th>
                     <th><b>Dosage</b></th>
@@ -104,20 +111,12 @@ class stockController {
                 </tr>";
         while ($row = mysqli_fetch_array($resultq)) {
             $result = $result . "
-                    
-                
                 <tr>
-                    
                     <td><a href='#' >Edit</td>
                     <td><b>$row[1]</b></td>
                     <td><b>$row[2]</b></td>
                     <td><b>$row[3]</b></td>
-                 
-                    
-                    
                 </tr>
-               
-
 ";
         }
         $result = $result . "</table>";
@@ -126,43 +125,32 @@ class stockController {
 
     function orderTable() {
         include '../database/dbconnect.php';
-        $query = "SELECT * FROM cust_orders";
+        $query = "SELECT * FROM cust_orders where status = 'not confirmed'";
         $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>Order List<h3>
+       <h3 style='text-align:center;'>New orders List<h3>
         
           <table class='sortable'>
                 <tr>
-                    
-                    
                     <th><b>Order number</b></th>
                     <th><b>Customer email</b></th>
                     <th><b>Date</b></th>
                     <th><b>Total</b></th>
-                    
                 </tr>";
         while ($row = mysqli_fetch_array($resultq)) {
             $result = $result . "
-                    
-                
                 <tr>
-                    
-                    
                     <td><b>$row[0]</b></td>
                     <td><b>$row[1]</b></td>
                     <td><b>$row[2]</b></td>
                     <td><b>$row[3]</b></td>
                     <td><a href='cust_orders.php?order_no=$row[0]' >List items</td>
-                    <td><a href='#' >Confirm</td>
                     <td><a href='#' >Notify</td>
-                    
-                    
-                </tr>
-               
-
+                    <td><a href='#' onClick=showConfirm2($row[0])><img  class='confirm' src='../public/image/OK.png' style='width: 35px; height: 35px;'></a></td>
+                 </tr>
 ";
         }
         $result = $result . "</table>";
@@ -206,7 +194,7 @@ class stockController {
                     <th><b>batch no</b></th>
                     <th><b>quantity</b></th>
                     <th><b>dosage</b></th>
-                    <th><b>price</b></th>
+                    <th><b>price (Rs)</b></th>
                     <th><b>entry date</b></th>
                     <th><b>expire date</b></th>
                     <th><b>production date</b></th>
