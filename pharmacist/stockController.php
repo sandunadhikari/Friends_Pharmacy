@@ -39,8 +39,8 @@ class stockController {
             $price = $row[8];
 
 
-            //Create stock objects and store them in an array.
-            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date,$dosage,$price);
+//Create stock objects and store them in an array.
+            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date, $dosage, $price);
             array_push($stockArray, $stock);
         }
         mysqli_close($mysqli);
@@ -83,12 +83,95 @@ class stockController {
         return $result;
     }
 
+    function orderListTable($no) {
+        include '../database/dbconnect.php';
+        $query = "SELECT * FROM cust_orders_items where order_no = $no";
+        $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+
+        $result = "";
+        $result = "
+       
+       <h3 style='text-align:center;'>Order List - $no<h3>
+        
+          <table class='sortable'>
+                <tr>
+                    
+                    <th></th>
+                    <th><b>Medicine name</b></th>
+                    <th><b>Dosage</b></th>
+                    <th><b>Quantity</b></th>
+                    
+                </tr>";
+        while ($row = mysqli_fetch_array($resultq)) {
+            $result = $result . "
+                    
+                
+                <tr>
+                    
+                    <td><a href='#' >Edit</td>
+                    <td><b>$row[1]</b></td>
+                    <td><b>$row[2]</b></td>
+                    <td><b>$row[3]</b></td>
+                 
+                    
+                    
+                </tr>
+               
+
+";
+        }
+        $result = $result . "</table>";
+        return $result;
+    }
+
+    function orderTable() {
+        include '../database/dbconnect.php';
+        $query = "SELECT * FROM cust_orders";
+        $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+
+        $result = "";
+        $result = "
+       
+       <h3 style='text-align:center;'>Order List<h3>
+        
+          <table class='sortable'>
+                <tr>
+                    
+                    
+                    <th><b>Order number</b></th>
+                    <th><b>Customer email</b></th>
+                    <th><b>Date</b></th>
+                    <th><b>Total</b></th>
+                    
+                </tr>";
+        while ($row = mysqli_fetch_array($resultq)) {
+            $result = $result . "
+                    
+                
+                <tr>
+                    
+                    
+                    <td><b>$row[0]</b></td>
+                    <td><b>$row[1]</b></td>
+                    <td><b>$row[2]</b></td>
+                    <td><b>$row[3]</b></td>
+                    <td><a href='cust_orders.php?order_no=$row[0]' >List items</td>
+                    <td><a href='#' >Confirm</td>
+                    <td><a href='#' >Notify</td>
+                    
+                    
+                </tr>
+               
+
+";
+        }
+        $result = $result . "</table>";
+        return $result;
+    }
+
     function UpdateStockTables($medicine_Name) {
-        $host = "localhost";
-        $user = "root";
-        $passwd = "";
-        $database = "friends_pharmacy";
-        $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+        include '../database/dbconnect.php';
+
 
         $query = "SELECT * FROM stock WHERE medicine_name LIKE '$medicine_Name'";
 
@@ -106,7 +189,7 @@ class stockController {
             $dosage = $row[7];
             $price = $row[8];
 
-            //Create stock objects and store them in an array.
+//Create stock objects and store them in an array.
             $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date, $dosage, $price);
             array_push($stockArray, $stock);
         }
@@ -135,7 +218,7 @@ class stockController {
                 
                 <tr>
                     
-                    <td><a href='updateStock1.php?update=$stock->id' >Update</td>
+                    <td><a href='updateStock1.php?update=$stock->id' >Item List</td>
                     <td><b>$stock->batch_no</b></td>
                     <td><b>$stock->quantity</b></td>
                     <td><b>$stock->dosage</b></td>
@@ -161,7 +244,7 @@ class stockController {
         $database = "friends_pharmacy";
         $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
         $query = "select medicine_name from stock where id=$id";
-        //Execute query and close connection
+//Execute query and close connection
         $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
         $row = mysqli_fetch_array($result);
         mysqli_close($mysqli);
@@ -186,7 +269,7 @@ class stockController {
         $database = "friends_pharmacy";
         $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
 
-        //Execute query and close connection
+//Execute query and close connection
         mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }

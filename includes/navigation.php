@@ -70,7 +70,7 @@
           <li><span><a href="../pharmacist/dayreminder.php">Day reminders</a></span></li>
           <li><span><a href="../pharmacist/weekdayreminder.php">Week reminders</a></span></li>
         </ul>
-
+      <li><span><a href="../pharmacist/cust_orders.php" id="menu">Web customer orders</a></span></li>
     </ul>    
 </div>
 
