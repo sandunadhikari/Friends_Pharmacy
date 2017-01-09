@@ -70,10 +70,10 @@
             <li><span><a href="../pharmacist/dayreminder.php">Day reminders</a></span></li>
             <li><span><a href="../pharmacist/weekdayreminder.php">Week reminders</a></span></li>
         </ul> 
-        <li><span><a href="#" id="menu">Web customer orders</a></span></li>
+        <li><span><a href="#" id="menu">Web Customer Orders</a></span></li>
         <ul class="submenu">
             <li><span><a href="../pharmacist/cust_orders.php">New Orders</a></span></li>
-            <li><span><a href="#">Confirmed orders</a></span></li>
+            <li><span><a href="../pharmacist/confiredOrder.php">Confirmed Orders</a></span></li>
             
         </ul>
     </ul>

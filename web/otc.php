@@ -55,9 +55,6 @@ if (isset($_POST['btnsubmititem'])) {
 }
 
 
-
-
-
 $query = "SELECT * FROM drug ORDER BY id ASC LIMIT $start_from, $results_per_page";
 
 $drugArray = array();
@@ -86,10 +83,10 @@ while ($row = mysqli_fetch_array($result)) {
 
 
 echo "<div id='notifications'>";
-echo "<h3 id='h3' style='text-align: center'>Shopping Cart</h3>";
+echo "<h3 id='h3' style='text-align: center; color:red;'>Shopping Cart</h3>";
 
-echo "<p class='totaltxt' style='text-align: center'>Total :</p>";
-echo "<p class='totalno' style='text-align: center'>" . array_sum($_SESSION['amount']) . "</p>";
+echo "<p class='totaltxt' style='text-align: center  font:13px helvetica; font-weight:bold;'>Total :</p>";
+echo "<p class='totalno' style='text-align: center' font:13px helvetica; font-weight:bold;>" . array_sum($_SESSION['amount']) . "</p>";
 
 echo "<button class='addorder'  onclick='confirmorder()'><span>Add to Order list</span></button>";
 
@@ -462,7 +459,7 @@ $t = sizeof($_SESSION['cart']);
                         <?php if (!($page <= 1)) { ?>
                             <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
 
-                            <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Previous" class="previous"></td>
+                            <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Back" class="previous"></td>
 
                             <?php echo "</form>" ?>
                         <?php } ?>

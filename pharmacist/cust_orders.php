@@ -6,7 +6,7 @@ $title = "Customer orders";
 $orderController = new orderController();
 if (isset($_GET["order_no"])) {
     $no = $_GET["order_no"];
-     $content = "
+    $content = "
         <table style='position: relative; left:950px;'>
             <tr>
                 <td>
@@ -15,16 +15,24 @@ if (isset($_GET["order_no"])) {
                 </tr>
         </table>";
     $orderListTable = $orderController->orderListTable($_GET["order_no"]);
-    $content = $content . $orderListTable;
-   
-
-
+    
+    $content = $content . $orderListTable."<a href='cust_orders.php'><img  class='confirm' src='../public/image/back.png' style='width: 100px;; height: 35px; position: relative; left:930px;'></a>
+                ";
+} else if (isset($_POST["btnsub"])) {
+    $no = $_POST["btnno"];
+    $msg = $_POST["txtarea"];
+    $orderController->reject($no, $msg);
+    echo '<script language="javascript">';
+    echo 'alert("Notification is sent to the customer!");';
+    echo '</script>';
+    $orderTable = $orderController->orderTable("not confirmed");
+    $content = $orderTable;
 } else if (isset($_GET["confirmed"])) {
     $orderController->confirmOrder($_GET["confirmed"]);
-    $orderTable = $orderController->orderTable();
+    $orderTable = $orderController->orderTable("not confirmed");
     $content = $orderTable;
 } else {
-    $orderTable = $orderController->orderTable();
+    $orderTable = $orderController->orderTable("not confirmed");
     $content = $orderTable;
 }
 
@@ -39,7 +47,7 @@ $content = $content . "<div id='confirmBox' class='confirmBox'>
                     <label align='center' width='10px'>Reason: </label>
                     </td>
                     <td >
-                    <textarea rows='4' cols='50'></textarea>
+                    <textarea rows='4' cols='50' name='txtarea'></textarea>
                     </td>
                 </tr>
 
@@ -48,7 +56,9 @@ $content = $content . "<div id='confirmBox' class='confirmBox'>
           
           
           <p></p>
-          <input type='submit' name = 'btnSubmitcat'>
+          <input type='hidden' name = 'btnno' id = 'no'>
+          <input type='submit' name = 'btnsub' id = 'btnsub'>
+          
           </form>
         </div>
         
