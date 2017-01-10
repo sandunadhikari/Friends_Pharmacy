@@ -1,9 +1,10 @@
 $(document).ready(function()
 {
+    alert("enter");
 		$('.reply').keyup(function(e)
 		{
 			if (e.keyCode == 13) 
-			{
+			{       alert("enter");
 				var post_id = $(this).attr('post_id');
 				var reply = $(this).val();
 
@@ -12,3 +13,12 @@ $(document).ready(function()
 			}
 		});
 });
+
+//document.getElementById(".reply")
+//    .addEventListener("keyup", function(event) {
+//    event.preventDefault();
+//    if (event.keyCode == 13) {
+//        document.getElementById(".reply").click();
+//         alert("enter");
+//    }
+//});

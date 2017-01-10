@@ -54,6 +54,10 @@ if(isset($_GET["outofstock"])) {
     $stockTable = $stockController->CreateStockTables($_GET["outofstock"]);
     $content = $stockTable;
 }
+if(isset($_GET["allOutDate"])) {
+    $stockTable = $stockController->allOutDate();
+    $content = $stockTable;
+}
 
 include 'template.php';
 ?>

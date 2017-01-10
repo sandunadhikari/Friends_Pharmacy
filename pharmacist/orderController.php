@@ -46,7 +46,7 @@ class orderController {
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>Order List - $no<h3>
+       <h2 style='text-align:center;'>Order List - $no<h2>
         <table class='sortable'>
                 <tr>
                    
@@ -84,7 +84,7 @@ class orderController {
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>New orders List<h3>
+       <h2 style='text-align:center;'>New orders List<h2>
         
           <table class='sortable'>
                 <tr>
@@ -132,9 +132,7 @@ class orderController {
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>New orders List<h3>
-        
-          <table class='sortable'>
+       <table class='sortable'>
                 <tr>
                     <th><b>Order number</b></th>
                     <th><b>Customer email</b></th>
@@ -178,8 +176,6 @@ class orderController {
 
         $result = "";
         $result = "
-       
-       <h3 style='text-align:center;'>New orders List<h3>
         
           <table class='sortable'>
                 <tr>
