@@ -32,6 +32,7 @@
     function add() {
         var quantity = $('#quantity').val();
         var medi_id = $('#medicine_list').val();
+        var discount = $('#discount').val();
         medicines.push(medi_id);
 
         var unitprice;
@@ -67,6 +68,9 @@
         var totalPriceCell = row.insertCell(5);
 
         var totalPrice = parseInt(unitprice) * parseInt(quantity);
+        // apply discount
+        totalPrice = totalPrice - (totalPrice * parseInt(discount)/100);
+
         numberCell.innerHTML = number;
         medicineCell.innerHTML = medi_name;
         quantityCell.innerHTML = quantity;
@@ -171,6 +175,7 @@
                 </script>
                 <br>
                 Quantity : <input type="number" name="quantity" id="quantity" > <br>
+                Discount : <input type="number" name="discount" id="discount" /> %<br />
                 <input type="button" onclick="add()" value="Add"> <input type="reset" value="Clear">
             </form>
             <input type="button" onclick="finish()" value="Finish">
