@@ -1,10 +1,13 @@
-<?php include '../database/dbconnect.php';?>
+<?php include '../database/dbconnect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Invoice</title>
         <link rel="stylesheet" href="css/orderbill.css" media="all" />
+        <script src="../public/js/jquery-2.0.0.js"></script>
+
+
     </head>
     <body>
         <header class="clearfix">
@@ -31,13 +34,13 @@
         <div id="details" class="clearfix">
             <div id="client">
                 <div class="to">INVOICE TO:</div>
-                <h2 class="name"><?php echo $row[0].' '.$row[1]?></h2>
-                <div class="email"><a href=<?php $mail ;?> ><?php echo $mail;?></a></div>
+                <h2 class="name"><?php echo $row[0] . ' ' . $row[1] ?></h2>
+                <div class="email"><a href=<?php $mail; ?> ><?php echo $mail; ?></a></div>
             </div>
             <div id="invoice">
-                <h1>INVOICE -</h1>
+                <h1>INVOICE </h1>
                 <div class="date">Date of Invoice: <?php echo date("d/m/Y") ?></div>
-                
+
             </div>
         </div>
 
@@ -45,7 +48,7 @@
         <?php
         if (isset($_GET["order_no"])) {
             $no = $_GET["order_no"];
-            
+
             $query = "SELECT * FROM cust_orders_items where order_no = $no";
             $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
@@ -60,11 +63,11 @@
                     <th class='dosage'>DOSAGE</th>
                     <th class='unit'>UNIT PRICE</th>
                     <th class='qty'>QUANTITY</th>
-                    <th class='total'>TOTAL</th>
+                    <th class='total'>AMOUNT</th>
                 </tr>
             </thead>";
             $c = 0;
-            $total =0;
+            $total = 0;
             while ($row = mysqli_fetch_array($resultq)) {
                 $c++;
                 $medname = urlencode($row[1]);
@@ -72,15 +75,19 @@
                 $resultp = mysqli_query($mysqli, $queryp) or die(mysqli_error($mysqli));
                 $rowp = mysqli_fetch_array($resultp);
                 $amount = $row[3] * $rowp[0];
-                $total += $amount;                $result = $result . "
+                $total += $amount;
+                $amount = number_format((float) $amount, 2, '.', '');
+                $total = number_format((float) $total, 2, '.', '');
+                $unit = number_format((float) $rowp[0], 2, '.', '');
+                $result = $result . "
                     <tbody>
                 <tr>
                     <td class='no'>$c</td>
                     <td class='desc'>$row[1]</td>
                     <td class='dosage'>$row[2]</td>
-                    <td class='unit'>Rs.$rowp[0].00</td>
+                    <td class='unit'>Rs $unit</td>
                     <td class='qty'>$row[3]</td>
-                    <td class='total'>Rs$amount.00</td>
+                    <td class='total'>Rs $amount</td>
                 </tr>
                 
 ";
@@ -91,17 +98,18 @@
                  <tr>
             <td colspan='1'></td>
             <td colspan='4'>SUBTOTAL</td>
-            <td>Rs$total.00</td>
+            <td>Rs $total</td>
         </tr>
         <tr>
             <td colspan='2'></td>
             <td colspan='3'>DISCOUNT</td>
-            <td>$1,300.00</td>
+            <td><input type='number' name='discount' id='discount' value='0' style = 'width:30px; direction: rtl;'>%</td>
+            
         </tr>
         <tr>
             <td colspan='2'></td>
             <td colspan='3'>GRAND TOTAL</td>
-            <td>Rs$total.00</td>
+            <td><p id='p1'>Rs $total</p></td>
         </tr>
     </tfoot>
 </table>
@@ -110,13 +118,6 @@
             echo $result;
         }
         ?>
-
-
-
-
-
-
-
 
 
         <div id="thanks">Thank you!</div>
@@ -128,3 +129,18 @@
 </html>
 
 
+<script>
+            $(document).ready(function() {
+                $('#discount').keyup(function() {
+                    var val = $(this).val();
+                    var total = <?php echo $total ?> - val *<?php echo $total ?> / 100;
+
+                    document.getElementById("p1").innerHTML = "Rs" + total;
+
+
+                });
+
+            });
+
+
+</script>

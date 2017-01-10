@@ -17,11 +17,18 @@ if (isset($_POST["next"])) {
 };
 
 
+
 $results_per_page = 5;
 $start_from = ($page - 1) * $results_per_page;
-$query = "SELECT COUNT(id) AS total FROM drug";
+if (isset($_GET["cat"])) {
+    $catname = $_GET["cat"];
+} else {
+    $catname = '%';
+}
+$query = "SELECT COUNT(id) AS total FROM drug where category='$catname'";
 $resultpage = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 $row = $resultpage->fetch_assoc();
+
 $total_pages = ceil($row["total"] / $results_per_page);
 
 
@@ -55,7 +62,7 @@ if (isset($_POST['btnsubmititem'])) {
 }
 
 
-$query = "SELECT * FROM drug ORDER BY id ASC LIMIT $start_from, $results_per_page";
+$query = "SELECT * FROM drug where category='$catname' ORDER BY id ASC LIMIT $start_from, $results_per_page";
 
 $drugArray = array();
 $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
@@ -101,7 +108,7 @@ $t = sizeof($_SESSION['cart']);
         <link rel="stylesheet" href="../public/css/web/cart.css" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../public/js/jquery-2.0.0.js"></script>
-        <link href="../public/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
         <style>
             .totaltxt {
                 position: absolute;
@@ -222,59 +229,9 @@ $t = sizeof($_SESSION['cart']);
             #inner_noti:hover {
                 background-color: #a9f26a;
             }
-            #bbc {
+            #bbp {
                 color: #0066cc;
 
-            }
-            .container-1{
-                width: 300px;
-                vertical-align: middle;
-                white-space: nowrap;
-                position: relative;
-
-            }
-            .container-1 input#search{
-                width: 300px;
-                height: 35px;
-                background: #d1e0e0;
-                border: none;
-                font-size: 10pt;
-                float: left;
-                color: #63717f;
-                padding-left: 45px;
-                -webkit-border-radius: 5px;
-                -moz-border-radius: 5px;
-                border-radius: 5px;
-            }
-            .container-1 .icon{
-                position: absolute;
-                top: 50%;
-                margin-left: 13px;
-                margin-top: 5px;
-                z-index: 1;
-                color: #4f5b66;
-            }
-            .container-1 input#search::-webkit-input-placeholder {
-                color: #65737e;
-            }
-
-            .container-1 input#search:-moz-placeholder { /* Firefox 18- */
-                color: #65737e;  
-            }
-
-            .container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
-                color: #65737e;  
-            }
-
-            .container-1 input#search:-ms-input-placeholder {  
-                color: #65737e;  
-            }
-            .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
-                outline:none;
-                background: #c2d6d6;
-            }
-            .to {
-                color: #777777;
             }
         </style>
 
@@ -377,10 +334,9 @@ $t = sizeof($_SESSION['cart']);
                     </td>
                 </table>
                 <div id="contentProduct">
-
                     <?php foreach ($drugArray as $key => $drug) { ?>
 
-                        <table class = 'drugTable'>
+                        <table class = 'drugTable' >
                             <tr>
 
                                 <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
@@ -416,7 +372,7 @@ $t = sizeof($_SESSION['cart']);
                                 <td></td>
 
 
-                                <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'otc.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
+                                <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'catbrows2.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
                                 <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
                             </tr>   
                         </table>
@@ -427,14 +383,14 @@ $t = sizeof($_SESSION['cart']);
 
 
                             <?php if (!($page <= 1)) { ?>
-                                <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
+                                <?php echo " <form name = 'myFormprevious' action = 'catbrows.php?page=$page' method = 'post'>" ?>
 
                                 <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Back" class="previous"></td>
 
                                 <?php echo "</form>" ?>
                             <?php } ?>
                             <?php if ($total_pages > $page) { ?>
-                                <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
+                                <?php echo " <form name = 'myFormnext' action = 'catbrows.php?page=$page' method = 'post'>" ?>
 
                                 <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
 
@@ -455,7 +411,6 @@ $t = sizeof($_SESSION['cart']);
 
 
         <?php require '../includes/customer_footer.php'; ?>
-
         <?php if (isset($_GET['id'])) { ?>
             <?php if (isset($_GET['id']) && isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
                 <?php echo $id2 = $_GET['id']; ?>
@@ -522,7 +477,7 @@ $t = sizeof($_SESSION['cart']);
                     <div class = 'modal-content'>
                         <h3 style = 'text-align:center;'><?php echo $drugforcart->medicine_name ?></h3>
 
-                        <?php echo " <form name = 'myForm2' action = 'otc.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
+                        <?php echo " <form name = 'myForm2' action = 'catbrows.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
                         <table class = 'drugforcartTable'>
                             <tr>
 
@@ -588,7 +543,7 @@ $t = sizeof($_SESSION['cart']);
                                         <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
                                     <?php } ?></td>
                                 <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
-                                <td><a href='otc.php'> Cancel </a></td>
+                                <td><a href='catbrows.php'> Cancel </a></td>
                             </tr>   
 
                         </table>
@@ -600,13 +555,12 @@ $t = sizeof($_SESSION['cart']);
                 </div>
             <?php } else if (isset($_GET['id']) && !isset($_SESSION['email']) && empty($_SESSION['email'])) { ?>        
                 echo'<script>alert("\t\t\tYou are not logged in.\nPlease logged in before make an order.");
-                                        window.location.href = "otc.php?page=<?php echo $page ?>";</script>';
+                                        window.location.href = "catbrows.php?page=<?php echo $page ?>";</script>';
 
             <?php } ?>
         <?php } ?>
     </body>
 </html>
-
 <script>
     function confirmorder() {
         var t = <?php echo $t ?>;

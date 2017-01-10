@@ -17,7 +17,7 @@ if (isset($_POST["next"])) {
 };
 
 
-$results_per_page = 5;
+$results_per_page = 20;
 $start_from = ($page - 1) * $results_per_page;
 $query = "SELECT COUNT(id) AS total FROM drug";
 $resultpage = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
@@ -101,7 +101,7 @@ $t = sizeof($_SESSION['cart']);
         <link rel="stylesheet" href="../public/css/web/cart.css" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../public/js/jquery-2.0.0.js"></script>
-        <link href="../public/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
         <style>
             .totaltxt {
                 position: absolute;
@@ -222,56 +222,15 @@ $t = sizeof($_SESSION['cart']);
             #inner_noti:hover {
                 background-color: #a9f26a;
             }
-            #bbc {
+            #cat {
+                color:#0C8767;
+            }
+            #cat:hover {
+                color:#031C14;
+            }
+            #bbp {
                 color: #0066cc;
 
-            }
-            .container-1{
-                width: 300px;
-                vertical-align: middle;
-                white-space: nowrap;
-                position: relative;
-
-            }
-            .container-1 input#search{
-                width: 300px;
-                height: 35px;
-                background: #d1e0e0;
-                border: none;
-                font-size: 10pt;
-                float: left;
-                color: #63717f;
-                padding-left: 45px;
-                -webkit-border-radius: 5px;
-                -moz-border-radius: 5px;
-                border-radius: 5px;
-            }
-            .container-1 .icon{
-                position: absolute;
-                top: 50%;
-                margin-left: 13px;
-                margin-top: 5px;
-                z-index: 1;
-                color: #4f5b66;
-            }
-            .container-1 input#search::-webkit-input-placeholder {
-                color: #65737e;
-            }
-
-            .container-1 input#search:-moz-placeholder { /* Firefox 18- */
-                color: #65737e;  
-            }
-
-            .container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
-                color: #65737e;  
-            }
-
-            .container-1 input#search:-ms-input-placeholder {  
-                color: #65737e;  
-            }
-            .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
-                outline:none;
-                background: #c2d6d6;
             }
             .to {
                 color: #777777;
@@ -357,92 +316,53 @@ $t = sizeof($_SESSION['cart']);
         <?php require '../includes/customer_header.php'; ?>
 
         <div class="content">
-            <article>
-                <a href="catbrows.php" id="bbc"><p>Browse by category</p></a>
-
+            <article>				
+                <a href="otc.php" id="bbp"><p>Search for a products:</p></a>
 
                 <hr>
+
+                <h2 class="to">Browse by category:</h2>
+
+                <?php $count = 0; ?>
+                <?php foreach ($drugArray as $key => $drug) { ?>
+                    <?php
+                    $catname = urlencode($drug->category);
+                    if ($count < $results_per_page / 2) {
+                        echo '<table >';
+                        echo '<tr>';
+                        echo "<td><a href='catbrows2.php?cat=$catname' id='cat' >$drug->category</a></td>";
+                        echo '</tr>';
+                        echo '</table>';
+                    } else {
+                        echo "<table style='position:relative; left:250px; top:-300px;'>";
+                        echo '<tr>';
+                        echo "<td><a href='catbrows2.php?cat=$catname' id='cat'>$drug->category</a></td>";
+                        echo ' </tr>';
+                        echo '</table>';
+                    }
+                    $count++;
+                }
+                ?>
                 <table>
-                    <td>
-                        <h2 class="to">Search for a medicine:</h2>
-                    </td>
-                    <td>
+                    <tr>
 
-                        <form>
-                            <div class="container-1">
-                                <span class="icon"><i class="fa fa-search"></i></span>
-                                <input type="search" placeholder="Search..." id="search" />
-                            </div>
-                        </form>
-                    </td>
+
+                        <?php if (!($page <= 1)) { ?>
+                            <?php echo " <form name = 'myFormprevious' action = 'catbrows.php?page=$page' method = 'post'>" ?>
+
+                            <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Back" class="previous"></td>
+
+                            <?php echo "</form>" ?>
+                        <?php } ?>
+                        <?php if ($total_pages > $page) { ?>
+                            <?php echo " <form name = 'myFormnext' action = 'catbrows.php?page=$page' method = 'post'>" ?>
+
+                            <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
+
+                            <?php echo "</form>" ?>
+                        <?php } ?>
+                    </tr>
                 </table>
-                <div id="contentProduct">
-
-                    <?php foreach ($drugArray as $key => $drug) { ?>
-
-                        <table class = 'drugTable'>
-                            <tr>
-
-                                <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
-
-                                <th width = '75px' >Brand: </th>
-                                <td><?php echo $drug->medicine_name ?> </td>
-                            </tr>
-
-                            <tr>
-                                <th>Generic: </th>
-                                <td><?php echo $drug->generic_name ?></td>
-                            </tr>
-
-                            <tr>
-                                <th>Group: </th>
-                                <td><?php echo $drug->group_name ?></td>
-                            </tr>
-
-                            <tr>
-                                <th>Type: </th>
-                                <td><?php echo $drug->type ?></td>
-                            </tr>
-
-                            <tr>
-                                <th>Category: </th>
-                                <td><?php echo $drug->category ?></td>
-                            </tr>
-
-                            <tr>
-                                <td colspan='2' ><?php echo $drug->discription ?></td>
-                            </tr>   
-                            <tr>
-                                <td></td>
-
-
-                                <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'otc.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
-                                <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
-                            </tr>   
-                        </table>
-
-                    <?php } ?>
-                    <table>
-                        <tr>
-
-
-                            <?php if (!($page <= 1)) { ?>
-                                <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
-
-                                <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Back" class="previous"></td>
-
-                                <?php echo "</form>" ?>
-                            <?php } ?>
-                            <?php if ($total_pages > $page) { ?>
-                                <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
-
-                                <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
-
-                                <?php echo "</form>" ?>
-                            <?php } ?>
-                        </tr>
-                    </table>
-                </div>
             </article>
         </div>
         <aside class="topSide">			
@@ -455,7 +375,6 @@ $t = sizeof($_SESSION['cart']);
 
 
         <?php require '../includes/customer_footer.php'; ?>
-
         <?php if (isset($_GET['id'])) { ?>
             <?php if (isset($_GET['id']) && isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
                 <?php echo $id2 = $_GET['id']; ?>
@@ -518,89 +437,12 @@ $t = sizeof($_SESSION['cart']);
                 ?>
 
 
-                <div id = 'myModal' class = 'modal'>
-                    <div class = 'modal-content'>
-                        <h3 style = 'text-align:center;'><?php echo $drugforcart->medicine_name ?></h3>
 
-                        <?php echo " <form name = 'myForm2' action = 'otc.php?id2=$id2&page=$page' method = 'post' onsubmit = 'return validateForm2()'>" ?>
-                        <table class = 'drugforcartTable'>
-                            <tr>
-
-                                <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drugforcart->image' /></th>" ?>
-                                <td><input type="hidden" name ="medname" value=<?php echo $drugforcart->medicine_name ?>></td>
-
-                            </tr>
-
-                            <tr>
-                                <th>Generic: </th>
-                                <td><?php echo $drugforcart->generic_name ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <th>Group: </th>
-                                <td><?php echo $drugforcart->group_name ?></td>
-                            </tr>
-
-                            <tr>
-                                <th>Type: </th>
-                                <td><?php echo $drugforcart->type ?></td>
-                            </tr>
-
-                            <tr>
-                                <th>Category: </th>
-                                <td><?php echo $drugforcart->category ?></td>
-                            </tr>
-
-                            <tr>
-                                <td colspan='2' ><?php echo $drugforcart->discription ?></td>
-                            </tr> 
-
-                            <tr>
-
-
-                                <td></td>
-                                <td>Dosage:</td>
-
-                                <td>
-                                    <select name = 'dosagetype' >
-
-                                        <?php foreach ($disdosage as $value) { ?>
-                                            <?php $drid = $disid[array_search($value, $disdosage)] ?>
-                                            <?php $drprice = $disprice[array_search($value, $disdosage)] ?>
-                                            <?php echo "<option value=$drid>$value" . " (Rs " . $disprice[array_search($value, $disdosage)] . ")" . "</option>"; ?>
-                                        <?php } ?>
-                                    </select>      
-                                </td>
-
-                            </tr>   
-                            <tr>
-                                <td></td>
-                                <td>Quantity:</td>
-                                <td><input type="number" name='qtybox'></td>
-                                <td>
-
-                                </td>
-
-                            </tr>   
-                            <tr>
-                                <td><?php foreach ($disdosage as $value) { ?>
-                                        <?php echo $value . " " . $disqty[array_search($value, $disdosage)] . " unit in stock<br>"; ?>
-                                    <?php } ?></td>
-                                <td><input type = 'submit' name = 'btnsubmititem' value='Add to cart'></td>
-                                <td><a href='otc.php'> Cancel </a></td>
-                            </tr>   
-
-                        </table>
-                        <?php
-                        "</form>"
-                        ?>
-
-                    </div>
-                </div>
-            <?php } else if (isset($_GET['id']) && !isset($_SESSION['email']) && empty($_SESSION['email'])) { ?>        
+                <?php
+            } else if (isset($_GET['id']) && !isset($_SESSION['email']) && empty($_SESSION['email'])) {
+                ?>        
                 echo'<script>alert("\t\t\tYou are not logged in.\nPlease logged in before make an order.");
-                                        window.location.href = "otc.php?page=<?php echo $page ?>";</script>';
+                    window.location.href = "catbrows.php?page=<?php echo $page ?>";</script>';
 
             <?php } ?>
         <?php } ?>
@@ -692,24 +534,4 @@ $t = sizeof($_SESSION['cart']);
             return True;       // DO NOTHING WHEN CONTAINER IS CLICKED.
         });
     });
-
-    $(document).ready(function() {
-        $('#search').keyup(function() {
-            var query = $(this).val();
-
-            $.ajax({
-                url: "searchProduct.php",
-                method: "POST",
-                data: {query: query},
-                success: function(data)
-                {
-                    $('#contentProduct').fadeIn();
-                    $('#contentProduct').html(data);
-                }
-            });
-
-        });
-
-    });
-
 </script>
