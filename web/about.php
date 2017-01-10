@@ -12,7 +12,8 @@
 <body>
 
     <?php require '../includes/customer_header.php';?>
-
+    <?php require '../includes/slideshow.php';?>
+    
 	<div class="content">
 		<div class="sideContent">
 			<h3>About</h3>

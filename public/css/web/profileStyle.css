@@ -27,14 +27,19 @@ form input{
 
 .btn{
 	cursor: pointer;
-	margin-left: 20%;
+	margin-left: 162px;
 	width: 150px;
 	padding: 8px;
 	background-color: #6da33e;
 	color: white;
 	font-weight: bold;
+	margin-bottom: 5%;
 }
 
 .btn:hover{
 	background-color: #6bc91a;
+}
+
+.profile{
+	margin-top: 5%;
 }

@@ -10,7 +10,8 @@
 <body>
 	
     <?php require '../includes/customer_header.php';?>
-
+    <?php require '../includes/slideshow.php';?>
+    
 	<div class="mainContent">	
 		<h3>Send us a Message</h3>			
 		<p><br>

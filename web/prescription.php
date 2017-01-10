@@ -10,11 +10,12 @@
 </head>
 <body>
 	<?php require '../includes/customer_header.php';?>
+	<?php require '../includes/slideshow.php';?>
 		
 	<div class="content">
 		<article class="description">
 				
-			<p>Ordering from our online pharmacy is easy, we promise! There is a convenient way to order your prescription medication from Friends Pharmacy. The fastest way to order is to  Create a Friends Pharmacy account on this website and place your online drug order right over the web by uploading a clear image of the prescription. You can speak to one of our friendly Patient Service Representatives by calling us at 0112556556 or simply <a href="contact.php">Contact Us</a>.</p> 
+			<p>Ordering from our online pharmacy is easy, we promise! There is a convenient way to order your prescription medication from Friends Pharmacy. The fastest way to order is to  Create a Friends Pharmacy account on this website and place your online drug order right over the web by uploading a clear image of the prescription. You can speak to one of our friendly Patient Service Representatives by calling us at 0112556556 or simply <br><a href="contact.php">Contact Us</a>.</p> 
 				
 			<p><b>Upload Your Prescription Here</b></p>
 			
@@ -47,25 +48,6 @@
 
 			//holds the file extension of the file
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
-
-			// Check if image file is an actual image or fake image
-			// if(isset($_POST["submit"])) 
-			// {
-			//     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-			//     if($check !== false) {
-			//     	$message = "File is an image - " . $check["mime"] . ".<br>";
-			// 		echo "<script type='text/javascript'>alert('$message');</script>";
-			//         // echo "File is an image - " . $check["mime"] . ".<br>";
-			//         $uploadOk = 1;
-			//     } else {
-			//     	$message = "File is not an image.";
-			// 		echo "<script type='text/javascript'>alert('$message');</script>";
-			//         // echo "File is not an image.<br>";
-			//         $uploadOk = 0;
-			//         exit();
-			//     }
-			// }
 
 			// check a file to upload is selected or not
 			if(empty($_FILES["fileToUpload"]["name"]))

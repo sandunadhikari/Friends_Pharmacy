@@ -10,6 +10,7 @@
 <body>
 
     <?php require '../includes/customer_header.php';?>
+    <?php require '../includes/slideshow.php';?>
 
 	<div class="bottomContent">
 		<div class="bottomLeft">

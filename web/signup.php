@@ -14,11 +14,11 @@ if(isset($_POST['submit']))
 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
 
 	//check user already exists by checking the NIC
-	$query = mysqli_query($conn, "SELECT * FROM customer WHERE nic=$nic");
+	$query = mysqli_query($conn, "SELECT * FROM customer WHERE nic='$nic'");
 	$rows = mysqli_num_rows($query);
 	if($rows > 0)
 	{
-		echo'<script>alert("This NIC already exists."); window.location.href="index.php";</script></script>';
+		echo'<script>alert("This NIC already exists."); window.location.href="register.php";</script></script>';
 		exit();
 	}
 	else

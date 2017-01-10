@@ -9,10 +9,10 @@
 <body>
 
 <?php
-
+session_start();
 $conn = mysqli_connect('localhost', 'root', '', 'friends_pharmacy') or die(mysql_error());
 
-$email = "stharaka@gmail.com";
+$email = $_SESSION['email'];
 $view_query = mysqli_query($conn, "SELECT * FROM customer WHERE email='$email'");
 $numrows = mysqli_num_rows($view_query);
 
@@ -33,17 +33,23 @@ else
 }
 
 ?>
+	<?php require '../includes/customer_header.php';?>
 
-	<h2 style="text-align: center;"><?php echo $first_name?> <?php echo $last_name?> </h2>
+	<div class="profile">
+		<h2 style="text-align: center; margin-bottom: -2px;"><?php echo $first_name?> <?php echo $last_name?> </h2>
+		<i style="margin-left: 560px;"><?php echo $email?></i>
+		<hr style="margin-bottom: 3%; width: 1000px;">
 
-	<form action="" method="POST">
-		<label>NIC</label> <input style="margin-left: 5%;" type="text" name="nic" value="<?php echo $nic?>"><br>
-		<label>First Name</label> <input type="text" name="fname" value="<?php echo $first_name?>"><br>
-		<label>Last Name</label> <input type="text" name="lname" value="<?php echo $last_name;?>"><br>
-		<label>Email</label> <input style="margin-left: 4%;" type="email" name="email" value="<?php echo $email;?>"><br>
-		<label>Contact Number</label> <input style="margin-left: -4%;" type="text" name="contact" value="<?php echo $contact_number;?>"><br><br>
-		<input type="submit" name="submit" value="Save Changes" class="btn">
-	</form>
+		<form action="" method="POST">
+			<label>NIC</label> <input style="margin-left: 5%;" type="text" name="nic" value="<?php echo $nic?>" readonly ><br>
+			<label>First Name</label> <input type="text" name="fname" value="<?php echo $first_name?>"><br>
+			<label>Last Name</label> <input style="margin-left: 2px;" type="text" name="lname" value="<?php echo $last_name;?>"><br>
+			<label>Email</label> <input style="margin-left: 34px;" type="email" name="email" value="<?php echo $email;?>"><br>
+			<label>Contact Number</label> <input style="margin-left: -4%;" type="text" name="contact" value="<?php echo $contact_number;?>"><br><br>
+			<input type="submit" name="submit" value="Save Changes" class="btn">
+		</form>
+	</div>
+	
 
 <?php
 
@@ -61,11 +67,11 @@ if(isset($_POST['submit']))
 
 	if(mysqli_query($conn, $update_query))
     {
-    	echo'<script>alert("Changes are saved successfully"); window.location.href="index.php";</script>';  
+    	echo'<script>alert("Changes are saved successfully"); window.location.href="profile.php";</script>';  
     }
     else
     {
-    	echo '<script>alert("Error updating your details");window.location.href="index.php";</script>';
+    	echo '<script>alert("Error updating your details");window.location.href="profile.php";</script>';
     }
 }
 

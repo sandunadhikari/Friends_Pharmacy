@@ -77,11 +77,6 @@ while ($row = mysqli_fetch_array($result)) {
     array_push($drugArray, $drug);
 }
 
-
-
-
-
-
 echo "<div id='notifications'>";
 echo "<h3 id='h3' style='text-align: center; color:red;'>Shopping Cart</h3>";
 
@@ -395,6 +390,7 @@ $t = sizeof($_SESSION['cart']);
 
 
         <?php require '../includes/customer_header.php'; ?>
+        <?php require '../includes/slideshow.php';?>
 
         <div class="content">
             <article>				
