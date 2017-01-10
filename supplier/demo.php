@@ -7,7 +7,7 @@
 
 <html>
     <head>
-        <script type="text/javascript" src="js/jquery-3.1.0.min"></script>
+        <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
         <script type="text/javascript">
         
         function checkname()
@@ -83,11 +83,12 @@
     <table>
         <tr>
         <td>Name</td>
-        <td><input type="text" id=name onkeyup="checkname()"></td>
+        <td><input type="text" id=name onblur="checkname();">
+            <span id="name_status"></span></td>
         </tr>
         <tr>
         <td>email</td>
-        <td><input type="text" id=email onkeyup="functioncheckmail()"></td>
+        <td><input type="text" id=email onblur="checkmail();"><span id="email_status"></span></td>
         </tr>
         
     

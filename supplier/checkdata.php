@@ -12,7 +12,7 @@ if(isset($_POST['user_name']))
 {
  $name=$_POST['user_name'];
 
- $checkdata=" SELECT company_name FROM user WHERE company_name='$name' ";
+ $checkdata=" SELECT company_name FROM supplier WHERE company_name='$name' ";
 
  $query=mysql_query($checkdata);
 
