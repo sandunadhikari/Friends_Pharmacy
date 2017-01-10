@@ -74,8 +74,18 @@
                 console.log(elem.id);
                 if(elem.checked) {
                     var active = 1;
+					var r = confirm("Do you want to make active this customer?");
+					if (r == false) {
+						elem.checked = false;
+						return;
+					}
                 } else {
                     var active = 0;
+                    var r = confirm("Do you want to make inactive this customer?");
+					if (r == false) {
+						elem.checked = true;
+						return;
+					}
                 }
                 $.ajax({
                     url: "rest3.php",
