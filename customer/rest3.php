@@ -15,14 +15,14 @@ switch($type) {
 
         // Setup limit suffix
         $limit = '';
+		$suffix = '';
         if (isset($_GET['limit'])) {
             $limit = $_GET['limit'];
+			if ($limit !== "all") {
+    	        $suffix = ' LIMIT ' . $limit;
+	        }
         }
-        $suffix = '';
-        if ($limit !== "all") {
-            $suffix = ' LIMIT ' . $limit;
-        }
-
+    
         if(isset($_GET['active'])) {
             $active = $_GET['active'];
             $sql = "SELECT * FROM customer WHERE nic LIKE '$nic%' AND active=$active";
