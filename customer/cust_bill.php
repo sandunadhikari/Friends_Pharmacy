@@ -128,7 +128,7 @@
                 $(function() {
                     var now = new Date();
                     var date = document.getElementById("date");
-                    var formatted = now.getMonth() + "/" + now.getDate() + "/" + now.getFullYear();
+                    var formatted = (now.getMonth()+1) + "/" + now.getDate() + "/" + now.getFullYear();
                     console.log(formatted);
                     date.innerHTML = formatted;
                 });                    
