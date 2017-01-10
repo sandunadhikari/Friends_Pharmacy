@@ -149,7 +149,7 @@ class orderController {
                     <td><b>$row[3]</b></td>
                     <td><a href='cust_orders.php?order_no=$row[0]' >List items</td>
                     <td><a href='#' onClick=removeConfirm($row[0])><img  class='confirm' src='../public/image/remove.png' style='width: 25px; height: 25px;'></a></td>
-                    <td><a href='billtmp.php?order_no=$row[0]'><img  class='confirm' src='../public/image/bill.png' style='width: 40px; height: 40px;'></a></td>
+                    <td><a href='billtmp.php?order_no=$row[0]&email=$row[1]'><img  class='confirm' src='../public/image/bill.png' style='width: 40px; height: 40px;'></a></td>
 
                  </tr>
 ";

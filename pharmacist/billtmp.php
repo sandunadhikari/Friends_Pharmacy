@@ -1,9 +1,10 @@
+<?php include '../database/dbconnect.php';?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Example 2</title>
-        <link rel="stylesheet" href="css/style.css" media="all" />
+        <title>Invoice</title>
+        <link rel="stylesheet" href="css/orderbill.css" media="all" />
     </head>
     <body>
         <header class="clearfix">
@@ -12,130 +13,114 @@
             </div>
             <div id="company">
                 <h2 class="name">Friends Pharmacy</h2>
-                <div>455 Foggy Heights, AZ 85004, US</div>
-                <div>(602) 519-0450</div>
-                <div><a href="mailto:company@example.com">company@example.com</a></div>
+                <div>Kirulapone</div>
+                <div>(+94) 519-0450</div>
+                <div>Reg No:A5SH1120GB21</div>
+                <div><a href="mailto:company@example.com">friendsPharmacy@gmail.com</a></div>
             </div>
 
+
         </header>
+        <?php
+        $mail = $_GET["email"];
+        $queryn = "SELECT first_name,last_name FROM customer where email = '$mail'";
+        $resultq = mysqli_query($mysqli, $queryn) or die(mysqli_error($mysqli));
+        $row = mysqli_fetch_array($resultq)
+        ?>
 
         <div id="details" class="clearfix">
             <div id="client">
                 <div class="to">INVOICE TO:</div>
-                <h2 class="name">John Doe</h2>
-                <div class="address">796 Silver Harbour, TX 79273, US</div>
-                <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
+                <h2 class="name"><?php echo $row[0].' '.$row[1]?></h2>
+                <div class="email"><a href=<?php $mail ;?> ><?php echo $mail;?></a></div>
             </div>
             <div id="invoice">
-                <h1>INVOICE 3-2-1</h1>
-                <div class="date">Date of Invoice: 01/06/2014</div>
-                <div class="date">Due Date: 30/06/2014</div>
+                <h1>INVOICE -</h1>
+                <div class="date">Date of Invoice: <?php echo date("d/m/Y") ?></div>
+                
             </div>
         </div>
 
 
         <?php
         if (isset($_GET["order_no"])) {
-    $no = $_GET["order_no"];
-        include '../database/dbconnect.php';
-        $query = "SELECT * FROM cust_orders_items where order_no = $no";
-        $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+            $no = $_GET["order_no"];
+            
+            $query = "SELECT * FROM cust_orders_items where order_no = $no";
+            $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
-        $result = "";
-        $result = "
+            $result = "";
+            $result = "
        
        <table border='0' cellspacing='0' cellpadding='0'>
             <thead>
                 <tr>
                     <th class='no'>#</th>
                     <th class='desc'>DESCRIPTION</th>
-                        <th class='dosage'>DOSAGE</th>
+                    <th class='dosage'>DOSAGE</th>
                     <th class='unit'>UNIT PRICE</th>
                     <th class='qty'>QUANTITY</th>
                     <th class='total'>TOTAL</th>
                 </tr>
             </thead>";
-        $c=0;
-        while ($row = mysqli_fetch_array($resultq)) {
-            $c++;
-            $medname = urlencode($row[1]);
-            $queryp = "SELECT price FROM stock where medicine_name = '$medname' and dosage = '$row[2]' ";
-            $resultp = mysqli_query($mysqli, $queryp) or die(mysqli_error($mysqli));
-            $rowp = mysqli_fetch_array($resultp);
-            $amount = $row[3] * $rowp[0];
-            $result = $result . "
-             
+            $c = 0;
+            $total =0;
+            while ($row = mysqli_fetch_array($resultq)) {
+                $c++;
+                $medname = urlencode($row[1]);
+                $queryp = "SELECT price FROM stock where medicine_name = '$medname' and dosage = '$row[2]' ";
+                $resultp = mysqli_query($mysqli, $queryp) or die(mysqli_error($mysqli));
+                $rowp = mysqli_fetch_array($resultp);
+                $amount = $row[3] * $rowp[0];
+                $total += $amount;                $result = $result . "
+                    <tbody>
                 <tr>
                     <td class='no'>$c</td>
                     <td class='desc'>$row[1]</td>
                     <td class='dosage'>$row[2]</td>
-                    <td class='unit'>$rowp[0]</td>
+                    <td class='unit'>Rs.$rowp[0].00</td>
                     <td class='qty'>$row[3]</td>
-                    <td class='total'>$amount</td>
+                    <td class='total'>Rs$amount.00</td>
                 </tr>
-                <tbody>
+                
 ";
-            
-       
-        }
-         $result = $result . "</table>";
-         echo $result;
+            }
+            $result = $result . "
+                </tbody>
+        <tfoot>
+                 <tr>
+            <td colspan='1'></td>
+            <td colspan='4'>SUBTOTAL</td>
+            <td>Rs$total.00</td>
+        </tr>
+        <tr>
+            <td colspan='2'></td>
+            <td colspan='3'>DISCOUNT</td>
+            <td>$1,300.00</td>
+        </tr>
+        <tr>
+            <td colspan='2'></td>
+            <td colspan='3'>GRAND TOTAL</td>
+            <td>Rs$total.00</td>
+        </tr>
+    </tfoot>
+</table>
+
+            ";
+            echo $result;
         }
         ?>
 
 
-    
 
 
 
-        
-            <tbody>
-                <tr>
-                    <td class="no">01</td>
-                    <td class="desc"><h3>Website Design</h3>Creating a recognizable design solution based on the company's existing visual identity</td>
-                    <td class="unit">$40.00</td>
-                    <td class="qty">30</td>
-                    <td class="total">$1,200.00</td>
-                </tr>
-                <tr>
-                    <td class="no">02</td>
-                    <td class="desc"><h3>Website Development</h3>Developing a Content Management System-based Website</td>
-                    <td class="unit">$40.00</td>
-                    <td class="qty">80</td>
-                    <td class="total">$3,200.00</td>
-                </tr>
-                <tr>
-                    <td class="no">03</td>
-                    <td class="desc"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
-                    <td class="unit">$40.00</td>
-                    <td class="qty">20</td>
-                    <td class="total">$800.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="2"></td>
-                    <td colspan="2">SUBTOTAL</td>
-                    <td>$5,200.00</td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td colspan="2">TAX 25%</td>
-                    <td>$1,300.00</td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td colspan="2">GRAND TOTAL</td>
-                    <td>$6,500.00</td>
-                </tr>
-            </tfoot>
-        </table>
+
+
+
+
         <div id="thanks">Thank you!</div>
-        <div id="notices">
-            <div>NOTICE:</div>
-            <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-        </div>
-
+        <a title="Print Screen" onclick="window.print();" target="_blank" style="cursor:pointer;" >PRINT</a>
         <footer>
             Invoice was created on a computer and is valid without the signature and seal.
         </footer>
@@ -143,42 +128,3 @@
 </html>
 
 
-<?php
-$no = 21;
-include '../database/dbconnect.php';
-$query = "SELECT * FROM cust_orders_items where order_no = $no";
-$resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
-
-$result = "";
-$result = "
-       
-       <h2 style='text-align:center;'>Order List - $no<h2>
-        <table class='sortable'>
-                <tr>
-                   
-                    <th><b>Medicine name</b></th>
-                    <th><b>Dosage</b></th>
-                    <th><b>unit price (Rs)</b></th>
-                    <th><b>Quantity</b></th>
-                    <th><b>Amount (Rs)</b></th>
-                </tr>";
-while ($row = mysqli_fetch_array($resultq)) {
-    $medname = urlencode($row[1]);
-    $queryp = "SELECT price FROM stock where medicine_name = '$medname' and dosage = '$row[2]' ";
-    $resultp = mysqli_query($mysqli, $queryp) or die(mysqli_error($mysqli));
-    $rowp = mysqli_fetch_array($resultp);
-    $amount = $row[3] * $rowp[0];
-    $result = $result . "
-                <tr>
-                    
-                    <td><b>$row[1]</b></td>
-                    <td><b>$row[2]</b></td>
-                    <td><b>$rowp[0]</b></td>
-                    <td><b>$row[3]</b></td>
-                    <td><b>$amount</b></td>
-                </tr>
-";
-}
-$result = $result . "</table>";
-echo $result;
-?>
