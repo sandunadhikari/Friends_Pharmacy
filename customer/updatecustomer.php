@@ -159,7 +159,7 @@
     <div id="popup">
     <input type='button' id="close" onclick="$('#popup').fadeOut(500);" style="position:absolute;right:10px; top:10px" value="X">
     <div id="medicine-form" style="text-align:left; margin">
-        NIC: <div id="cnic"></div>
+        <p>NIC:</p> <div id="cnic"></div>
         First Name: <input type='text' name='fname' id="fname" /> <br>
         Last Name: <input type='text' name='lname' id='lname' /> <br>
         Email: <input type='text' name='email' id="cemail" /> <br>
@@ -188,7 +188,7 @@
     <div class="customer_template_container" style=" padding-left:13px; padding-top:70px;">
         
         <h2>Update Customer Details</h2>
-        <fieldset style=" border: 2px solid rgb(106,184,42); background-color: rgb(229, 249, 212); width: 800px; ">
+        <fieldset style=" border: 2px solid rgb(106,184,42); background-color: rgb(229, 249, 212); width: 800px; position:relative; left:150px;">
         <div class="top bar">
         <div class="left-float" style="padding-top:5px;">
             <div style="margin-top:20px;">
@@ -205,7 +205,7 @@
         <br>
         
         <div class="content">
-            <table border="1" style='width:500px; margin: 0 auto;'>
+            <table border="1" style='width:500px; margin: 0 auto; width: 700px;'>
                 <thead>
                     <tr>
                         <th>NIC</th>
