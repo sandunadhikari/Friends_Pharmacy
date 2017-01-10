@@ -19,6 +19,7 @@ $(document).ready(function(){
            nic:{
                 required:true,
                 maxlength:10,
+                minlength:10,
            },
                     
             
@@ -44,6 +45,7 @@ $(document).ready(function(){
             nic:{
                 required:"Please enter NIC",
                 maxlength:"Enterd NIC is invalid",
+                 minlength:"Enterd NIC is invalid",
                         }
                        
                        

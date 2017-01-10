@@ -1,8 +1,8 @@
 #d1{
     position:absolute;
-    left:580px;
+    left:500px;
     top:170px;
-    width: 15%;
+    width: 20%;
 	border-top: 1px solid #CFD8DC;
 	border-bottom: 2px solid #CFD8DC ;
 	border-right: 1px solid #CFD8DC ;
@@ -12,13 +12,13 @@
 
 h2{
     position: absolute;
-    left: 580px;
+    left: 670px;
     top:45px;
 }
 #d2{
     position:absolute;
-    left:580px;
-    top:270px;
+    left:500px;
+    top:350px;
 }
 #cart{
     position:absolute;
@@ -32,10 +32,22 @@ h2{
     left: 150px;
 }
 #load{
-    position: absolute;
-    left:65px;
-    top:60px;
+    width: 70px;
+    height: 30px;
+    position: fixed;
+    left: 590px;
+    top:270px;
+    background-color: rgb(106,184,42);
+    color: white;
+    padding: 8px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: -1;
 }
+
+
 #medname{
 	border-style: hidden; 
 	width: 90%;
@@ -65,8 +77,8 @@ h2{
 }
 
 #us_table th{
-	height: 500px;
-	width: 170px;
+	height: 30px;
+	width: 15%;
 	font-family: arial;
 	background-color: #6AB82A;
 }
@@ -89,3 +101,17 @@ h2{
 }
 li{
 	list-style: none;
+}
+#add{
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    left: 54px;
+    background-color: rgb(106,184,42);
+    color: white;
+    padding: 8px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
