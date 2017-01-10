@@ -11,7 +11,7 @@ if (isset($_GET["confirmed"])) {
 } else {
     $orderTable = $orderController->orderConfirmTable("confirmed");
     $content = "<div style='float:left'>
-        <h2 style='text-align:center; position:relative; left:100px;'>New orders List<h2>
+        <h2 style='text-align:center; position:relative; left:100px;'>Confirmed orders List<h2>
         <table style='position:relative; left:30px;'>
         <tr>
             <td>Email</td>

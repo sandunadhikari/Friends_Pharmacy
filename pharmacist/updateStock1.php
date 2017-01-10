@@ -13,8 +13,8 @@
 $title = "Update Stock";
 
 $content = "
-    <h2 style='text-align:center;'>Update Stock</h2>
-    <form action='updateStock2.php' method ='post' onsubmit='return searchForm()'  name='myForm' >
+    <h2>Update Stock</h2>
+    <form action='updateStock2.php' method ='post' onsubmit='return searchForm()'  name='myForm'>
     
       <fieldset>
         <label class='lblf' for='medicineName'>Medicine name: </label>

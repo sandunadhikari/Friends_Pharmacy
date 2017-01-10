@@ -174,3 +174,12 @@ Footer p{
     display: block;
     color: #ffeb99
 }
+h2 {
+  text-align:center; 
+  color: #777777; 
+  font-family: SourceSansPro;
+  font-size: 2.4em;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 0  0 10px 0;
+}
