@@ -202,15 +202,63 @@ input[type=submit] {
 
 
 }
- h2 {
-  text-align:center; 
-  color: #777777; 
-  font-family: SourceSansPro;
-  font-size: 2.4em;
-  line-height: 1em;
-  font-weight: normal;
-  margin: 0  0 10px 0;
+h2 {
+    text-align:center; 
+    color: #777777; 
+    font-family: SourceSansPro;
+    font-size: 2.4em;
+    line-height: 1em;
+    font-weight: normal;
+    margin: 0  0 10px 0;
 }
 form {
     margin-top: 40px; 
+}
+
+.container-1{
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+
+}
+.container-1 input#email{
+    width: 200px;
+    height: 30px;
+    background: #BACBBE;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #63717f;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.container-1 .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 13px;
+    margin-top: 9px;
+    z-index: 1;
+    color: #4f5b66;
+}
+.container-1 input#email::-webkit-input-placeholder {
+    color: #65737e;
+}
+
+.container-1 input#email:-moz-placeholder { /* Firefox 18- */
+    color: #65737e;  
+}
+
+.container-1 input#email::-moz-placeholder {  /* Firefox 19+ */
+    color: #65737e;  
+}
+
+.container-1 input#email:-ms-input-placeholder {  
+    color: #65737e;  
+}
+.container-1 input#email:hover, .container-1 input#email:focus, .container-1 input#email:active{
+    outline:none;
+    background: #c2d6d6;
 }

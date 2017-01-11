@@ -18,7 +18,8 @@ function searchForm() {
 <head>
 	
     <?php require('../includes/_header.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/stock.css" />
+    <link rel="stylesheet" type="text/css" href="css/stock2.css" />
+    <link href="../public/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title><?php echo $title; ?></title>
 </head>
 
