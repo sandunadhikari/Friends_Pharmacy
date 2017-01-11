@@ -152,21 +152,21 @@ input[type=submit] {
     cursor: pointer;
 }
 #medicineList {
-    background-color: lavender;
+    background-color: white;
     width: 280px;
     left: 200px;
     position: relative; 
 
 }
 #supplierList {
-    background-color: lavender;
+    background-color: white;
     width: 280px;
     position: relative;
     left: 200px;
 
 }
 #categoryList {
-    background-color: lavender;
+    background-color: white;
     width: 280px;
     position: relative;
     left: 200px;

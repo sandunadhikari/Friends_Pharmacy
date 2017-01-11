@@ -18,6 +18,14 @@
         <li><span><a href="../main/main.php" id="menu">Home</a></span></li>
         
         <li><span><a href="../customer/cust_bill.php" id="menu">Bill</a></span></li>
+        
+         <li><span><a href="#" id="menu">New Medicine</a></span><div class="messages"></div></li>
+        <ul class="submenu">
+
+            <li><span><a href="../pharmacist/AddMedicine.php">Add medicine </a></span></li>
+            <li><span><a href="../pharmacist/searchMedicine.php">Update medicine</a></span></li>
+            <li><span><a href="../pharmacist/delete.php">Delete medicine</a></span></li>
+        </ul>
 
         <li><span><a href="#" id="menu">Manage Stock</a></span></li>
         <ul class="submenu">
@@ -27,15 +35,6 @@
             <li><span><a href="../pharmacist/removeStock.php">Delete stock</a></span></li>
             <li><span><a href="../pharmacist/viewStock.php">View stock</a></span></li>
             <li><span><a href="../pharmacist/viewusage.php">View stock usage</a></span></li>
-        </ul>
-
-
-        <li><span><a href="#" id="menu">New Medicine</a></span><div class="messages"></div></li>
-        <ul class="submenu">
-
-            <li><span><a href="../pharmacist/AddMedicine.php">Add medicine </a></span></li>
-            <li><span><a href="../pharmacist/searchMedicine.php">Update medicine</a></span></li>
-            <li><span><a href="../pharmacist/delete.php">Delete medicine</a></span></li>
         </ul>
 
         <li><span><a href="#" id="menu">Customer</a></span></li>

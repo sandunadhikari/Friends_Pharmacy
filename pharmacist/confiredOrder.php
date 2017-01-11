@@ -14,8 +14,13 @@ if (isset($_GET["confirmed"])) {
         <h2 style='text-align:center; position:relative; left:100px;'>Confirmed orders List<h2>
         <table style='position:relative; left:30px;'>
         <tr>
-            <td>Email</td>
-            <td><input type='text' name='email' id='email' placeholder='search' oninput='loadcustomers()'/></td>
+            <td><div style=' font-size: 1.25em;'>Email</div></td>
+            <td>
+            <div class='container-1'>
+            <span class='icon'><i class='fa fa-search'></i></span>
+            <input type='text' name='email' id='email' placeholder='search' oninput='loadcustomers()'/>
+            </td>
+            </div>
             <tr>
             </table>
             <div id='List' style='position:relative; left:120px; top:40px;'>$orderTable</div> 

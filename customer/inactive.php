@@ -7,7 +7,8 @@
         h2{
             position: relative;
                top:70px;
-               left:50px;
+               left:100px;
+               padding-bottom: 30px;
         }
        
         .top bar{

@@ -16,7 +16,7 @@ if (isset($_GET["confirm"])) {
         </table>";
     $orderListTable = $orderController->orderListTable($_GET["order_no"]);
     
-    $content = $content . $orderListTable."<a href='confiredOrder.php'><img  class='confirm' src='../public/image/back.png' style='width: 100px;; height: 35px; position: relative; left:930px;'></a>
+    $content = $content . $orderListTable."<a href='confiredOrder.php'><img  class='confirm' src='../public/image/back.png' style='width: 100px;; height: 35px; position: relative; left:400px;'></a>
                 ";
 }
 else if (isset($_GET["order_no"])) {
@@ -31,7 +31,7 @@ else if (isset($_GET["order_no"])) {
         </table>";
     $orderListTable = $orderController->orderListTable($_GET["order_no"]);
     
-    $content = $content . $orderListTable."<a href='cust_orders.php'><img  class='confirm' src='../public/image/back.png' style='width: 100px;; height: 35px; position: relative; left:930px;'></a>
+    $content = $content . $orderListTable."<a href='cust_orders.php'><img  class='confirm' src='../public/image/back.png' style='width: 100px;; height: 35px; position: relative; left:400px;'></a>
                 ";
 } else if (isset($_POST["btnsub"])) {
     $no = $_POST["btnno"];

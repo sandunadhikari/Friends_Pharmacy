@@ -2,9 +2,7 @@ html {
     font-family: Segoe,Segoe UI,Optima,Arial,sans-serif;
 }
 
-body {
-    text-align: center;
-}
+
 
 .top-bar {
     width: 90%;
@@ -43,7 +41,7 @@ body {
     font-weight: 100 !important;
     color: black;
     background-color: rgb(214,244,185);
-,    height: 30px;
+    height: 30px;
 }
 
 .content table td {
@@ -86,4 +84,5 @@ h2 {
   line-height: 1em;
   font-weight: normal;
   margin: 0  0 10px 0;
+  margin-bottom: 30px;
 }
