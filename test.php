@@ -1,6 +1,7 @@
 
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
         <link href="public/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
