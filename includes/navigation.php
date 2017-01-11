@@ -16,6 +16,8 @@
 
     <ul class="mainmenu">
         <li><span><a href="../main/main.php" id="menu">Home</a></span></li>
+        
+        <li><span><a href="../customer/cust_bill.php" id="menu">Bill</a></span></li>
 
         <li><span><a href="#" id="menu">Manage Stock</a></span></li>
         <ul class="submenu">

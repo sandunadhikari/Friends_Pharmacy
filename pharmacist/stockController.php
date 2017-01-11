@@ -261,6 +261,73 @@ class stockController {
         mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
+    function allOutDate() {
+    $host = "localhost";
+        $user = "root";
+        $passwd = "";
+        $database = "friends_pharmacy";
+        $mysqli = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+
+        $query = "SELECT * FROM stock where 21>DATEDIFF(expire_date,CURDATE()) and 0<DATEDIFF(expire_date,CURDATE());";
+
+        $result = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
+        $stockArray = array();
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
+            $medicineName = $row[1];
+            $batchNumber = $row[2];
+            $quantity = $row[3];
+            $entry_date = $row[4];
+            $production_date = $row[5];
+            $EXP_date = $row[6];
+            $dosage = $row[7];
+            $price = $row[8];
+
+
+//Create stock objects and store them in an array.
+            $stock = new StockEntity($id, $medicineName, $batchNumber, $quantity, $entry_date, $production_date, $EXP_date, $dosage, $price);
+            array_push($stockArray, $stock);
+        }
+        mysqli_close($mysqli);
+        $result = "";
+        $result = "
+       <h2 style='text-align:center;'>Short Expiry medicines<h2>
+          <table class='sortable'>
+                <tr>
+                    
+                    <th></th>
+                    <th><b>batch_no</b></th>
+                    <th><b>quantity</b></th>
+                    <th><b>dosage</b></th>
+                    <th><b>price (Rs)</b></th>
+                    <th><b>entry_date</b></th>
+                    <th><b>expire_date</b></th>
+                    <th><b>production_date</b></th>
+                </tr>";
+
+        foreach ($stockArray as $key => $stock) {
+            $result = $result . "
+                    
+               
+                <tr>
+                    
+                    <td><a href='#' onClick=showConfirm($stock->id) >Delete</td>
+                    <td><b>$stock->batch_no</b></td>
+                    <td><b>$stock->quantity</b></td>
+                    <td><b>$stock->price</b></td>
+                    <td><b>$stock->quantity</b></td>    
+                    <td><b>$stock->entry_date </b></td>
+                    <td><b>$stock->expire_date</b></td>
+                    <td><b>$stock->production_date</b></td>
+                    
+                </tr>
+
+";
+        }
+        $result = $result . "</table>";
+        return $result;
+    }
 
 }
 ?>

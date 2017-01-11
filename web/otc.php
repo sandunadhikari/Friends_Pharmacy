@@ -77,6 +77,7 @@ while ($row = mysqli_fetch_array($result)) {
     array_push($drugArray, $drug);
 }
 
+<<<<<<< HEAD
 echo "<div id='notifications'>";
 echo "<h3 id='h3' style='text-align: center; color:red;'>Shopping Cart</h3>";
 
@@ -136,6 +137,12 @@ foreach ($_SESSION['name'] as $key => $item) {
 echo '</table>';
 echo "</div>";
 echo "</div>";
+=======
+
+
+
+
+>>>>>>> 2f1d1c5e323fc202fe7624ae0cef0e9e027a2dad
 //print_r($_SESSION['cart']);
 //print_r($_SESSION['qty']);
 //session_destroy();
@@ -156,7 +163,7 @@ $t = sizeof($_SESSION['cart']);
         <link rel="stylesheet" href="../public/css/web/cart.css" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../public/js/jquery-2.0.0.js"></script>
-
+        <link href="../public/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style>
             .totaltxt {
                 position: absolute;
@@ -277,93 +284,62 @@ $t = sizeof($_SESSION['cart']);
             #inner_noti:hover {
                 background-color: #a9f26a;
             }
-        </style>
-        <script>
-            function confirmorder() {
-                var t = <?php echo $t ?>;
-                if (t != 0) {
-                    var c = confirm("Confirm your order");
+            #bbc {
+                color: #0066cc;
 
-                    // if true, delete item and refresh
-                    if (c)
-                        window.location = "addOrder.php";
-                }
-                else {
-                    alert("Order is empty!");
-                }
+            }
+            .container-1{
+                width: 300px;
+                vertical-align: middle;
+                white-space: nowrap;
+                position: relative;
+
+            }
+            .container-1 input#search{
+                width: 300px;
+                height: 35px;
+                background: #d1e0e0;
+                border: none;
+                font-size: 10pt;
+                float: left;
+                color: #63717f;
+                padding-left: 45px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+            .container-1 .icon{
+                position: absolute;
+                top: 50%;
+                margin-left: 13px;
+                margin-top: 5px;
+                z-index: 1;
+                color: #4f5b66;
+            }
+            .container-1 input#search::-webkit-input-placeholder {
+                color: #65737e;
             }
 
-            $(".cancel").click(function() {
-                var index = $(this).closest("tr").index();
-                $('.totalno').hide();
-                if (index != '')
-                {
-                    $.ajax({
-                        url: "removecart.php",
-                        method: "POST",
-                        data: {query: index},
-                        success: function(data)
-                        {
-                            $('.totalno').show();
-                            $('.totalno').html(data);
-                        }
+            .container-1 input#search:-moz-placeholder { /* Firefox 18- */
+                color: #65737e;  
+            }
 
-                    });
-                }
+            .container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+                color: #65737e;  
+            }
 
-                var here = this;
+            .container-1 input#search:-ms-input-placeholder {  
+                color: #65737e;  
+            }
+            .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+                outline:none;
+                background: #c2d6d6;
+            }
+            .to {
+                color: #777777;
+            }
+        </style>
 
-                $(this).closest('tr').find('td').fadeOut('fast',
-                        function(here) {
-                            $(here).parents('tr:first').remove();
-                        });
-
-
-            });
-
-
-
-            $(document).ready(function() {
-
-                // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
-                $('#noti_Counter')
-                        .css({opacity: 0})
-                        .text(<?php echo count($_SESSION['cart']); ?>)               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
-                        .css({top: '-15px', right: '10px'})
-                        .animate({top: '10px', opacity: 1}, 500);
-
-                $('#noti_Button').click(function() {
-
-                    // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
-                    $('#notifications').fadeToggle('fast', 'linear', function() {
-                        if ($('#notifications').is(':hidden')) {
-                            $('#noti_Button').css('background-color', '#2E467C');
-                        }
-                        else
-                            $('#noti_Button').css('background-color', '#FFF');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
-                    });
-
-                    $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
-
-                    return false;
-                });
-
-                // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
-                $(document).click(function() {
-
-
-                    // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
-                    if ($('#noti_Counter').is(':hidden')) {
-                        // CHANGE BACKGROUND COLOR OF THE BUTTON.
-                        $('#noti_Button').css('background-color', '#2E467C');
-                    }
-                });
-
-                $('#notifications').click(function() {
-                    return True;       // DO NOTHING WHEN CONTAINER IS CLICKED.
-                });
-            });
-        </script>
 
 
     </head>
@@ -376,16 +352,67 @@ $t = sizeof($_SESSION['cart']);
                     <img  class="cancel" src="../public/image/cart1.png" style="width: 50px; height: 50px; position: absolute; right: 10px;">    
                 </div>
             </div>  
-            <div id="notifications">
+            <?php
+            echo "<div id='notifications'>";
+            echo "<h3 id='h3' style='text-align: center; color:red;'>Shopping Cart</h3>";
 
-                <h3 id="h3" style="text-align: center">Shopping Cart</h3>
+            echo "<p class='totaltxt' style='text-align: center  font:13px helvetica; font-weight:bold;'>Total :</p>";
+            echo "<p class='totalno' style='text-align: center' font:13px helvetica; font-weight:bold;>" . array_sum($_SESSION['amount']) . "</p>";
+
+            echo "<button class='addorder'  onclick='confirmorder()'><span>Add to Order list</span></button>";
+
+            echo "<div id=inner_noti>";
+            echo '<table id="myTable" class="sortable">';
+            echo '<tr>';
+            echo '<th>
+            Medicine name
+        </th>
+        <th>
+            Dosage
+        </th>
+         <th>
+            Quantity
+        </th>
+         <th>
+            Unit price
+        </th> 
+        <th>
+            Amount
+        </th>
+
+         <th>
+         
+        </th>';
+            echo '</tr>';
 
 
+            foreach ($_SESSION['name'] as $key => $item) {
+                echo '<tr>';
 
-
-
-                <div style="height:auto;"></div>
-            </div>
+                echo '<td>';
+                echo $item;
+                echo '</td>';
+                echo '<td>';
+                echo $_SESSION['dosage'][$key];
+                echo '</td>';
+                echo '<td>';
+                echo $_SESSION['qty'][$key];
+                echo '</td>';
+                echo '<td>';
+                echo $_SESSION['unitprice'][$key];
+                echo '</td>';
+                echo '<td>';
+                echo $_SESSION['amount'][$key];
+                echo '</td>';
+                echo '<td>';
+                echo '<img  class="cancel" src="../public/image/cancel.png" style="width: 20px; height: 20px;">';
+                echo '</td>';
+                echo '</tr>';
+            }
+            echo '</table>';
+            echo "</div>";
+            echo "</div>";
+            ?>
         </div>
 
 
@@ -393,81 +420,92 @@ $t = sizeof($_SESSION['cart']);
         <?php require '../includes/slideshow.php';?>
 
         <div class="content">
-            <article>				
-                <p>Search for a products:</p>
-                <form>
-                    <input type="text" placeholder="Search..." required>
-                    <button type="button">Search</button>
-                </form>
+            <article>
+                <a href="catbrows.php" id="bbc"><p>Browse by category</p></a>
+
 
                 <hr>
-
-                <p>Browse by category:</p>
-
-                <?php foreach ($drugArray as $key => $drug) { ?>
-
-                    <table class = 'drugTable'>
-                        <tr>
-
-                            <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
-
-                            <th width = '75px' >Brand: </th>
-                            <td><?php echo $drug->medicine_name ?> </td>
-                        </tr>
-
-                        <tr>
-                            <th>Generic: </th>
-                            <td><?php echo $drug->generic_name ?></td>
-                        </tr>
-
-                        <tr>
-                            <th>Group: </th>
-                            <td><?php echo $drug->group_name ?></td>
-                        </tr>
-
-                        <tr>
-                            <th>Type: </th>
-                            <td><?php echo $drug->type ?></td>
-                        </tr>
-
-                        <tr>
-                            <th>Category: </th>
-                            <td><?php echo $drug->category ?></td>
-                        </tr>
-
-                        <tr>
-                            <td colspan='2' ><?php echo $drug->discription ?></td>
-                        </tr>   
-                        <tr>
-                            <td></td>
-
-
-                            <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'otc.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
-                            <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
-                        </tr>   
-                    </table>
-
-                <?php } ?>
                 <table>
-                    <tr>
+                    <td>
+                        <h2 class="to">Search for a medicine:</h2>
+                    </td>
+                    <td>
 
-
-                        <?php if (!($page <= 1)) { ?>
-                            <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
-
-                            <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Back" class="previous"></td>
-
-                            <?php echo "</form>" ?>
-                        <?php } ?>
-                        <?php if ($total_pages > $page) { ?>
-                            <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
-
-                            <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
-
-                            <?php echo "</form>" ?>
-                        <?php } ?>
-                    </tr>
+                        <form>
+                            <div class="container-1">
+                                <span class="icon"><i class="fa fa-search"></i></span>
+                                <input type="search" placeholder="Search..." id="search" />
+                            </div>
+                        </form>
+                    </td>
                 </table>
+                <div id="contentProduct">
+
+                    <?php foreach ($drugArray as $key => $drug) { ?>
+
+                        <table class = 'drugTable'>
+                            <tr>
+
+                                <?php echo "<th rowspan='6' width = '150px' ><img runat = 'server' src = '$drug->image' /></th>" ?>
+
+                                <th width = '75px' >Brand: </th>
+                                <td><?php echo $drug->medicine_name ?> </td>
+                            </tr>
+
+                            <tr>
+                                <th>Generic: </th>
+                                <td><?php echo $drug->generic_name ?></td>
+                            </tr>
+
+                            <tr>
+                                <th>Group: </th>
+                                <td><?php echo $drug->group_name ?></td>
+                            </tr>
+
+                            <tr>
+                                <th>Type: </th>
+                                <td><?php echo $drug->type ?></td>
+                            </tr>
+
+                            <tr>
+                                <th>Category: </th>
+                                <td><?php echo $drug->category ?></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan='2' ><?php echo $drug->discription ?></td>
+                            </tr>   
+                            <tr>
+                                <td></td>
+
+
+                                <td> <button class="product-btn-add" style="width: 100px; height: 30px;" onclick= "window.location.href = 'otc.php?id=<?php echo $drug->id ?>&page=<?php echo $page ?>'"><span>Add to Cart</span></button></td>
+                                <!--<td> <button class="product-btn-add" style="width: 100px; height: 30px;" id='myBtn' onclick='myFunction()'><span>Add to Cart</span></button></td>-->
+                            </tr>   
+                        </table>
+
+                    <?php } ?>
+                    <table>
+                        <tr>
+
+
+                            <?php if (!($page <= 1)) { ?>
+                                <?php echo " <form name = 'myFormprevious' action = 'otc.php?page=$page' method = 'post'>" ?>
+
+                                <td><input type='submit' style=" height:25px; width: 90px; " name="previous" value="Back" class="previous"></td>
+
+                                <?php echo "</form>" ?>
+                            <?php } ?>
+                            <?php if ($total_pages > $page) { ?>
+                                <?php echo " <form name = 'myFormnext' action = 'otc.php?page=$page' method = 'post'>" ?>
+
+                                <td><input type='submit' name="next" class="next" value="Next" style="height:25px; width: 90px;"></td>
+
+                                <?php echo "</form>" ?>
+                            <?php } ?>
+                        </tr>
+                    </table>
+                </div>
             </article>
         </div>
         <aside class="topSide">			
@@ -480,6 +518,7 @@ $t = sizeof($_SESSION['cart']);
 
 
         <?php require '../includes/customer_footer.php'; ?>
+
         <?php if (isset($_GET['id'])) { ?>
             <?php if (isset($_GET['id']) && isset($_SESSION['email']) && !empty($_SESSION['email'])) { ?>
                 <?php echo $id2 = $_GET['id']; ?>
@@ -624,10 +663,116 @@ $t = sizeof($_SESSION['cart']);
                 </div>
             <?php } else if (isset($_GET['id']) && !isset($_SESSION['email']) && empty($_SESSION['email'])) { ?>        
                 echo'<script>alert("\t\t\tYou are not logged in.\nPlease logged in before make an order.");
-                    window.location.href = "otc.php?page=<?php echo $page ?>";</script>';
+                                        window.location.href = "otc.php?page=<?php echo $page ?>";</script>';
 
             <?php } ?>
         <?php } ?>
     </body>
 </html>
 
+<script>
+    function confirmorder() {
+        var t = <?php echo $t ?>;
+        if (t != 0) {
+            var c = confirm("Confirm your order");
+
+            // if true, delete item and refresh
+            if (c)
+                window.location = "addOrder.php";
+        }
+        else {
+            alert("Order is empty!");
+        }
+    }
+
+    $(".cancel").click(function() {
+        var index = $(this).closest("tr").index();
+        $('.totalno').hide();
+        if (index != '')
+        {
+            $.ajax({
+                url: "removecart.php",
+                method: "POST",
+                data: {query: index},
+                success: function(data)
+                {
+                    $('.totalno').show();
+                    $('.totalno').html(data);
+                }
+
+            });
+        }
+
+        var here = this;
+
+        $(this).closest('tr').find('td').fadeOut('fast',
+                function(here) {
+                    $(here).parents('tr:first').remove();
+                });
+
+
+    });
+
+
+
+    $(document).ready(function() {
+
+        // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+        $('#noti_Counter')
+                .css({opacity: 0})
+                .text(<?php echo count($_SESSION['cart']); ?>)               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+                .css({top: '-15px', right: '10px'})
+                .animate({top: '10px', opacity: 1}, 500);
+
+        $('#noti_Button').click(function() {
+
+            // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
+            $('#notifications').fadeToggle('fast', 'linear', function() {
+                if ($('#notifications').is(':hidden')) {
+                    $('#noti_Button').css('background-color', '#2E467C');
+                }
+                else
+                    $('#noti_Button').css('background-color', '#FFF');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
+            });
+
+            $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
+
+            return false;
+        });
+
+        // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
+        $(document).click(function() {
+
+
+            // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
+            if ($('#noti_Counter').is(':hidden')) {
+                // CHANGE BACKGROUND COLOR OF THE BUTTON.
+                $('#noti_Button').css('background-color', '#2E467C');
+            }
+        });
+
+        $('#notifications').click(function() {
+            return True;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+        });
+    });
+
+    $(document).ready(function() {
+        $('#search').keyup(function() {
+            var query = $(this).val();
+
+            $.ajax({
+                url: "searchProduct.php",
+                method: "POST",
+                data: {query: query},
+                success: function(data)
+                {
+                    $('#contentProduct').fadeIn();
+                    $('#contentProduct').html(data);
+                }
+            });
+
+        });
+
+    });
+
+</script>

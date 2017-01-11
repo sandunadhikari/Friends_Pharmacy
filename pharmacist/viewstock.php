@@ -2,7 +2,9 @@
 <head>
         <script src="../public/js/sort.js"></script>
 	<link rel="stylesheet" href="css/stockstyles.css"/>
+		<link rel="stylesheet" href="css/jquery.dataTables.min.css" />
         <script src="js/jquery-2.0.0.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
         <script>
             
         $(function() {
@@ -35,6 +37,8 @@
                     row += "</tr>";
                     tbl_body.innerHTML += row;
                 }
+                
+                $("#stock_table").DataTable();
             });
         }
         </script>
@@ -70,7 +74,7 @@
         </div>
         
         <div class="content">
-            <table border="0">
+            <table id="stock_table" border="0">
                 <thead>
                     <tr>
                         <th>Medicine Name</th>                   

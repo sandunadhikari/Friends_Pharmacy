@@ -14,7 +14,7 @@
 </script>
 
     <?php require('../includes/_header.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/medstyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/med.css" />
     <title><?php echo $title; ?></title>
 </head>
 

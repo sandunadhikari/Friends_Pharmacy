@@ -10,7 +10,9 @@ if(isset($_POST['add'])){
     if(isset($_POST['medname'])){
         $med=$_POST['medname'];
     }
+    
 }
+
     
     ?>
 
@@ -25,7 +27,7 @@ if(isset($_POST['add'])){
       
 </head>
     <body>
-        <h2>Add Supplier</h2>
+        <h2>Place an order</h2>
         <?php require_once("../includes/navigation.php") ?>
         <?php 
     $output='';
@@ -35,7 +37,7 @@ if(isset($_POST['add'])){
     <form action="placeorder.php" method="post" onsubmit="return validate()">
    <input type="text" id="medname" name="medname" placeholder="Medicine name" autocomplete="off">
     <div id="medList"><?php echo $output?></div>
-   <input id="load" type="submit" name="btn" value="search">
+   <input id="load" type="submit" name="btn" value="Search">
     </form>
       
         </div>
@@ -46,9 +48,9 @@ if(isset($_POST['add'])){
                     <tr height="50">
                         <td>Supplier</td>
                         <td><select>
-                            <option>supplier</option>
+<!--                            <option>supplier</option>-->
                             <?php
-                                if(isset($_POST['medname'])){
+                                if(isset($_POST['btn'])){
                                     include("placeorderdb.php");
                                     $medname=$_POST['medname'];
                                     echo "works";
@@ -59,7 +61,7 @@ if(isset($_POST['add'])){
                                     while($row=mysqli_fetch_assoc($result1)){
                                         $cname=$row['company_name'];
                                         ?>
-                                    <option value="<?php echo $cname;?>"><?php echo $cname;?></option>    
+                                    <option value="<?php echo $cname;?>"></option>    
                                     <?php
                         
                                     }
@@ -105,6 +107,7 @@ if(isset($_POST['add'])){
             
     
     </div>
+        
     </body>
 
 

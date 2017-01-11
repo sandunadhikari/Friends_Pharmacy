@@ -46,7 +46,7 @@ class orderController {
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>Order List - $no<h3>
+       <h2 style='text-align:center;'>Order List - $no<h2>
         <table class='sortable'>
                 <tr>
                    
@@ -57,7 +57,8 @@ class orderController {
                     <th><b>Amount (Rs)</b></th>
                 </tr>";
         while ($row = mysqli_fetch_array($resultq)) {
-            $queryp = "SELECT price FROM stock where medicine_name = '$row[1]' and dosage = '$row[2]' ";
+            $medname = urlencode($row[1]);
+            $queryp = "SELECT price FROM stock where medicine_name = '$medname' and dosage = '$row[2]' ";
             $resultp = mysqli_query($mysqli, $queryp) or die(mysqli_error($mysqli));
             $rowp = mysqli_fetch_array($resultp);
             $amount = $row[3] * $rowp[0];
@@ -84,7 +85,7 @@ class orderController {
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>New orders List<h3>
+       <h2 style='text-align:center;'>New orders List<h2>
         
           <table class='sortable'>
                 <tr>
@@ -132,9 +133,7 @@ class orderController {
         $result = "";
         $result = "
        
-       <h3 style='text-align:center;'>New orders List<h3>
-        
-          <table class='sortable'>
+       <table class='sortable'>
                 <tr>
                     <th><b>Order number</b></th>
                     <th><b>Customer email</b></th>
@@ -148,9 +147,9 @@ class orderController {
                     <td><b>$row[1]</b></td>
                     <td><b>$row[2]</b></td>
                     <td><b>$row[3]</b></td>
-                    <td><a href='cust_orders.php?order_no=$row[0]' >List items</td>
+                    <td><a href='cust_orders.php?order_no=$row[0]&confirm=1' >List items</td>
                     <td><a href='#' onClick=removeConfirm($row[0])><img  class='confirm' src='../public/image/remove.png' style='width: 25px; height: 25px;'></a></td>
-                    <td><a href='#'><img  class='confirm' src='../public/image/bill.png' style='width: 40px; height: 40px;'></a></td>
+                    <td><a href='billtmp.php?order_no=$row[0]&email=$row[1]'><img  class='confirm' src='../public/image/bill.png' style='width: 40px; height: 40px;'></a></td>
 
                  </tr>
 ";
@@ -178,8 +177,6 @@ class orderController {
 
         $result = "";
         $result = "
-       
-       <h3 style='text-align:center;'>New orders List<h3>
         
           <table class='sortable'>
                 <tr>
@@ -207,6 +204,46 @@ class orderController {
         $result = $result . "</table>";
         return $result;
     }
+    
+    
+    function billtable($no) {
+        include '../database/dbconnect.php';
+        $query = "SELECT * FROM cust_orders_items where order_no = $no";
+        $resultq = mysqli_query($mysqli, $query) or die(mysqli_error($mysqli));
 
+        $result = "";
+        $result = "
+       
+       <h2 style='text-align:center;'>Order List - $no<h2>
+        <table table border='0' cellspacing='0' cellpadding='0'>
+                <tr>
+                   
+                    <th><b>Medicine name</b></th>
+                    <th><b>Dosage</b></th>
+                    <th><b>unit price (Rs)</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>Amount (Rs)</b></th>
+                </tr>";
+        while ($row = mysqli_fetch_array($resultq)) {
+            $medname = urlencode($row[1]);
+            $queryp = "SELECT price FROM stock where medicine_name = '$medname' and dosage = '$row[2]' ";
+            $resultp = mysqli_query($mysqli, $queryp) or die(mysqli_error($mysqli));
+            $rowp = mysqli_fetch_array($resultp);
+            $amount = $row[3] * $rowp[0];
+            $result = $result . "
+                <tr>
+                    
+                    <td><b>$row[1]</b></td>
+                    <td><b>$row[2]</b></td>
+                    <td><b>$rowp[0]</b></td>
+                    <td><b>$row[3]</b></td>
+                    <td><b>$amount</b></td>
+                </tr>
+";
+        }
+        $result = $result . "</table>";
+        return $result;
+    
+    }
 }
 ?>

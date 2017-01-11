@@ -4,7 +4,22 @@
 require 'orderController.php';
 $title = "Customer orders";
 $orderController = new orderController();
-if (isset($_GET["order_no"])) {
+if (isset($_GET["confirm"])) {
+    $no = $_GET["order_no"];
+    $content = "
+        <table style='position: relative; left:950px;'>
+            <tr>
+                <td>
+                <td><a href='#' onClick=showConfirm1($no)><img  class='confirm' src='../public/image/reject.png' style='width: 25px; height: 25px;'></a></td>
+                <td><a href='#' onClick=showConfirm2($no)><img  class='confirm' src='../public/image/OK.png' style='width: 25px; height: 25px;'></a></td>
+                </tr>
+        </table>";
+    $orderListTable = $orderController->orderListTable($_GET["order_no"]);
+    
+    $content = $content . $orderListTable."<a href='confiredOrder.php'><img  class='confirm' src='../public/image/back.png' style='width: 100px;; height: 35px; position: relative; left:930px;'></a>
+                ";
+}
+else if (isset($_GET["order_no"])) {
     $no = $_GET["order_no"];
     $content = "
         <table style='position: relative; left:950px;'>

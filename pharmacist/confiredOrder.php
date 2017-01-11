@@ -11,13 +11,14 @@ if (isset($_GET["confirmed"])) {
 } else {
     $orderTable = $orderController->orderConfirmTable("confirmed");
     $content = "<div style='float:left'>
+        <h2 style='text-align:center; position:relative; left:100px;'>Confirmed orders List<h2>
         <table style='position:relative; left:30px;'>
         <tr>
             <td>Email</td>
             <td><input type='text' name='email' id='email' placeholder='search' oninput='loadcustomers()'/></td>
             <tr>
             </table>
-            <div id='List' style='position:relative; left:120px;'>$orderTable</div> 
+            <div id='List' style='position:relative; left:120px; top:40px;'>$orderTable</div> 
             </div>";
 }
 include 'template.php';

@@ -17,7 +17,7 @@ function showConfirm()
 
 $title = "";
 
-$content = "<h3 style='text-align:center;'>Delete Medicine</h3>
+$content = "<h2 style='text-align:center;'>Delete Medicine</h2>
     <form action='delete.php' method ='post'>
     
       <fieldset>
@@ -64,7 +64,7 @@ if(isset($_POST['btnView'])){
         $group = $row[8];
         $image  =$row[7];
 
-        $content = "<h3 style='text-align:center;'>Delete Medicine</h3>
+        $content = "<h2 style='text-align:center;'>Delete Medicine</h2>
         <form action='#' method ='post' onsubmit='return showConfirm()'>
 
           <fieldset>

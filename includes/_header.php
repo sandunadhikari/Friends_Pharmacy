@@ -46,7 +46,7 @@ while ($row = mysqli_fetch_array($query)) {
                         .text('<?php echo $orderrows ?>')               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
                         .css({top: '-10px'})
                         .animate({top: '-2px', opacity: 1}, 500);
-                
+
                 $('#noti_Counter')
                         .css({opacity: 0})
                         .text('<?php echo $rows ?>')               // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
@@ -126,7 +126,7 @@ while ($row = mysqli_fetch_array($query)) {
                 cursor:pointer;
             }
             .ul .li a:hover {
-                
+
                 text-decoration:none;
                 cursor:pointer;
             }
@@ -137,7 +137,7 @@ while ($row = mysqli_fetch_array($query)) {
                 right: 450px;
 
                 z-index: +1;
-                
+
             }
 
             /* A CIRCLE LIKE BUTTON IN THE TOP MENU. */
@@ -267,6 +267,13 @@ while ($row = mysqli_fetch_array($query)) {
             #noti_Button:hover + #lblexp {
                 display: block;
             }
+            a, u {
+                text-decoration: none;
+                color:#000000;
+            }
+          
+            a:visited {color:#808080;}  /* visited link */
+            a:active {color:#0000FF;} 
 
 
 
@@ -279,40 +286,49 @@ while ($row = mysqli_fetch_array($query)) {
         <div>
             <ul class="ul">
                 <li class="li" id="logout"><a href="../web/index.php">Logout</a></li>
-                
+
                 <li class="li" id="orders">
                     <div id="order_Counter"></div> 
                     <div id="order_Button">
-                       <a href="../pharmacist/cust_orders.php"><img  src="../public/image/orders.png" style="display: block; margin-left: auto; margin-right: auto; width:40px; height:40px; position:relative; right:90px;  top:-28px;"></a>   
+                        <a href="../pharmacist/cust_orders.php"><img  src="../public/image/orders.png" style="display: block; margin-left: auto; margin-right: auto; width:35px; height:35px; position:relative; right:90px;  top:-28px;"></a>   
                     </div>
                     <div id="lblneworders" style="position: absolute; right:60px;  top:33px; width:80px; ">new orders</div>
-                 </li>
-                
-                
-                
-                
-                
+                </li>
+
+
+
+
+
                 <li id="noti_Container" >
                     <div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
                     <!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
                     <div id="noti_Button">
                         <div>
-                            <img  src="../public/image/exp.png"  style="display: block; margin-left: auto; margin-right: auto; width:40px; height:40px; position: relative; top: -5px;">    
+                            <img  src="../public/image/exp.png"  style="display: block; margin-left: auto; margin-right: auto; width:35px; height:35px; position: relative; top: -5px;">    
                         </div>
-                        
+
                     </div>   
                     <div id="lblexp" style="position: absolute; right:-30px;  top:33px; width:80px; ">short expiry</div>
                     <div id="notifications">
                         <h3 id="h3">Short expiry</h3>
                         <?php
                         foreach ($stockArray as $key => $stock) {
+                            $resultim = mysqli_query($mysqli, "SELECT image FROM drug where medicine_name = '$stock->medicine_name';");
+                            $rowim= mysqli_fetch_array($resultim);
+                           $medname = urlencode($stock->medicine_name);
+                          
                             echo "<div id=inner_noti>
-                                <a href='../pharmacist/removeStock2.php?outofstock=$stock->medicine_name'> $stock->medicine_name  $stock->quantity quantity will expire on $stock->expire_date date according to $stock->batch_no batch number</a>
-                           </div>";
+                                <table>
+                                <tr>
+                                <td style='padding:5px;'><img  src='$rowim[0]'  style='display: block; margin-left: auto; margin-right: auto; width:35px; height:35px; position: relative; top: -5px;'> </td>   
+                                <td><a href='../pharmacist/removeStock2.php?outofstock=$medname'> $stock->medicine_name  $stock->quantity quantity will expire on $stock->expire_date date according to $stock->batch_no batch number</a></td>
+                                <tr>
+</table>
+                                </div>";
                         }
                         ?>
-                        <div style="height:200px;"></div>
-                        <div class="seeAll"><a href="#">See All</a></div>
+                        
+                        <div class="seeAll"><a href="../pharmacist/removeStock2.php?allOutDate=1;">All short expiry</a></div>
                     </div>
                 </li>
 

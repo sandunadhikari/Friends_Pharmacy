@@ -3,7 +3,9 @@
     	
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" type="text/css" href="customerStyle.css" />
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" />
     <script src="js/jquery-2.0.0.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
         
         <script>
             $(function(){
@@ -41,6 +43,8 @@
                         tbl_bdy.innerHTML += row;
                         // console.log(row);
                     }
+                    
+                    $('#customer_table').DataTable();
                 });
             }
             
@@ -115,7 +119,7 @@
         <br>
         
         <div class="content">
-            <table border="1" style='width:60%; float:left;'>
+            <table id="customer_table" border="1" style='width:60%; float:left;'>
                 <thead>
                     <tr>
                         <th>NIC</th>

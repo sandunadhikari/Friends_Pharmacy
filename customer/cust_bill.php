@@ -95,6 +95,14 @@
         })
     }
     
+    function printTable() {
+    	var divToPrint = document.getElementById("div_to_print");
+    	newWin = window.open("");
+    	newWin.document.write(divToPrint.outerHTML);
+    	newWin.print();
+    	newWin.close();
+    }
+    
     </script>
 
     <style>
@@ -111,7 +119,7 @@
     <!--content goes here -->
     <div class="customer_template_container" style=" padding-left:13px; padding-top:70px;">
         
-        <div style="float: left; width: 60%">
+        <div id="div_to_print" style="float: left; width: 60%">
             <div style="width:100%; text-align:center; font-weight:100">
                 <h2 style="font-weight:100">Friends Pharmacy</h2>
                 <h3 style="margin-top:-16px;font-weight:100">Kirulapana</h3>
@@ -138,7 +146,9 @@
                 </tr>
             </table>
             <h3 style="width:100%; text-align:center">Total: Rs.<span id="total"></span></h3>
+
         </div>
+        <button onclick='printTable()'>Print</button>
 
         <div style="float: right; width: 35%">
             <form>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2016 at 09:05 AM
+-- Generation Time: Jan 09, 2017 at 06:30 AM
 -- Server version: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -46,7 +46,9 @@ INSERT INTO `comment` (`id`, `user_name`, `post`, `day`) VALUES
 (7, 'auto', 'hi again', '2016-11-29'),
 (8, 'auto', 'line 1<br />\r\nline 2', '2016-11-30'),
 (9, 'auto', 'new comment', '2016-11-30'),
-(10, 'auto', 'FIRST COMMENT', '2016-12-01');
+(10, 'auto', 'FIRST COMMENT', '2016-12-01'),
+(11, 'auto', 'hi there', '2016-12-01'),
+(12, 'auto', 'sdlfksd;f', '2017-01-08');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +68,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
